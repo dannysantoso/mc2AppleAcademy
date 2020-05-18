@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 
-class MilestoneViewController: UIViewController {
+class MilestoneViewController: UIViewController, BackHandler {
+    
     
     @IBOutlet weak var milestoneTableView: UITableView!
-    @IBOutlet weak var tf1: UITextField!
     
     var milestone = [Milestone]()
     
@@ -29,11 +29,21 @@ class MilestoneViewController: UIViewController {
         milestoneTableView.register(UINib(nibName: "MilestoneTableViewCell", bundle: nil), forCellReuseIdentifier: "MilestoneCell")
     }
     
-    @IBAction func save(_ sender: Any) {
-
-        let newMilestone = Milestone.save(viewContext: self.getViewContext(), milestoneName: tf1.text ?? "", selectedProject: self.selectedProject!)
-                self.milestone.append(newMilestone!)
-                self.milestoneTableView.reloadData()
+    
+    @IBAction func addMilestone(_ sender: Any) {
+        performSegue(withIdentifier: "toAddMilestone", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? AddMilestoneViewController {
+            destination.delegate = self
+            destination.selectedProject = self.selectedProject
+        }
+    }
+    
+    func onBackHome() {
+        milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
+        milestoneTableView.reloadData()
     }
 }
 

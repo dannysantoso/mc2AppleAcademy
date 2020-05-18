@@ -13,9 +13,10 @@ class AddProjectViewController: UIViewController {
     @IBOutlet weak var projectName: UITextField!
     @IBOutlet weak var clientName: UITextField!
     @IBOutlet weak var deadline: UITextField!
-    @IBOutlet weak var endgoal: UITextField!
+    @IBOutlet weak var projectCompletionReward: UITextField!
     
     var delegate: BackHandler?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +24,7 @@ class AddProjectViewController: UIViewController {
     
 
     @IBAction func save(_ sender: Any) {
-        if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: "red", isCompleted: false, endGoald: endgoal.text ?? "") != nil){
+        if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: "red", isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
                 
                 dismiss(animated: true, completion: nil)
                     self.delegate?.onBackHome()

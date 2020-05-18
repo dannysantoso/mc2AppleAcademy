@@ -40,9 +40,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SWZ-uN-Z7r">
-                                <rect key="frame" x="184" y="767" width="46" height="30"/>
+                                <rect key="frame" x="348" y="20" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.56961078089999995" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="save:" destination="fCg-9j-7Ut" eventType="touchUpInside" id="fjb-BN-UeX"/>
@@ -55,13 +54,54 @@
                     <connections>
                         <outlet property="clientName" destination="Fgx-0l-0sj" id="NTp-Ke-eNY"/>
                         <outlet property="deadline" destination="jVj-LO-Qlp" id="Qhv-Uq-ASK"/>
-                        <outlet property="endgoal" destination="IRQ-9b-Ucg" id="bCc-vG-rpd"/>
+                        <outlet property="projectCompletionReward" destination="IRQ-9b-Ucg" id="EUR-Zc-fDe"/>
                         <outlet property="projectName" destination="3Py-CD-bWM" id="7sz-DJ-XeI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tv9-Ai-kkX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="938"/>
+            <point key="canvasLocation" x="-1813" y="955"/>
+        </scene>
+        <!--Add Milestone View Controller-->
+        <scene sceneID="P8m-RT-MYe">
+            <objects>
+                <viewController id="LVD-T6-6cO" customClass="AddMilestoneViewController" customModule="mc2apps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fpu-JS-0hr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9bs-1M-HLm">
+                                <rect key="frame" x="72" y="345" width="259" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HOH-uY-QV7">
+                                <rect key="frame" x="78" y="451" width="259" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8We-Ku-TTa">
+                                <rect key="frame" x="348" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="save:" destination="LVD-T6-6cO" eventType="touchUpInside" id="ULX-Co-e5i"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="ZkG-XV-vFB"/>
+                    </view>
+                    <connections>
+                        <outlet property="deadline" destination="HOH-uY-QV7" id="2Ta-I8-3ma"/>
+                        <outlet property="milestoneName" destination="9bs-1M-HLm" id="ecw-eE-HTB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMJ-BD-ySB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-623" y="955"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -97,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-1813" y="155"/>
         </scene>
         <!--Milestone View Controller-->
         <scene sceneID="N1Z-8Y-tcs">
@@ -112,18 +152,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="maU-wl-YAc">
-                                <rect key="frame" x="20" y="122" width="211" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6u-UJ-eZR">
                                 <rect key="frame" x="348" y="124" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="save:" destination="MOI-Jv-Ytd" eventType="touchUpInside" id="3Lc-XL-cIt"/>
+                                    <action selector="addMilestone:" destination="MOI-Jv-Ytd" eventType="touchUpInside" id="wuA-1A-bYA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -133,12 +167,12 @@
                     <navigationItem key="navigationItem" id="2J4-dY-2IX"/>
                     <connections>
                         <outlet property="milestoneTableView" destination="OqT-YH-Hsg" id="rYh-uF-Z5x"/>
-                        <outlet property="tf1" destination="maU-wl-YAc" id="Fb5-Ot-eYo"/>
+                        <segue destination="LVD-T6-6cO" kind="presentation" identifier="toAddMilestone" id="wMJ-hV-yrz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lac-Pu-de9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2237.68115942029" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-623" y="155"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DdE-of-Jup">
@@ -156,7 +190,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRg-RS-gWX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-2723" y="155"/>
         </scene>
     </scenes>
 </document>

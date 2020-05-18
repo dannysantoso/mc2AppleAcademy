@@ -30,13 +30,13 @@ extension Project{
         return result
     }
     
-    static func save(viewContext: NSManagedObjectContext, projectName: String, clientName: String, deadline: Date, color: String, isCompleted: Bool, endGoald: String) -> Project? {
+    static func save(viewContext: NSManagedObjectContext, projectName: String, clientName: String, deadline: Date, color: String, isCompleted: Bool, projectCompletionReward: String) -> Project? {
         let project = Project(context: viewContext)
         project.projectName = projectName
         project.clientName = clientName
         project.deadline = deadline
         project.color = color
-        project.endGoal = endGoald
+        project.projectCompletionReward = projectCompletionReward
         project.isCompleted = isCompleted
         
         do {

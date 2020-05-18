@@ -23,6 +23,7 @@
 		E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098502471389700E693A0 /* MilestoneViewController.swift */; };
 		E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098532471B31A00E693A0 /* Milestone+Extension.swift */; };
 		E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098552471B90100E693A0 /* AddProjectViewController.swift */; };
+		E100985A2472809F00E693A0 /* AddMilestoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098592472809F00E693A0 /* AddMilestoneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		E10098502471389700E693A0 /* MilestoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneViewController.swift; sourceTree = "<group>"; };
 		E10098532471B31A00E693A0 /* Milestone+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+Extension.swift"; sourceTree = "<group>"; };
 		E10098552471B90100E693A0 /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
+		E10098592472809F00E693A0 /* AddMilestoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMilestoneViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				E10098552471B90100E693A0 /* AddProjectViewController.swift */,
 				E10098502471389700E693A0 /* MilestoneViewController.swift */,
 				E100982C247126D600E693A0 /* ViewController.swift */,
+				E10098592472809F00E693A0 /* AddMilestoneViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */,
 				E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */,
 				E100982D247126D600E693A0 /* ViewController.swift in Sources */,
+				E100985A2472809F00E693A0 /* AddMilestoneViewController.swift in Sources */,
 				E1009829247126D600E693A0 /* AppDelegate.swift in Sources */,
 				E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */,
 				E100984724712D4F00E693A0 /* Project+Extension.swift in Sources */,

@@ -2,8 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Milestone" representedClassName="Milestone" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="milestoneName" optional="YES" attributeType="String"/>
-        <attribute name="order" optional="YES" attributeType="String"/>
         <relationship name="projectOf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="milestone" inverseEntity="Project"/>
         <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="milestoneOf" inverseEntity="Task"/>
     </entity>
@@ -11,8 +11,8 @@
         <attribute name="clientName" optional="YES" attributeType="String"/>
         <attribute name="color" optional="YES" attributeType="String"/>
         <attribute name="deadline" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="endGoal" optional="YES" attributeType="String"/>
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="projectCompletionReward" optional="YES" attributeType="String"/>
         <attribute name="projectName" optional="YES" attributeType="String"/>
         <relationship name="milestone" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Milestone" inverseName="projectOf" inverseEntity="Milestone"/>
     </entity>
@@ -22,8 +22,8 @@
         <relationship name="milestoneOf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Milestone" inverseName="task" inverseEntity="Milestone"/>
     </entity>
     <elements>
-        <element name="Project" positionX="-323.0625" positionY="-15.6171875" width="128" height="148"/>
         <element name="Milestone" positionX="-107.90625" positionY="-224.65625" width="128" height="118"/>
+        <element name="Project" positionX="-323.0625" positionY="-15.6171875" width="128" height="148"/>
         <element name="Task" positionX="172.84765625" positionY="-0.91015625" width="128" height="88"/>
     </elements>
 </model>

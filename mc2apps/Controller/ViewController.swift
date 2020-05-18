@@ -42,12 +42,12 @@ class ViewController: UIViewController, BackHandler {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? MilestoneViewController {
+        if let destination = segue.destination as? MilestoneViewController {
             if let indexPath = projectTableView.indexPathForSelectedRow {
-                destinationVC.selectedProject = projects[indexPath.row]
+                destination.selectedProject = projects[indexPath.row]
             }
-        } else if let destinationModal = segue.destination as? AddProjectViewController {
-            destinationModal.delegate = self
+        } else if let destination = segue.destination as? AddProjectViewController {
+            destination.delegate = self
         }
     }
     
