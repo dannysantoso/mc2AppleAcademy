@@ -14,6 +14,15 @@
 		E1009833247126D600E693A0 /* mc2apps.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1009831247126D600E693A0 /* mc2apps.xcdatamodeld */; };
 		E1009835247126D700E693A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1009834247126D700E693A0 /* Assets.xcassets */; };
 		E1009838247126D700E693A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1009836247126D700E693A0 /* LaunchScreen.storyboard */; };
+		E100984124712A0100E693A0 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100983F24712A0100E693A0 /* ProjectTableViewCell.swift */; };
+		E100984224712A0100E693A0 /* ProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E100984024712A0100E693A0 /* ProjectTableViewCell.xib */; };
+		E100984524712CFB00E693A0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100984424712CFB00E693A0 /* UIViewController+Extension.swift */; };
+		E100984724712D4F00E693A0 /* Project+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100984624712D4F00E693A0 /* Project+Extension.swift */; };
+		E100984A2471360000E693A0 /* MilestoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098482471360000E693A0 /* MilestoneTableViewCell.swift */; };
+		E100984B2471360000E693A0 /* MilestoneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098492471360000E693A0 /* MilestoneTableViewCell.xib */; };
+		E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098502471389700E693A0 /* MilestoneViewController.swift */; };
+		E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098532471B31A00E693A0 /* Milestone+Extension.swift */; };
+		E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098552471B90100E693A0 /* AddProjectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,15 @@
 		E1009834247126D700E693A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1009837247126D700E693A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1009839247126D700E693A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E100983F24712A0100E693A0 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		E100984024712A0100E693A0 /* ProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectTableViewCell.xib; sourceTree = "<group>"; };
+		E100984424712CFB00E693A0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		E100984624712D4F00E693A0 /* Project+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+Extension.swift"; sourceTree = "<group>"; };
+		E10098482471360000E693A0 /* MilestoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneTableViewCell.swift; sourceTree = "<group>"; };
+		E10098492471360000E693A0 /* MilestoneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MilestoneTableViewCell.xib; sourceTree = "<group>"; };
+		E10098502471389700E693A0 /* MilestoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneViewController.swift; sourceTree = "<group>"; };
+		E10098532471B31A00E693A0 /* Milestone+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+Extension.swift"; sourceTree = "<group>"; };
+		E10098552471B90100E693A0 /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +76,57 @@
 		E1009827247126D600E693A0 /* mc2apps */ = {
 			isa = PBXGroup;
 			children = (
+				E10098582472579A00E693A0 /* Extension */,
+				E10098572472575F00E693A0 /* Controller */,
+				E100984324712A1600E693A0 /* View */,
 				E1009828247126D600E693A0 /* AppDelegate.swift */,
 				E100982A247126D600E693A0 /* SceneDelegate.swift */,
-				E100982C247126D600E693A0 /* ViewController.swift */,
-				E100982E247126D600E693A0 /* Main.storyboard */,
 				E1009834247126D700E693A0 /* Assets.xcassets */,
-				E1009836247126D700E693A0 /* LaunchScreen.storyboard */,
 				E1009839247126D700E693A0 /* Info.plist */,
 				E1009831247126D600E693A0 /* mc2apps.xcdatamodeld */,
 			);
 			path = mc2apps;
+			sourceTree = "<group>";
+		};
+		E100984324712A1600E693A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E1009836247126D700E693A0 /* LaunchScreen.storyboard */,
+				E100982E247126D600E693A0 /* Main.storyboard */,
+				E10098522471B2DA00E693A0 /* cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E10098522471B2DA00E693A0 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				E100983F24712A0100E693A0 /* ProjectTableViewCell.swift */,
+				E100984024712A0100E693A0 /* ProjectTableViewCell.xib */,
+				E10098482471360000E693A0 /* MilestoneTableViewCell.swift */,
+				E10098492471360000E693A0 /* MilestoneTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		E10098572472575F00E693A0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E10098552471B90100E693A0 /* AddProjectViewController.swift */,
+				E10098502471389700E693A0 /* MilestoneViewController.swift */,
+				E100982C247126D600E693A0 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E10098582472579A00E693A0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E100984424712CFB00E693A0 /* UIViewController+Extension.swift */,
+				E100984624712D4F00E693A0 /* Project+Extension.swift */,
+				E10098532471B31A00E693A0 /* Milestone+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +190,8 @@
 				E1009838247126D700E693A0 /* LaunchScreen.storyboard in Resources */,
 				E1009835247126D700E693A0 /* Assets.xcassets in Resources */,
 				E1009830247126D600E693A0 /* Main.storyboard in Resources */,
+				E100984224712A0100E693A0 /* ProjectTableViewCell.xib in Resources */,
+				E100984B2471360000E693A0 /* MilestoneTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,8 +202,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E100984524712CFB00E693A0 /* UIViewController+Extension.swift in Sources */,
+				E100984124712A0100E693A0 /* ProjectTableViewCell.swift in Sources */,
+				E100984A2471360000E693A0 /* MilestoneTableViewCell.swift in Sources */,
+				E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */,
+				E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */,
 				E100982D247126D600E693A0 /* ViewController.swift in Sources */,
 				E1009829247126D600E693A0 /* AppDelegate.swift in Sources */,
+				E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */,
+				E100984724712D4F00E693A0 /* Project+Extension.swift in Sources */,
 				E1009833247126D600E693A0 /* mc2apps.xcdatamodeld in Sources */,
 				E100982B247126D600E693A0 /* SceneDelegate.swift in Sources */,
 			);
