@@ -14,13 +14,13 @@ extension Task{
     static func fetchQuery(viewContext: NSManagedObjectContext, selectedMilestone: String, predicate: NSPredicate? = nil) -> [Task]{
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         
-        let projectpredicate = NSPredicate(format: "milestoneOf.milestoneName MATCHES %@", selectedMilestone)
+        let milestonepredicate = NSPredicate(format: "milestoneOf.milestoneName MATCHES %@", selectedMilestone)
         
         
         if let addtionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [projectpredicate, addtionalPredicate])
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [milestonepredicate, addtionalPredicate])
         } else {
-            request.predicate = projectpredicate
+            request.predicate = milestonepredicate
         }
         
         guard let result = try? viewContext.fetch(request) else{
@@ -40,6 +40,17 @@ extension Task{
             return newTask
         } catch {
            return nil
+        }
+    }
+    
+    static func update(viewContext: NSManagedObjectContext, taskName: String, task:[Task], indexTask: Int){
+        
+        task[indexTask].taskName = taskName
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
 }

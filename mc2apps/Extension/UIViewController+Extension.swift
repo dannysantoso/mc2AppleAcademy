@@ -19,3 +19,13 @@ extension UIViewController{
         return container!.viewContext
     }
 }
+
+
+extension UITableViewCell{
+    func getViewContext() -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        //ngambil appdelegate, jadi semua yang ada di appdelegate dapat diakses
+        let container = appDelegate?.persistentContainer
+        return container!.viewContext
+    }
+}

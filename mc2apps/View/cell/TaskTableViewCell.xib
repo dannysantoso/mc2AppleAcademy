@@ -22,9 +22,16 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
-                            <action selector="didEnd:" destination="KGk-i7-Jjw" eventType="editingDidEndOnExit" id="vem-Xp-oJw"/>
+                            <action selector="editingChangedTextfield:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="hgj-9W-NWM"/>
                         </connections>
                     </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85a-5Z-4N3">
+                        <rect key="frame" x="16" y="23" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

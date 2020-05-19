@@ -27,6 +27,17 @@
                     <rect key="frame" x="364" y="144" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Add"/>
+                    <connections>
+                        <action selector="addTask:" destination="-1" eventType="touchUpInside" id="fC8-1a-jxt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w2B-gv-CXH">
+                    <rect key="frame" x="20" y="144" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="update:" destination="-1" eventType="touchUpInside" id="kPv-HQ-y73"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
