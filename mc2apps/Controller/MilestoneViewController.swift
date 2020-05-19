@@ -26,20 +26,22 @@ class MilestoneViewController: UIViewController, BackHandler {
         
         
         milestoneTableView.dataSource = self
+        milestoneTableView.delegate = self
         milestoneTableView.register(UINib(nibName: "MilestoneTableViewCell", bundle: nil), forCellReuseIdentifier: "MilestoneCell")
     }
     
     
     @IBAction func addMilestone(_ sender: Any) {
-        performSegue(withIdentifier: "toAddMilestone", sender: self)
+        let destination = AddMilestoneViewController(nibName: "AddMilestoneViewController", bundle: nil)
+        
+        // Mengirim data hero
+        destination.delegate = self
+        destination.selectedProject = self.selectedProject
+        
+        
+        self.present(destination, animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? AddMilestoneViewController {
-            destination.delegate = self
-            destination.selectedProject = self.selectedProject
-        }
-    }
     
     func onBackHome() {
         milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
@@ -61,6 +63,23 @@ extension MilestoneViewController: UITableViewDataSource{
             return cell
 
         }
+    
+}
+
+extension MilestoneViewController: UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destination = TaskViewController(nibName: "TaskViewController", bundle: nil)
+
+        if let indexPath = milestoneTableView.indexPathForSelectedRow {
+            destination.selectedMilestone = milestone[indexPath.row]
+        }
+
+        // Push/mendorong view controller lain
+        self.navigationController?.pushViewController(destination, animated: true)
+        
+        
+    }
     
 }
 

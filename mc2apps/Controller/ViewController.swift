@@ -36,20 +36,17 @@ class ViewController: UIViewController, BackHandler {
 
     
     @IBAction func addProject(_ sender: Any) {
-        performSegue(withIdentifier: "toAddProject", sender: self)
+        let destination = AddProjectViewController(nibName: "AddProjectViewController", bundle: nil)
+        
+        // Mengirim data hero
+        destination.delegate = self
+        
+        
+        self.present(destination, animated: true, completion: nil)
         
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? MilestoneViewController {
-            if let indexPath = projectTableView.indexPathForSelectedRow {
-                destination.selectedProject = projects[indexPath.row]
-            }
-        } else if let destination = segue.destination as? AddProjectViewController {
-            destination.delegate = self
-        }
-    }
+
     
     func onBackHome() {
         projects = Project.fetchAll(viewContext: getViewContext())
@@ -79,7 +76,14 @@ extension ViewController: UITableViewDataSource{
 extension ViewController: UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toMilestone", sender: self)
+        let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
+
+        if let indexPath = projectTableView.indexPathForSelectedRow {
+            destination.selectedProject = projects[indexPath.row]
+        }
+
+        // Push/mendorong view controller lain
+        self.navigationController?.pushViewController(destination, animated: true)
     }
     
 }

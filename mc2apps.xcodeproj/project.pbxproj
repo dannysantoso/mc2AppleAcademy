@@ -24,6 +24,14 @@
 		E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098532471B31A00E693A0 /* Milestone+Extension.swift */; };
 		E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098552471B90100E693A0 /* AddProjectViewController.swift */; };
 		E100985A2472809F00E693A0 /* AddMilestoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098592472809F00E693A0 /* AddMilestoneViewController.swift */; };
+		E100985C24729B1400E693A0 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100985B24729B1400E693A0 /* TaskViewController.swift */; };
+		E100985F24729B4100E693A0 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100985D24729B4100E693A0 /* TaskTableViewCell.swift */; };
+		E100986024729B4100E693A0 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E100985E24729B4100E693A0 /* TaskTableViewCell.xib */; };
+		E10098622472DA1F00E693A0 /* Task+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10098612472DA1F00E693A0 /* Task+Extension.swift */; };
+		E10098892473CB6400E693A0 /* MilestoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098872473CB6400E693A0 /* MilestoneViewController.xib */; };
+		E100988D2473CF4000E693A0 /* AddMilestoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E100988B2473CF4000E693A0 /* AddMilestoneViewController.xib */; };
+		E10098912473CFB800E693A0 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E100988F2473CFB800E693A0 /* TaskViewController.xib */; };
+		E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098932473D09200E693A0 /* AddProjectViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +54,14 @@
 		E10098532471B31A00E693A0 /* Milestone+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+Extension.swift"; sourceTree = "<group>"; };
 		E10098552471B90100E693A0 /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		E10098592472809F00E693A0 /* AddMilestoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMilestoneViewController.swift; sourceTree = "<group>"; };
+		E100985B24729B1400E693A0 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		E100985D24729B4100E693A0 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		E100985E24729B4100E693A0 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		E10098612472DA1F00E693A0 /* Task+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extension.swift"; sourceTree = "<group>"; };
+		E10098872473CB6400E693A0 /* MilestoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MilestoneViewController.xib; sourceTree = "<group>"; };
+		E100988B2473CF4000E693A0 /* AddMilestoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMilestoneViewController.xib; sourceTree = "<group>"; };
+		E100988F2473CFB800E693A0 /* TaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
+		E10098932473D09200E693A0 /* AddProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProjectViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +111,10 @@
 			children = (
 				E1009836247126D700E693A0 /* LaunchScreen.storyboard */,
 				E100982E247126D600E693A0 /* Main.storyboard */,
+				E10098872473CB6400E693A0 /* MilestoneViewController.xib */,
+				E100988B2473CF4000E693A0 /* AddMilestoneViewController.xib */,
+				E100988F2473CFB800E693A0 /* TaskViewController.xib */,
+				E10098932473D09200E693A0 /* AddProjectViewController.xib */,
 				E10098522471B2DA00E693A0 /* cell */,
 			);
 			path = View;
@@ -103,10 +123,9 @@
 		E10098522471B2DA00E693A0 /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				E100983F24712A0100E693A0 /* ProjectTableViewCell.swift */,
 				E100984024712A0100E693A0 /* ProjectTableViewCell.xib */,
-				E10098482471360000E693A0 /* MilestoneTableViewCell.swift */,
 				E10098492471360000E693A0 /* MilestoneTableViewCell.xib */,
+				E100985E24729B4100E693A0 /* TaskTableViewCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -118,6 +137,8 @@
 				E10098502471389700E693A0 /* MilestoneViewController.swift */,
 				E100982C247126D600E693A0 /* ViewController.swift */,
 				E10098592472809F00E693A0 /* AddMilestoneViewController.swift */,
+				E100985B24729B1400E693A0 /* TaskViewController.swift */,
+				E10098962473D18E00E693A0 /* cell */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,8 +149,19 @@
 				E100984424712CFB00E693A0 /* UIViewController+Extension.swift */,
 				E100984624712D4F00E693A0 /* Project+Extension.swift */,
 				E10098532471B31A00E693A0 /* Milestone+Extension.swift */,
+				E10098612472DA1F00E693A0 /* Task+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		E10098962473D18E00E693A0 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				E100983F24712A0100E693A0 /* ProjectTableViewCell.swift */,
+				E10098482471360000E693A0 /* MilestoneTableViewCell.swift */,
+				E100985D24729B4100E693A0 /* TaskTableViewCell.swift */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,11 +222,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E100986024729B4100E693A0 /* TaskTableViewCell.xib in Resources */,
 				E1009838247126D700E693A0 /* LaunchScreen.storyboard in Resources */,
 				E1009835247126D700E693A0 /* Assets.xcassets in Resources */,
 				E1009830247126D600E693A0 /* Main.storyboard in Resources */,
 				E100984224712A0100E693A0 /* ProjectTableViewCell.xib in Resources */,
 				E100984B2471360000E693A0 /* MilestoneTableViewCell.xib in Resources */,
+				E10098912473CFB800E693A0 /* TaskViewController.xib in Resources */,
+				E10098892473CB6400E693A0 /* MilestoneViewController.xib in Resources */,
+				E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */,
+				E100988D2473CF4000E693A0 /* AddMilestoneViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,9 +242,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E100985F24729B4100E693A0 /* TaskTableViewCell.swift in Sources */,
 				E100984524712CFB00E693A0 /* UIViewController+Extension.swift in Sources */,
 				E100984124712A0100E693A0 /* ProjectTableViewCell.swift in Sources */,
 				E100984A2471360000E693A0 /* MilestoneTableViewCell.swift in Sources */,
+				E10098622472DA1F00E693A0 /* Task+Extension.swift in Sources */,
 				E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */,
 				E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */,
 				E100982D247126D600E693A0 /* ViewController.swift in Sources */,
@@ -216,6 +255,7 @@
 				E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */,
 				E100984724712D4F00E693A0 /* Project+Extension.swift in Sources */,
 				E1009833247126D600E693A0 /* mc2apps.xcdatamodeld in Sources */,
+				E100985C24729B1400E693A0 /* TaskViewController.swift in Sources */,
 				E100982B247126D600E693A0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
