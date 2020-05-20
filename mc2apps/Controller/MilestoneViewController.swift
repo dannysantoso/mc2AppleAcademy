@@ -73,12 +73,16 @@ extension MilestoneViewController: UITableViewDelegate{
 
         if let indexPath = milestoneTableView.indexPathForSelectedRow {
             destination.selectedMilestone = milestone[indexPath.row]
+            destination.selectedProject = selectedProject
         }
 
-        // Push/mendorong view controller lain
         self.navigationController?.pushViewController(destination, animated: true)
         
-        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
 }

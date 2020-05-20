@@ -21,10 +21,10 @@ class AddMilestoneViewController: UIViewController {
 
     }
     @IBAction func save(_ sender: Any) {
-        if Milestone.save(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", selectedProject: selectedProject!) != nil{
+        if Milestone.save(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", selectedProject: selectedProject!, deadline: Date(), color: "", isCompleted: true) != nil{
             dismiss(animated: true, completion: nil)
                 self.delegate?.onBackHome()
         }
-            
+
     }
 }

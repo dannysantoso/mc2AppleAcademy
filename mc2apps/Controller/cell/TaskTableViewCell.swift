@@ -30,13 +30,7 @@ class TaskTableViewCell: UITableViewCell {
     
     @IBAction func editingChangedTextfield(_ sender: UITextField) {
         
-        Task.update(viewContext: self.getViewContext(), taskName: taskName.text ?? "", task: task, indexTask: indexTask!)
+        Task.update(viewContext: self.getViewContext(), taskName: taskName.text ?? "", task: task, indexTask: indexTask!, isChecklist: false, color: "")
 
-//        task[indexTask!].taskName = textFieldValue
-//        do {
-//            try getViewContext().save()
-//        } catch {
-//            print("Error saving context \(error)")
-//        }
-    }    
+    }
 }

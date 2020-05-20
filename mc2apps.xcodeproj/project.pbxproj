@@ -32,6 +32,7 @@
 		E100988D2473CF4000E693A0 /* AddMilestoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E100988B2473CF4000E693A0 /* AddMilestoneViewController.xib */; };
 		E10098912473CFB800E693A0 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E100988F2473CFB800E693A0 /* TaskViewController.xib */; };
 		E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098932473D09200E693A0 /* AddProjectViewController.xib */; };
+		E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989D2475103800E693A0 /* UITableViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		E100988B2473CF4000E693A0 /* AddMilestoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMilestoneViewController.xib; sourceTree = "<group>"; };
 		E100988F2473CFB800E693A0 /* TaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
 		E10098932473D09200E693A0 /* AddProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProjectViewController.xib; sourceTree = "<group>"; };
+		E100989D2475103800E693A0 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 		E10098582472579A00E693A0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E100989D2475103800E693A0 /* UITableViewController+Extension.swift */,
 				E100984424712CFB00E693A0 /* UIViewController+Extension.swift */,
 				E100984624712D4F00E693A0 /* Project+Extension.swift */,
 				E10098532471B31A00E693A0 /* Milestone+Extension.swift */,
@@ -255,6 +258,7 @@
 				E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */,
 				E100984724712D4F00E693A0 /* Project+Extension.swift in Sources */,
 				E1009833247126D600E693A0 /* mc2apps.xcdatamodeld in Sources */,
+				E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */,
 				E100985C24729B1400E693A0 /* TaskViewController.swift in Sources */,
 				E100982B247126D600E693A0 /* SceneDelegate.swift in Sources */,
 			);

@@ -11,10 +11,10 @@ import CoreData
 
 
 extension Task{
-    static func fetchQuery(viewContext: NSManagedObjectContext, selectedMilestone: String, predicate: NSPredicate? = nil) -> [Task]{
+    static func fetchQuery(viewContext: NSManagedObjectContext, selectedMilestone: String, predicate: NSPredicate? = nil, selectedProject: String) -> [Task]{
         let request: NSFetchRequest<Task> = Task.fetchRequest()
         
-        let milestonepredicate = NSPredicate(format: "milestoneOf.milestoneName MATCHES %@", selectedMilestone)
+        let milestonepredicate = NSPredicate(format: "milestoneOf.milestoneName MATCHES %@ && milestoneOf.projectOf.projectName MATCHES %@", selectedMilestone, selectedProject)
         
         
         if let addtionalPredicate = predicate {
@@ -30,9 +30,12 @@ extension Task{
         
     }
     
-    static func save(viewContext: NSManagedObjectContext, taskName: String, selectedMilestone: Milestone) -> Task? {
+    static func save(viewContext: NSManagedObjectContext, taskName: String, selectedMilestone: Milestone, isChecklist: Bool, color
+        : String) -> Task? {
         let newTask = Task(context: viewContext)
         newTask.taskName = taskName
+        newTask.isChecklist = isChecklist
+        newTask.color = color
         newTask.milestoneOf = selectedMilestone
         
         do {
@@ -43,7 +46,7 @@ extension Task{
         }
     }
     
-    static func update(viewContext: NSManagedObjectContext, taskName: String, task:[Task], indexTask: Int){
+    static func update(viewContext: NSManagedObjectContext, taskName: String, task:[Task], indexTask: Int, isChecklist: Bool, color: String){
         
         task[indexTask].taskName = taskName
         

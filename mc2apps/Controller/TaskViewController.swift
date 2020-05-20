@@ -19,20 +19,23 @@ class TaskViewController: UIViewController {
     }
     
     var selectedMilestone: Milestone?
+    var selectedProject: Project?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        task = Task.fetchQuery(viewContext: getViewContext(), selectedMilestone: (selectedMilestone?.milestoneName)!)
+        task = Task.fetchQuery(viewContext: getViewContext(), selectedMilestone: (selectedMilestone?.milestoneName)!, selectedProject: (selectedProject?.projectName)!)
         
         taskTableView.dataSource = self
+        taskTableView.delegate = self
         
         taskTableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "TaskCell")
 
     }
     @IBAction func addTask(_ sender: Any) {
-        let newTask = Task.save(viewContext: self.getViewContext(), taskName: "hahaa", selectedMilestone: selectedMilestone!)
+        let newTask = Task.save(viewContext: self.getViewContext(), taskName: "hahaa", selectedMilestone: selectedMilestone!, isChecklist: false, color: "")
+        
         task.append(newTask!)
         taskTableView.reloadData()
     }
@@ -53,6 +56,15 @@ extension TaskViewController: UITableViewDataSource{
         
         return cell
     }
-    
+}
+
+
+extension TaskViewController: UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
     
 }
+
+

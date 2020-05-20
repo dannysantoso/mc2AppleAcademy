@@ -10,15 +10,15 @@ import Foundation
 import CoreData
 
 extension Project{
-    static func fetchQuery(viewCopntext: NSManagedObjectContext) -> [Project]{
-        let request: NSFetchRequest<Project> = Project.fetchRequest()
-        
-        let predicate = NSPredicate(format: "taskName BEGINSWITH @%", [])
-        request.predicate = predicate
-        let result = try? viewCopntext.fetch(request)
-        return result ?? []
-        
-    }
+//    static func fetchQuery(viewCopntext: NSManagedObjectContext) -> [Project]{
+//        let request: NSFetchRequest<Project> = Project.fetchRequest()
+//        
+//        let predicate = NSPredicate(format: "taskName BEGINSWITH @%", [])
+//        request.predicate = predicate
+//        let result = try? viewCopntext.fetch(request)
+//        return result ?? []
+//        
+//    }
     
     static func fetchAll(viewContext: NSManagedObjectContext) -> [Project] {
         

@@ -30,9 +30,12 @@ extension Milestone{
         
     }
     
-    static func save(viewContext: NSManagedObjectContext, milestoneName: String, selectedProject: Project) -> Milestone? {
+    static func save(viewContext: NSManagedObjectContext, milestoneName: String, selectedProject: Project, deadline: Date, color: String, isCompleted: Bool) -> Milestone? {
         let newMilestone = Milestone(context: viewContext)
         newMilestone.milestoneName = milestoneName
+        newMilestone.deadline = deadline
+        newMilestone.isCompleted = isCompleted
+        newMilestone.color = color
         newMilestone.projectOf = selectedProject
         
         do {

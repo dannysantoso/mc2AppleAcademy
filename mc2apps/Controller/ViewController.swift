@@ -38,9 +38,7 @@ class ViewController: UIViewController, BackHandler {
     @IBAction func addProject(_ sender: Any) {
         let destination = AddProjectViewController(nibName: "AddProjectViewController", bundle: nil)
         
-        // Mengirim data hero
         destination.delegate = self
-        
         
         self.present(destination, animated: true, completion: nil)
         
@@ -53,6 +51,7 @@ class ViewController: UIViewController, BackHandler {
         projectTableView.reloadData()
     }
 }
+
 
 extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -84,6 +83,10 @@ extension ViewController: UITableViewDelegate{
 
         // Push/mendorong view controller lain
         self.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
 }
