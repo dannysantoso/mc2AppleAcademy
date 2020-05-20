@@ -30,12 +30,10 @@ extension Task{
         
     }
     
-    static func save(viewContext: NSManagedObjectContext, taskName: String, selectedMilestone: Milestone, isChecklist: Bool, color
-        : String) -> Task? {
+    static func save(viewContext: NSManagedObjectContext, taskName: String, selectedMilestone: Milestone, isChecklist: Bool) -> Task? {
         let newTask = Task(context: viewContext)
         newTask.taskName = taskName
         newTask.isChecklist = isChecklist
-        newTask.color = color
         newTask.milestoneOf = selectedMilestone
         
         do {
@@ -46,7 +44,7 @@ extension Task{
         }
     }
     
-    static func update(viewContext: NSManagedObjectContext, taskName: String, task:[Task], indexTask: Int, isChecklist: Bool, color: String){
+    static func update(viewContext: NSManagedObjectContext, taskName: String, task:[Task], indexTask: Int, isChecklist: Bool){
         
         task[indexTask].taskName = taskName
         

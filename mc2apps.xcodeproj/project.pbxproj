@@ -33,6 +33,7 @@
 		E10098912473CFB800E693A0 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E100988F2473CFB800E693A0 /* TaskViewController.xib */; };
 		E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098932473D09200E693A0 /* AddProjectViewController.xib */; };
 		E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989D2475103800E693A0 /* UITableViewController+Extension.swift */; };
+		E10098A02475DCC100E693A0 /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989F2475DCC100E693A0 /* protocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		E100988F2473CFB800E693A0 /* TaskViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
 		E10098932473D09200E693A0 /* AddProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProjectViewController.xib; sourceTree = "<group>"; };
 		E100989D2475103800E693A0 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
+		E100989F2475DCC100E693A0 /* protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				E1009834247126D700E693A0 /* Assets.xcassets */,
 				E1009839247126D700E693A0 /* Info.plist */,
 				E1009831247126D600E693A0 /* mc2apps.xcdatamodeld */,
+				E100989F2475DCC100E693A0 /* protocol.swift */,
 			);
 			path = mc2apps;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */,
 				E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */,
 				E100982D247126D600E693A0 /* ViewController.swift in Sources */,
+				E10098A02475DCC100E693A0 /* protocol.swift in Sources */,
 				E100985A2472809F00E693A0 /* AddMilestoneViewController.swift in Sources */,
 				E1009829247126D600E693A0 /* AppDelegate.swift in Sources */,
 				E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */,

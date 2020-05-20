@@ -59,6 +59,11 @@ extension MilestoneViewController: UITableViewDataSource{
     
             let cell = tableView.dequeueReusableCell(withIdentifier: "MilestoneCell", for: indexPath) as! MilestoneTableViewCell
             cell.milestoneName?.text = milestone[indexPath.row].milestoneName
+            
+            let formater = DateFormatter()
+            formater.dateFormat = "MMMM dd, yyyy"
+            let deadline = formater.string(from: milestone[indexPath.row].deadline!)
+            cell.milestoneDeadline?.text = deadline
 
             return cell
 

@@ -8,18 +8,6 @@
 
 import UIKit
 
-protocol textfieldSetting {
-    func configurePlaceHolder()
-    func dismissKeyboard()
-    func returnKeyboard()
-    
-}
-
-protocol datePickerTextfield {
-    func showDatePicker()
-    func onChangeValueDatePicker()
-}
-
 
 class AddMilestoneViewController: UIViewController, textfieldSetting, datePickerTextfield {
 
@@ -29,6 +17,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     var delegate: BackHandler?
     var selectedProject: Project?
     let datePicker = UIDatePicker()
+    var color = "purple"
     
     
     override func viewDidLoad() {
@@ -41,9 +30,38 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
         onChangeValueDatePicker()
         
     }
-
+    
+    @IBAction func randomButton(_ sender: Any) {
+        let randomInt = Int.random(in: 1...4)
+        switch randomInt {
+        case 1:
+            color = "purple"
+        case 2:
+            color = "blue"
+        case 3:
+            color = "green"
+        case 4:
+            color = "yellow"
+        default:
+            color = "purple"
+        }
+    }
+    
+    @IBAction func purpleButton(_ sender: Any) {
+        color = "purple"
+    }
+    @IBAction func blueButton(_ sender: Any) {
+        color = "blue"
+    }
+    @IBAction func greenButton(_ sender: Any) {
+        color = "green"
+    }
+    @IBAction func yellowButton(_ sender: Any) {
+        color = "yellow"
+    }
+    
     @IBAction func save(_ sender: Any) {
-        if Milestone.save(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", selectedProject: selectedProject!, deadline: Date(), color: "", isCompleted: true) != nil{
+        if Milestone.save(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", selectedProject: selectedProject!, deadline: datePicker.date, color: color, isCompleted: false) != nil{
             dismiss(animated: true, completion: nil)
                 self.delegate?.onBackHome()
         }
@@ -114,16 +132,6 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     
     @objc func cancelPressed(){
         self.view.endEditing(true)
-    }
-    
-}
-
-
-extension UIViewController: UITextFieldDelegate {
-    
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
     
 }
