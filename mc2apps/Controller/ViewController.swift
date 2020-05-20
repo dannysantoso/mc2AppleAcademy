@@ -8,9 +8,7 @@
 
 import UIKit
 
-protocol BackHandler {
-    func onBackHome()
-}
+
 class ViewController: UIViewController, BackHandler {
 
     @IBOutlet weak var projectTableView: UITableView!
@@ -64,6 +62,11 @@ extension ViewController: UITableViewDataSource{
 
         cell.projectName?.text = projects[indexPath.row].projectName
         cell.clientName?.text = projects[indexPath.row].clientName
+        
+        let formater = DateFormatter()
+        formater.dateFormat = "MMMM dd, yyyy"
+        let deadline = formater.string(from: projects[indexPath.row].deadline!)
+        cell.deadline?.text = deadline
 
 
         return cell

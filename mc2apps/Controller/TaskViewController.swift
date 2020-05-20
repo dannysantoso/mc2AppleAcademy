@@ -34,7 +34,7 @@ class TaskViewController: UIViewController {
 
     }
     @IBAction func addTask(_ sender: Any) {
-        let newTask = Task.save(viewContext: self.getViewContext(), taskName: "hahaa", selectedMilestone: selectedMilestone!, isChecklist: false, color: "")
+        let newTask = Task.save(viewContext: self.getViewContext(), taskName: "hahaa", selectedMilestone: selectedMilestone!, isChecklist: false)
         
         task.append(newTask!)
         taskTableView.reloadData()
