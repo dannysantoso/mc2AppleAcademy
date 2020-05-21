@@ -42,7 +42,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         case 4:
             color = "yellow"
         default:
-            color = "purple"
+            color = "orange"
         }
     }
     
@@ -55,9 +55,10 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     @IBAction func greenButton(_ sender: Any) {
         color = "green"
     }
-    @IBAction func yellowButton(_ sender: Any) {
-        color = "yellow"
+    @IBAction func orangeButton(_ sender: Any) {
+        color = "orange"
     }
+    
     
     
     func configurePlaceHolder(){
@@ -128,7 +129,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     
 
     @IBAction func save(_ sender: Any) {
-        if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: "red", isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
+        if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
                 
                 dismiss(animated: true, completion: nil)
                     self.delegate?.onBackHome()

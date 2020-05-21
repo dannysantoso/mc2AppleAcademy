@@ -31,7 +31,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.99215686270000003" green="0.75294117650000003" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
