@@ -41,7 +41,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
         case 3:
             color = "green"
         case 4:
-            color = "yellow"
+            color = "orange"
         default:
             color = "purple"
         }
@@ -56,9 +56,10 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     @IBAction func greenButton(_ sender: Any) {
         color = "green"
     }
-    @IBAction func yellowButton(_ sender: Any) {
-        color = "yellow"
+    @IBAction func orangeButton(_ sender: Any) {
+        color = "orange"
     }
+    
     
     @IBAction func save(_ sender: Any) {
         if Milestone.save(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", selectedProject: selectedProject!, deadline: datePicker.date, color: color, isCompleted: false) != nil{
