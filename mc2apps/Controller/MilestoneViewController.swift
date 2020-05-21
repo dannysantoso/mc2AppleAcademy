@@ -53,7 +53,7 @@ class MilestoneViewController: UIViewController, BackHandler {
         case "purple":
             cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
         case "green":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "98D05E").cgColor
+            cell.layer.backgroundColor = hexStringToUIColor(hex: "86D349").cgColor
         case "blue":
             cell.layer.backgroundColor = hexStringToUIColor(hex: "7CC8FF").cgColor
         case "orange":
@@ -105,6 +105,18 @@ extension MilestoneViewController: UITableViewDataSource{
             colorCell(color: milestone[indexPath.row].color ?? "purple", cell: cell)
             cell.selectionStyle = .none
 
+            let verticalPadding: CGFloat = 8
+
+            let maskLayer = CAShapeLayer()
+            maskLayer.cornerRadius = 10
+            maskLayer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+            maskLayer.backgroundColor = UIColor.black.cgColor
+            maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+            cell.layer.mask = maskLayer
+            
+            
+            
+            
             return cell
 
         }
@@ -131,3 +143,6 @@ extension MilestoneViewController: UITableViewDelegate{
     }
     
 }
+
+
+

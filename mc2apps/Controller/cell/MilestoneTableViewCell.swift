@@ -12,6 +12,7 @@ class MilestoneTableViewCell: UITableViewCell {
 
     @IBOutlet weak var milestoneName: UILabel!
     @IBOutlet weak var milestoneDeadline: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

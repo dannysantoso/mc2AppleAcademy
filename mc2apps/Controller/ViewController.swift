@@ -54,7 +54,7 @@ class ViewController: UIViewController, BackHandler {
         case "purple":
             cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
         case "green":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "98D05E").cgColor
+            cell.layer.backgroundColor = hexStringToUIColor(hex: "86D349").cgColor
         case "blue":
             cell.layer.backgroundColor = hexStringToUIColor(hex: "7CC8FF").cgColor
         case "orange":
