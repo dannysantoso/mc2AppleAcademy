@@ -48,6 +48,7 @@ class MilestoneViewController: UIViewController, BackHandler {
         milestoneTableView.reloadData()
     }
     
+    //mendapatkan warna cell dari data yang disimpan
     func colorCell(color: String, cell: MilestoneTableViewCell){
         switch color {
         case "purple":
@@ -97,21 +98,22 @@ extension MilestoneViewController: UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MilestoneCell", for: indexPath) as! MilestoneTableViewCell
             cell.milestoneName?.text = milestone[indexPath.row].milestoneName
             
+            //menampilkan date format
             let formater = DateFormatter()
             formater.dateFormat = "MMMM dd, yyyy"
             let deadline = formater.string(from: milestone[indexPath.row].deadline!)
             cell.milestoneDeadline?.text = deadline
 
+            //menampilkan warna cell
             colorCell(color: milestone[indexPath.row].color ?? "purple", cell: cell)
             cell.selectionStyle = .none
-
-            let verticalPadding: CGFloat = 8
-
+            
+            
             let maskLayer = CAShapeLayer()
-            maskLayer.cornerRadius = 10
-            maskLayer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+            maskLayer.cornerRadius = 13
+            maskLayer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah kiri
             maskLayer.backgroundColor = UIColor.black.cgColor
-            maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+            maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
             cell.layer.mask = maskLayer
             
             
@@ -139,7 +141,7 @@ extension MilestoneViewController: UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 104
     }
     
 }

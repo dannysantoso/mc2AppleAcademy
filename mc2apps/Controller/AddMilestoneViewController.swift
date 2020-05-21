@@ -70,19 +70,19 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     }
     
     
-    
+    //mengatur textfield placeholder pada deadline textfield
     func configurePlaceHolder(){
         let formater = DateFormatter()
         formater.dateFormat = "MMMM dd, yyyy"
         deadline.placeholder = formater.string(from: Date())
     }
     
-    
+    //ketika return diketik maka akan close keypad, fungsi lainnya ada diextension
     func returnKeyboard(){
         milestoneName.delegate = self
     }
     
-    
+    //ketika view ditap close keypad
     func dismissKeyboard(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
@@ -92,6 +92,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
         self.view.endEditing(true)
     }
     
+    //mendapatkan data date ketika diubah tanggalnya
     func onChangeValueDatePicker(){
         datePicker.addTarget(self, action: #selector(datePickerChanged(datePicker:)), for: .valueChanged)
     }
@@ -103,9 +104,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     }
     
     
-    
-    
-    
+    //menampilkan datepicker dalam keypad
     func showDatePicker(){
         datePicker.datePickerMode = .date
         
