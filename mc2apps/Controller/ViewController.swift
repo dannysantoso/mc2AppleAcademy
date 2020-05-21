@@ -49,6 +49,7 @@ class ViewController: UIViewController, BackHandler {
         projectTableView.reloadData()
     }
     
+    //function untuk mendapatkan color cell sesuai dengan data color yang disimpan
     func colorCell(color: String, cell: ProjectTableViewCell){
         switch color {
         case "purple":
@@ -64,6 +65,7 @@ class ViewController: UIViewController, BackHandler {
         }
     }
     
+    //function untuk mendapatkan hex color
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
@@ -100,23 +102,24 @@ extension ViewController: UITableViewDataSource{
         cell.projectName?.text = projects[indexPath.row].projectName
         cell.clientName?.text = projects[indexPath.row].clientName
         
+        
+        //mengambil date dan diformat
         let formater = DateFormatter()
         formater.dateFormat = "MMMM dd, yyyy"
         let deadline = formater.string(from: projects[indexPath.row].deadline!)
         cell.deadline?.text = deadline
         
+        //menampilkan warna
         colorCell(color: projects[indexPath.row].color ?? "purple", cell: cell)
         cell.selectionStyle = .none
 
-        let verticalPadding: CGFloat = 8
-
-        let maskLayer = CALayer()
-        maskLayer.cornerRadius = 10    //if you want round edges
+        //mengatur spacing antar cell serta radius corner cell
+        let maskLayer = CAShapeLayer()
+        maskLayer.cornerRadius = 13
         maskLayer.backgroundColor = UIColor.black.cgColor
-        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
         cell.layer.mask = maskLayer
-        
-        
+                
         return cell
 
         
@@ -137,8 +140,9 @@ extension ViewController: UITableViewDelegate{
         self.navigationController?.pushViewController(destination, animated: true)
     }
     
+    //tinggi dari cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 104
     }
     
 }

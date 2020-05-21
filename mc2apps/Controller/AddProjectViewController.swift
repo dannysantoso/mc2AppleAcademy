@@ -60,21 +60,21 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     }
     
     
-    
+    //membuat placeholder untuk textfield deadline
     func configurePlaceHolder(){
         let formater = DateFormatter()
         formater.dateFormat = "MMMM dd, yyyy"
         deadline.placeholder = formater.string(from: Date())
     }
     
-    
+    //ketika return diketik close keypad, fungsi lainnya ada diextension
     func returnKeyboard(){
         projectName.delegate = self
         clientName.delegate = self
         projectCompletionReward.delegate = self
     }
     
-    
+    //ketika view ditap close keypad
     func dismissKeyboard(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
@@ -84,6 +84,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         self.view.endEditing(true)
     }
     
+    //mengambil data date ketika datepicker berubah
     func onChangeValueDatePicker(){
         datePicker.addTarget(self, action: #selector(datePickerChanged(datePicker:)), for: .valueChanged)
     }
@@ -95,9 +96,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     }
     
     
-    
-    
-    
+    //menampilkan datepicker pada keypad
     func showDatePicker(){
         datePicker.datePickerMode = .date
         
