@@ -48,6 +48,22 @@ extension Project{
         
     }
     
+    static func update(viewContext: NSManagedObjectContext, projectName: String, clientName: String, deadline: Date, color: String, isCompleted: Bool, projectCompletionReward: String, project:[Project], indexProject: Int){
+        
+        project[indexProject].projectName = projectName
+        project[indexProject].clientName = clientName
+        project[indexProject].deadline = deadline
+        project[indexProject].color = color
+        project[indexProject].isCompleted = isCompleted
+        project[indexProject].projectCompletionReward = projectCompletionReward
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
+    
     static func deleteAll(viewContext: NSManagedObjectContext){
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
