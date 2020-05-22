@@ -17,6 +17,7 @@
                 <outlet property="projectCompletionReward" destination="tXH-1N-qWA" id="Ssh-e5-5YD"/>
                 <outlet property="projectName" destination="uN3-7s-AKE" id="tms-2c-4Jn"/>
                 <outlet property="purpleButtonOutlet" destination="pRY-H8-ccC" id="3n1-yG-ift"/>
+                <outlet property="saveButtonOutlet" destination="CS7-hA-OdG" id="9el-GN-ZCH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

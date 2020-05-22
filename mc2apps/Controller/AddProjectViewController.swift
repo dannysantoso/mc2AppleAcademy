@@ -18,11 +18,12 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     @IBOutlet weak var blueButtonOutlet: UIButton!
     @IBOutlet weak var greenButtonOutlet: UIButton!
     @IBOutlet weak var orangeButtonOutlet: UIButton!
+    @IBOutlet weak var saveButtonOutlet: UIButton!
     
     var delegate: BackHandler?
     var selectedProject: Project?
     let datePicker = UIDatePicker()
-    var color = "purple"
+    var color = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +33,12 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         dismissKeyboard()
         returnKeyboard()
         onChangeValueDatePicker()
+        
+        // populate selected project for edit
         if let projectToPopulate = selectedProject {
-            populateProject(project: projectToPopulate) // populate selected project
+            populateProject(project: projectToPopulate)
         }
+        saveButtonOutlet.isEnabled = false
     }
     
     @IBAction func randomButton(_ sender: Any) {
@@ -82,21 +86,17 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         orangeButtonOutlet.layer.borderColor = UIColor.clear.cgColor
     }
     
-    
-    
     func configurePlaceHolder(){
         let formater = DateFormatter()
         formater.dateFormat = "MMMM dd, yyyy"
         deadline.placeholder = formater.string(from: Date())
     }
     
-    
     func returnKeyboard(){
         projectName.delegate = self
         clientName.delegate = self
         projectCompletionReward.delegate = self
     }
-    
     
     func dismissKeyboard(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -116,10 +116,6 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         formater.dateFormat = "MMMM dd, yyyy"
         deadline.text = formater.string(from: datePicker.date)
     }
-    
-    
-    
-    
     
     func showDatePicker(){
         datePicker.datePickerMode = .date
@@ -170,10 +166,19 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     
 
     @IBAction func save(_ sender: Any) {
-        if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
-                
-                dismiss(animated: true, completion: nil)
-                    self.delegate?.onBackHome()
-            }
+        if let projectToEdit = selectedProject {
+//            if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
+//                    dismiss(animated: true, completion: nil)
+//                        self.delegate?.onBackHome()
+//            }
+            print("masuk ke edited")
+            print(projectToEdit.projectName!)
+        } else {
+            if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
+                    
+                    dismiss(animated: true, completion: nil)
+                        self.delegate?.onBackHome()
+                }
         }
+    }
 }
