@@ -133,6 +133,8 @@ extension ViewController: UITableViewDelegate{
 
         if let indexPath = projectTableView.indexPathForSelectedRow {
             destination.selectedProject = projects[indexPath.row]
+            destination.indexProject = indexPath.row
+            destination.listOfProjects = projects
         }
         
 
