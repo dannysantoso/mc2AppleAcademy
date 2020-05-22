@@ -11,6 +11,18 @@ import CoreData
 
 class MilestoneViewController: UIViewController, BackHandler {
     
+    @IBAction func toEditButton(_ sender: UIButton) {
+        let destination = AddProjectViewController(nibName: "AddProjectViewController", bundle: nil)
+        
+        // Mengirim data hero
+        destination.delegate = self
+        destination.selectedProject = self.selectedProject
+        destination.indexProject = self.indexProject
+        destination.listOfProjects = self.listOfProjects
+        
+        
+        self.present(destination, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var milestoneTableView: UITableView!
     
@@ -25,7 +37,9 @@ class MilestoneViewController: UIViewController, BackHandler {
     var nameClient: String?
     var deadline: String?
     
+    var indexProject: Int?
     var selectedProject : Project?
+    var listOfProjects : [Project] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

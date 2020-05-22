@@ -14,10 +14,18 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     @IBOutlet weak var clientName: UITextField!
     @IBOutlet weak var deadline: UITextField!
     @IBOutlet weak var projectCompletionReward: UITextField!
+    @IBOutlet weak var purpleButtonOutlet: UIButton!
+    @IBOutlet weak var blueButtonOutlet: UIButton!
+    @IBOutlet weak var greenButtonOutlet: UIButton!
+    @IBOutlet weak var orangeButtonOutlet: UIButton!
+    @IBOutlet weak var saveButtonOutlet: UIButton!
     
     var delegate: BackHandler?
+    var indexProject: Int?
+    var selectedProject: Project?
+    var listOfProjects: [Project] = []
     let datePicker = UIDatePicker()
-    var color = "purple"
+    var color = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +35,12 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         dismissKeyboard()
         returnKeyboard()
         onChangeValueDatePicker()
-
+        
+        // populate selected project for edit
+        if let projectToPopulate = selectedProject {
+            populateProject(project: projectToPopulate)
+        }
+//        saveButtonOutlet.isEnabled = false
     }
     
     @IBAction func randomButton(_ sender: Any) {
@@ -40,7 +53,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         case 3:
             color = "green"
         case 4:
-            color = "yellow"
+            color = "orange"
         default:
             color = "orange"
         }
@@ -48,19 +61,35 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     
     @IBAction func purpleButton(_ sender: Any) {
         color = "purple"
+        clearColorBorder()
+        purpleButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
     }
     @IBAction func blueButton(_ sender: Any) {
         color = "blue"
+        clearColorBorder()
+        blueButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
     }
     @IBAction func greenButton(_ sender: Any) {
         color = "green"
+        clearColorBorder()
+        greenButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
     }
     @IBAction func orangeButton(_ sender: Any) {
         color = "orange"
+        clearColorBorder()
+        orangeButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
     }
     
+    // clear chosen color border
+    func clearColorBorder() {
+        purpleButtonOutlet.layer.borderColor = UIColor.clear.cgColor
+        blueButtonOutlet.layer.borderColor = UIColor.clear.cgColor
+        greenButtonOutlet.layer.borderColor = UIColor.clear.cgColor
+        orangeButtonOutlet.layer.borderColor = UIColor.clear.cgColor
+    }
     
-    //membuat placeholder untuk textfield deadline
+//    func checkComplete
+    
     func configurePlaceHolder(){
         let formater = DateFormatter()
         formater.dateFormat = "MMMM dd, yyyy"
@@ -126,12 +155,66 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         self.view.endEditing(true)
     }
     
+    
+    // populate the project data
+    func populateProject(project: Project) {
+        projectName.text = project.projectName
+        clientName.text = project.clientName
+        if let date = project.deadline {
+            deadline.text = dateFormat(date: date)
+        }
+        projectCompletionReward.text = project.projectCompletionReward
+        color = project.color!
+        switch color {
+        case "purple":
+            purpleButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        case "blue":
+            blueButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        case "green":
+            greenButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        case "orange":
+            orangeButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        default:
+            clearColorBorder()
+        }
+    }
+    
+    func dateFormat(date : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
+        return formatter.string(from: date)
+    }
+    
+//    // go to edit vc when edit button tapped
+//    @objc func editItem() {
+//        performSegue(withIdentifier: "toEditProject", sender: self)
+//    }
+//
+//    // pass item id back to FoodStockVC for deletion
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toEditProject" {
+//            let nc = segue.destination as? UINavigationController
+//            let vc = nc?.topViewController as? AddProjectViewController
+//            vc?.selectedProject = selectedProject
+//        }
+//    }
+    
 
     @IBAction func save(_ sender: Any) {
-        if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
-                
-                dismiss(animated: true, completion: nil)
-                    self.delegate?.onBackHome()
+//        let project = [Project]()
+        if let projectToEdit = selectedProject {
+            if (Project.update(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "", project: listOfProjects, indexProject: indexProject!) != nil){
+                    dismiss(animated: true, completion: nil)
+                        self.delegate?.onBackHome()
+            }
+//            print("masuk ke edited")
+            print(projectToEdit.projectName!)
+        } else {
+            if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
+                    
+                    dismiss(animated: true, completion: nil)
+                        self.delegate?.onBackHome()
             }
         }
+    }
 }
