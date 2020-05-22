@@ -34,6 +34,7 @@
 		E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098932473D09200E693A0 /* AddProjectViewController.xib */; };
 		E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989D2475103800E693A0 /* UITableViewController+Extension.swift */; };
 		E10098A02475DCC100E693A0 /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989F2475DCC100E693A0 /* protocol.swift */; };
+		ECFD50092477D9AA00407C0A /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECFD50072477D9AA00407C0A /* DashboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		E10098932473D09200E693A0 /* AddProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProjectViewController.xib; sourceTree = "<group>"; };
 		E100989D2475103800E693A0 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 		E100989F2475DCC100E693A0 /* protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
+		ECFD50072477D9AA00407C0A /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				E10098552471B90100E693A0 /* AddProjectViewController.swift */,
 				E10098502471389700E693A0 /* MilestoneViewController.swift */,
 				E100982C247126D600E693A0 /* ViewController.swift */,
+				ECFD50072477D9AA00407C0A /* DashboardViewController.swift */,
 				E10098592472809F00E693A0 /* AddMilestoneViewController.swift */,
 				E100985B24729B1400E693A0 /* TaskViewController.swift */,
 				E10098962473D18E00E693A0 /* cell */,
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E100985F24729B4100E693A0 /* TaskTableViewCell.swift in Sources */,
+				ECFD50092477D9AA00407C0A /* DashboardViewController.swift in Sources */,
 				E100984524712CFB00E693A0 /* UIViewController+Extension.swift in Sources */,
 				E100984124712A0100E693A0 /* ProjectTableViewCell.swift in Sources */,
 				E100984A2471360000E693A0 /* MilestoneTableViewCell.swift in Sources */,

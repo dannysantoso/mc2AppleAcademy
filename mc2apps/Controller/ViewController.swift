@@ -11,6 +11,9 @@ import UIKit
 
 class ViewController: UIViewController, BackHandler {
 
+    @IBOutlet weak var projectLabel: UILabel!
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var segmentSwitch: UISegmentedControl!
     @IBOutlet weak var projectTableView: UITableView!
     
     
@@ -30,6 +33,20 @@ class ViewController: UIViewController, BackHandler {
         projectTableView.delegate = self
         
         projectTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
+    }
+    
+    @IBAction func segmentChange(_ sender: UISegmentedControl) {
+        if segmentSwitch.selectedSegmentIndex == 0 {
+            projectLabel.text = "List of Projects"
+            addButton.isHidden = false
+        } else {
+            projectLabel.text = "Completed Projects"
+            addButton.isHidden = true
+        }
+    }
+    
+        func fetchOngoing() {
+
     }
 
     
