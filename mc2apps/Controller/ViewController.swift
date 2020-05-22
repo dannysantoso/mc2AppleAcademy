@@ -23,15 +23,17 @@ class ViewController: UIViewController, BackHandler {
         }
     }
     
+    var completedProjects: [Project] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
             
         projects = Project.fetchAll(viewContext: getViewContext())
-        
+
         projectTableView.dataSource = self
         projectTableView.delegate = self
-        
+
         projectTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
     }
     
@@ -39,14 +41,16 @@ class ViewController: UIViewController, BackHandler {
         if segmentSwitch.selectedSegmentIndex == 0 {
             projectLabel.text = "List of Projects"
             addButton.isHidden = false
+            projectTableView.isHidden = false
         } else {
             projectLabel.text = "Completed Projects"
             addButton.isHidden = true
+            projectTableView.isHidden = true
         }
     }
     
-        func fetchOngoing() {
-
+    func checkCompleted() {
+        
     }
 
     
@@ -70,40 +74,45 @@ class ViewController: UIViewController, BackHandler {
     func colorCell(color: String, cell: ProjectTableViewCell){
         switch color {
         case "purple":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
+            cell.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
+//            cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
         case "green":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "86D349").cgColor
+            cell.layer.backgroundColor = UIColor(red: 0.596, green: 0.816, blue: 0.369, alpha: 1).cgColor
+//            cell.layer.backgroundColor = hexStringToUIColor(hex: "86D349").cgColor
         case "blue":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "7CC8FF").cgColor
+            cell.layer.backgroundColor = UIColor(red: 0.486, green: 0.784, blue: 1, alpha: 1).cgColor
+//            cell.layer.backgroundColor = hexStringToUIColor(hex: "7CC8FF").cgColor
         case "orange":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "FDC055").cgColor
+            cell.layer.backgroundColor = UIColor(red: 0.992, green: 0.753, blue: 0.333, alpha: 1).cgColor
+//            cell.layer.backgroundColor = hexStringToUIColor(hex: "FDC055").cgColor
         default:
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
+            cell.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
+//            cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
         }
     }
     
-    //function untuk mendapatkan hex color
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-        
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
+//    //function untuk mendapatkan hex color
+//    func hexStringToUIColor (hex:String) -> UIColor {
+//        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+//        
+//        if (cString.hasPrefix("#")) {
+//            cString.remove(at: cString.startIndex)
+//        }
+//        
+//        if ((cString.count) != 6) {
+//            return UIColor.gray
+//        }
+//        
+//        var rgbValue:UInt64 = 0
+//        Scanner(string: cString).scanHexInt64(&rgbValue)
+//        
+//        return UIColor(
+//            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+//            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+//            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+//            alpha: CGFloat(1.0)
+//        )
+//    }
 }
 
 

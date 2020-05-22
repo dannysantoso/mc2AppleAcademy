@@ -10,24 +10,21 @@ import UIKit
 
 class DashboardViewController: UIViewController {
 
-    @IBOutlet weak var dashboardLabel: UILabel! {
-        didSet{
-//            dashboardLabel.font = UIFont(name: "SFProRounded-Bold", size: 36)
-            dashboardLabel.textColor = UIColor(red: 0.2, green: 0.376, blue: 0.6, alpha: 1)
-        }
-    }
-    @IBOutlet weak var exclamationLabel: UIButton!
+    @IBOutlet weak var dashboardLabel: UILabel!
     @IBOutlet weak var approachingLabel: UILabel!
-
+    @IBOutlet weak var exclamationLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
+
         // Do any additional setup after loading the view.
     }
 
-
+    
+    
+    
     /*
     // MARK: - Navigation
 
