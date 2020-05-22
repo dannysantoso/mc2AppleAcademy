@@ -123,8 +123,10 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     
     func isSaveEnable() {
         if projectName.text != "" && clientName.text != "" && deadline.text != "" && projectCompletionReward.text != "" && color != "" {
+            saveButtonOutlet.alpha = 1
             saveButtonOutlet.isEnabled = true
         } else {
+            saveButtonOutlet.alpha = 0.5
             saveButtonOutlet.isEnabled = false
         }
     }
@@ -163,7 +165,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     
     @objc func datePickerChanged(datePicker: UIDatePicker) {
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         deadline.text = formater.string(from: datePicker.date)
     }
     
@@ -189,7 +191,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     
     @objc func donePressed(){
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         deadline.text = formater.string(from: datePicker.date)
         self.view.endEditing(true)
         isSaveEnable()
