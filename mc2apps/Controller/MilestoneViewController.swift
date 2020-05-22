@@ -16,6 +16,14 @@ class MilestoneViewController: UIViewController, BackHandler {
     
     var milestone = [Milestone]()
     
+    @IBOutlet weak var nameProjectLabel: UILabel!
+    @IBOutlet weak var nameClientLabel: UILabel!
+    @IBOutlet weak var deadlineLabel: UILabel!
+    @IBOutlet weak var addView: UIView!
+    
+    var nameProject: String?
+    var nameClient: String?
+    var deadline: String?
     
     var selectedProject : Project?
 
@@ -23,6 +31,12 @@ class MilestoneViewController: UIViewController, BackHandler {
         super.viewDidLoad()
         milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
         milestoneTableView.reloadData()
+        
+        nameProjectLabel.text = nameProject
+        nameClientLabel.text = nameClient
+        deadlineLabel.text = deadline
+        addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
+        addView.layer.cornerRadius = 13
         
         
         milestoneTableView.dataSource = self

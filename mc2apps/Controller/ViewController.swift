@@ -133,12 +133,28 @@ extension ViewController: UITableViewDelegate{
 
         if let indexPath = projectTableView.indexPathForSelectedRow {
             destination.selectedProject = projects[indexPath.row]
+            destination.nameProject = projects[indexPath.row].projectName
+            destination.nameClient = projects[indexPath.row].clientName
+            let formater = DateFormatter()
+            formater.dateFormat = "MMMM dd, yyyy"
+            let deadline = formater.string(from: projects[indexPath.row].deadline!)
+            destination.deadline = deadline
         }
         
 
         // Push/mendorong view controller lain
         self.navigationController?.pushViewController(destination, animated: true)
     }
+    
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        
+//        let deleteAction = UIContextualAction(style: .destructive, title: "Delete"){(action,view,nil) in
+//            
+//        }
+//        
+//        return UISwipeActionsConfiguration(actions: [deleteAction])
+//        
+//    }
     
     //tinggi dari cell
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
