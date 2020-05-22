@@ -155,7 +155,19 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
             deadline.text = dateFormat(date: date)
         }
         projectCompletionReward.text = project.projectCompletionReward
-
+        color = project.color!
+        switch color {
+        case "purple":
+            purpleButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        case "blue":
+            blueButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        case "green":
+            greenButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        case "orange":
+            orangeButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        default:
+            clearColorBorder()
+        }
     }
     
     func dateFormat(date : Date) -> String {
