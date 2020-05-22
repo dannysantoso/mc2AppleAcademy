@@ -19,6 +19,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     @IBOutlet weak var greenButtonOutlet: UIButton!
     @IBOutlet weak var orangeButtonOutlet: UIButton!
     @IBOutlet weak var saveButtonOutlet: UIButton!
+    @IBOutlet weak var titlePage: UILabel!
     
     var delegate: BackHandler?
     var indexProject: Int?
@@ -35,49 +36,80 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         dismissKeyboard()
         returnKeyboard()
         onChangeValueDatePicker()
-        
+        customTextField()
         // populate selected project for edit
         if let projectToPopulate = selectedProject {
             populateProject(project: projectToPopulate)
+            titlePage.text = "Edit Project"
         }
-//        saveButtonOutlet.isEnabled = false
+        isSaveEnable()
     }
     
     @IBAction func randomButton(_ sender: Any) {
+        clearColorBorder()
         let randomInt = Int.random(in: 1...4)
         switch randomInt {
         case 1:
             color = "purple"
+            purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
         case 2:
             color = "blue"
+            blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
         case 3:
             color = "green"
+            greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
         case 4:
             color = "orange"
+            orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
         default:
             color = "orange"
+            orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
         }
+        isSaveEnable()
     }
     
     @IBAction func purpleButton(_ sender: Any) {
         color = "purple"
         clearColorBorder()
-        purpleButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        isSaveEnable()
     }
     @IBAction func blueButton(_ sender: Any) {
         color = "blue"
         clearColorBorder()
-        blueButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        isSaveEnable()
     }
     @IBAction func greenButton(_ sender: Any) {
         color = "green"
         clearColorBorder()
-        greenButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        isSaveEnable()
     }
     @IBAction func orangeButton(_ sender: Any) {
         color = "orange"
         clearColorBorder()
-        orangeButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+        orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        isSaveEnable()
+    }
+    
+    func customTextField() {
+        projectName.layer.cornerRadius = 13
+        projectName.layer.backgroundColor = UIColor.white.cgColor
+        projectName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.projectName.frame.height))
+        projectName.leftViewMode = UITextField.ViewMode.always
+        clientName.layer.cornerRadius = 13
+        clientName.layer.backgroundColor = UIColor.white.cgColor
+        clientName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.clientName.frame.height))
+        clientName.leftViewMode = UITextField.ViewMode.always
+        deadline.layer.cornerRadius = 13
+        deadline.layer.backgroundColor = UIColor.white.cgColor
+        deadline.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.deadline.frame.height))
+        deadline.leftViewMode = UITextField.ViewMode.always
+        projectCompletionReward.layer.cornerRadius = 13
+        projectCompletionReward.layer.backgroundColor = UIColor.white.cgColor
+        projectCompletionReward.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.projectCompletionReward.frame.height))
+        projectCompletionReward.leftViewMode = UITextField.ViewMode.always
     }
     
     // clear chosen color border
@@ -88,7 +120,13 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         orangeButtonOutlet.layer.borderColor = UIColor.clear.cgColor
     }
     
-//    func checkComplete
+    func isSaveEnable() {
+        if projectName.text != "" && clientName.text != "" && deadline.text != "" && projectCompletionReward.text != "" && color != "" {
+            saveButtonOutlet.isEnabled = true
+        } else {
+            saveButtonOutlet.isEnabled = false
+        }
+    }
     
     func configurePlaceHolder(){
         let formater = DateFormatter()
@@ -101,21 +139,25 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         projectName.delegate = self
         clientName.delegate = self
         projectCompletionReward.delegate = self
+        isSaveEnable()
     }
     
     //ketika view ditap close keypad
     func dismissKeyboard(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tapGesture)
+        isSaveEnable()
     }
     
     @objc func handleTap(){
         self.view.endEditing(true)
+        isSaveEnable()
     }
     
     //mengambil data date ketika datepicker berubah
     func onChangeValueDatePicker(){
         datePicker.addTarget(self, action: #selector(datePickerChanged(datePicker:)), for: .valueChanged)
+        isSaveEnable()
     }
     
     @objc func datePickerChanged(datePicker: UIDatePicker) {
@@ -149,10 +191,12 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         formater.dateFormat = "MMMM dd, yyyy"
         deadline.text = formater.string(from: datePicker.date)
         self.view.endEditing(true)
+        isSaveEnable()
     }
     
     @objc func cancelPressed(){
         self.view.endEditing(true)
+        isSaveEnable()
     }
     
     
@@ -185,30 +229,14 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         return formatter.string(from: date)
     }
     
-//    // go to edit vc when edit button tapped
-//    @objc func editItem() {
-//        performSegue(withIdentifier: "toEditProject", sender: self)
-//    }
-//
-//    // pass item id back to FoodStockVC for deletion
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toEditProject" {
-//            let nc = segue.destination as? UINavigationController
-//            let vc = nc?.topViewController as? AddProjectViewController
-//            vc?.selectedProject = selectedProject
-//        }
-//    }
-    
 
     @IBAction func save(_ sender: Any) {
 //        let project = [Project]()
-        if let projectToEdit = selectedProject {
+        if titlePage.text == "Edit Project" {
             if (Project.update(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "", project: listOfProjects, indexProject: indexProject!) != nil){
                     dismiss(animated: true, completion: nil)
                         self.delegate?.onBackHome()
             }
-//            print("masuk ke edited")
-            print(projectToEdit.projectName!)
         } else {
             if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
                     
@@ -216,5 +244,10 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
                         self.delegate?.onBackHome()
             }
         }
+    }
+    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+        self.delegate?.onBackHome()
     }
 }
