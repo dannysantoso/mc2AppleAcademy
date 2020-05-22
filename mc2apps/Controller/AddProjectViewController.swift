@@ -21,7 +21,9 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     @IBOutlet weak var saveButtonOutlet: UIButton!
     
     var delegate: BackHandler?
+    var indexProject: Int?
     var selectedProject: Project?
+    var listOfProjects: [Project] = []
     let datePicker = UIDatePicker()
     var color = ""
     
@@ -38,7 +40,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         if let projectToPopulate = selectedProject {
             populateProject(project: projectToPopulate)
         }
-        saveButtonOutlet.isEnabled = false
+//        saveButtonOutlet.isEnabled = false
     }
     
     @IBAction func randomButton(_ sender: Any) {
@@ -85,6 +87,8 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         greenButtonOutlet.layer.borderColor = UIColor.clear.cgColor
         orangeButtonOutlet.layer.borderColor = UIColor.clear.cgColor
     }
+    
+//    func checkComplete
     
     func configurePlaceHolder(){
         let formater = DateFormatter()
@@ -176,21 +180,36 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         return formatter.string(from: date)
     }
     
+//    // go to edit vc when edit button tapped
+//    @objc func editItem() {
+//        performSegue(withIdentifier: "toEditProject", sender: self)
+//    }
+//
+//    // pass item id back to FoodStockVC for deletion
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toEditProject" {
+//            let nc = segue.destination as? UINavigationController
+//            let vc = nc?.topViewController as? AddProjectViewController
+//            vc?.selectedProject = selectedProject
+//        }
+//    }
+    
 
     @IBAction func save(_ sender: Any) {
+//        let project = [Project]()
         if let projectToEdit = selectedProject {
-//            if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
-//                    dismiss(animated: true, completion: nil)
-//                        self.delegate?.onBackHome()
-//            }
-            print("masuk ke edited")
+            if (Project.update(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "", project: listOfProjects, indexProject: indexProject!) != nil){
+                    dismiss(animated: true, completion: nil)
+                        self.delegate?.onBackHome()
+            }
+//            print("masuk ke edited")
             print(projectToEdit.projectName!)
         } else {
             if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
                     
                     dismiss(animated: true, completion: nil)
                         self.delegate?.onBackHome()
-                }
+            }
         }
     }
 }
