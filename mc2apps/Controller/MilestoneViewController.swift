@@ -20,7 +20,6 @@ class MilestoneViewController: UIViewController, BackHandler {
         destination.indexProject = self.indexProject
         destination.listOfProjects = self.listOfProjects
         
-        
         self.present(destination, animated: true, completion: nil)
     }
     
@@ -32,6 +31,7 @@ class MilestoneViewController: UIViewController, BackHandler {
     @IBOutlet weak var nameClientLabel: UILabel!
     @IBOutlet weak var deadlineLabel: UILabel!
     @IBOutlet weak var addView: UIView!
+    @IBOutlet weak var btnAdd: UIButton!
     
     var nameProject: String?
     var nameClient: String?
@@ -80,39 +80,44 @@ class MilestoneViewController: UIViewController, BackHandler {
     func colorCell(color: String, cell: MilestoneTableViewCell){
         switch color {
         case "purple":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
+            cell.milestoneView.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
+//            cell.milestoneView.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
         case "green":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "86D349").cgColor
+            cell.milestoneView.layer.backgroundColor = UIColor(red: 0.596, green: 0.816, blue: 0.369, alpha: 1).cgColor
+//            cell.milestoneView.layer.backgroundColor = hexStringToUIColor(hex: "86D349").cgColor
         case "blue":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "7CC8FF").cgColor
+            cell.milestoneView.layer.backgroundColor = UIColor(red: 0.486, green: 0.784, blue: 1, alpha: 1).cgColor
+//            cell.milestoneView.backgroundColor = hexStringToUIColor(hex: "7CC8FF").cgColor
         case "orange":
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "FDC055").cgColor
+            cell.milestoneView.layer.backgroundColor = UIColor(red: 0.992, green: 0.753, blue: 0.333, alpha: 1).cgColor
+//            cell.milestoneView.layer.backgroundColor = hexStringToUIColor(hex: "FDC055").cgColor
         default:
-            cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
+            cell.milestoneView.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
+//            cell.milestoneView.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
         }
     }
-    
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-        
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
+
+//    func hexStringToUIColor (hex:String) -> UIColor {
+//        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+//
+//        if (cString.hasPrefix("#")) {
+//            cString.remove(at: cString.startIndex)
+//        }
+//
+//        if ((cString.count) != 6) {
+//            return UIColor.gray
+//        }
+//
+//        var rgbValue:UInt64 = 0
+//        Scanner(string: cString).scanHexInt64(&rgbValue)
+//
+//        return UIColor(
+//            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+//            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+//            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+//            alpha: CGFloat(1.0)
+//        )
+//    }
 }
 
 
@@ -132,7 +137,7 @@ extension MilestoneViewController: UITableViewDataSource{
             let deadline = formater.string(from: milestone[indexPath.row].deadline!)
             cell.milestoneDeadline?.text = deadline
 
-            //menampilkan warna cell
+            //setting color
             colorCell(color: milestone[indexPath.row].color ?? "purple", cell: cell)
             cell.selectionStyle = .none
             
@@ -169,7 +174,7 @@ extension MilestoneViewController: UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 104
+        return 91
     }
     
 }
