@@ -74,19 +74,19 @@ class ViewController: UIViewController, BackHandler {
     func colorCell(color: String, cell: ProjectTableViewCell){
         switch color {
         case "purple":
-            cell.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
+            cell.projectView.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
 //            cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
         case "green":
-            cell.layer.backgroundColor = UIColor(red: 0.596, green: 0.816, blue: 0.369, alpha: 1).cgColor
+            cell.projectView.layer.backgroundColor = UIColor(red: 0.596, green: 0.816, blue: 0.369, alpha: 1).cgColor
 //            cell.layer.backgroundColor = hexStringToUIColor(hex: "86D349").cgColor
         case "blue":
-            cell.layer.backgroundColor = UIColor(red: 0.486, green: 0.784, blue: 1, alpha: 1).cgColor
+            cell.projectView.layer.backgroundColor = UIColor(red: 0.486, green: 0.784, blue: 1, alpha: 1).cgColor
 //            cell.layer.backgroundColor = hexStringToUIColor(hex: "7CC8FF").cgColor
         case "orange":
-            cell.layer.backgroundColor = UIColor(red: 0.992, green: 0.753, blue: 0.333, alpha: 1).cgColor
+            cell.projectView.layer.backgroundColor = UIColor(red: 0.992, green: 0.753, blue: 0.333, alpha: 1).cgColor
 //            cell.layer.backgroundColor = hexStringToUIColor(hex: "FDC055").cgColor
         default:
-            cell.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
+            cell.projectView.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
 //            cell.layer.backgroundColor = hexStringToUIColor(hex: "B8B0FE").cgColor
         }
     }
