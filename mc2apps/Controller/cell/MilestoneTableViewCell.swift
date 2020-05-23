@@ -14,7 +14,6 @@ class MilestoneTableViewCell: UITableViewCell {
     @IBOutlet weak var milestoneDeadline: UILabel!
     @IBOutlet weak var milestoneView: UIView!
     
-    var color = ""
     var swipedLeft = false
     
     override func awakeFromNib() {
@@ -44,7 +43,7 @@ class MilestoneTableViewCell: UITableViewCell {
         
         if (sender.direction == .left) {
             if swipedLeft == false{
-            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x - 100.0, y: self.milestoneView.frame.origin.y)
+            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x - 140.0, y: self.milestoneView.frame.origin.y)
             milestoneView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.milestoneView.frame.size.width, height: self.milestoneView.frame.size.height)
                 swipedLeft = true
             }
@@ -53,7 +52,7 @@ class MilestoneTableViewCell: UITableViewCell {
         
         if (sender.direction == .right) {
             if swipedLeft == true {
-            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x + 100.0, y: self.milestoneView.frame.origin.y)
+            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x + 140.0, y: self.milestoneView.frame.origin.y)
             milestoneView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.milestoneView.frame.size.width, height: self.milestoneView.frame.size.height)
                 swipedLeft = false
             }
