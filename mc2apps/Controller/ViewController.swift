@@ -12,24 +12,42 @@ import UIKit
 class ViewController: UIViewController, BackHandler {
 
     @IBOutlet weak var projectLabel: UILabel!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var segmentSwitch: UISegmentedControl!
+    @IBOutlet weak var addButton: UIButton! {
+        didSet {
+            addButton.layer.cornerRadius = 13
+        }
+    }
+    @IBOutlet weak var segmentSwitch: UISegmentedControl! {
+        didSet {
+ //           segmentSwitch.layer.cornerRadius = 100
+            segmentSwitch.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
+        }
+    }
     @IBOutlet weak var projectTableView: UITableView!
     
     
-    var projects: [Project] = []{
-        didSet{
-            projectTableView.reloadData()
-        }
-    }
+    var projects: [Project] = []
+//    {
+//        didSet{
+//            projectTableView.reloadData()
+//        }
+//    }
     
     var completedProjects: [Project] = []
+//    {
+//        didSet{
+//            projectTableView.reloadData()
+//        }
+//    }
+
+    var selectedSegmentIndex: Int = 1
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
             
         projects = Project.fetchAll(viewContext: getViewContext())
+        completedProjects = Project.fetchCompleted(viewContext: getViewContext())
 
         projectTableView.dataSource = self
         projectTableView.delegate = self
@@ -41,16 +59,13 @@ class ViewController: UIViewController, BackHandler {
         if segmentSwitch.selectedSegmentIndex == 0 {
             projectLabel.text = "List of Projects"
             addButton.isHidden = false
-            projectTableView.isHidden = false
+            self.selectedSegmentIndex = 1
         } else {
             projectLabel.text = "Completed Projects"
             addButton.isHidden = true
-            projectTableView.isHidden = true
+            self.selectedSegmentIndex = 2
         }
-    }
-    
-    func checkCompleted() {
-        
+        projectTableView.reloadData()
     }
 
     
@@ -91,6 +106,12 @@ class ViewController: UIViewController, BackHandler {
         }
     }
     
+    func formatDate(input: Date) -> String {
+        let formater = DateFormatter()
+        formater.dateFormat = "MMMM dd, yyyy"
+        return formater.string(from: input)
+    }
+    
 //    //function untuk mendapatkan hex color
 //    func hexStringToUIColor (hex:String) -> UIColor {
 //        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
@@ -117,27 +138,33 @@ class ViewController: UIViewController, BackHandler {
 
 
 extension ViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return projects.count
-    }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if selectedSegmentIndex == 1 {
+            return projects.count
+        } else {
+            return completedProjects.count
+        }
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectTableViewCell
 
-        cell.projectName?.text = projects[indexPath.row].projectName
-        cell.clientName?.text = projects[indexPath.row].clientName
-        
-        
-        //mengambil date dan diformat
-        let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
-        let deadline = formater.string(from: projects[indexPath.row].deadline!)
-        cell.deadline?.text = deadline
-        
-        //menampilkan warna
-        colorCell(color: projects[indexPath.row].color ?? "purple", cell: cell)
-        cell.selectionStyle = .none
+        // if on ongoing, reload data ongoing, else reload completed projects
+        if selectedSegmentIndex == 1 {
+            cell.projectName?.text = projects[indexPath.row].projectName
+            cell.clientName?.text = projects[indexPath.row].clientName
+            cell.deadline?.text = formatDate(input: projects[indexPath.row].deadline!)
+            colorCell(color: projects[indexPath.row].color ?? "purple", cell: cell)
+            cell.selectionStyle = .none
+        } else {
+            cell.projectName?.text = completedProjects[indexPath.row].projectName
+            cell.clientName?.text = completedProjects[indexPath.row].clientName
+            cell.deadline?.text = formatDate(input: completedProjects[indexPath.row].deadline!)
+            colorCell(color: completedProjects[indexPath.row].color ?? "purple", cell: cell)
+            cell.selectionStyle = .none
+        }
 
         //mengatur spacing antar cell serta radius corner cell
         let maskLayer = CAShapeLayer()
@@ -145,31 +172,36 @@ extension ViewController: UITableViewDataSource{
         maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
         cell.layer.mask = maskLayer
-                
+
         return cell
 
-        
+
     }
 }
 
-extension ViewController: UITableViewDelegate{
+extension ViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
-
+        
         if let indexPath = projectTableView.indexPathForSelectedRow {
-            destination.selectedProject = projects[indexPath.row]
-            destination.nameProject = projects[indexPath.row].projectName
-            destination.nameClient = projects[indexPath.row].clientName
-            let formater = DateFormatter()
-            formater.dateFormat = "MMMM dd, yyyy"
-            let deadline = formater.string(from: projects[indexPath.row].deadline!)
-            destination.deadline = deadline
-            destination.indexProject = indexPath.row
-            destination.listOfProjects = projects
+            if selectedSegmentIndex == 1 {
+                destination.selectedProject = projects[indexPath.row]
+                destination.nameProject = projects[indexPath.row].projectName
+                destination.nameClient = projects[indexPath.row].clientName
+                destination.deadline = formatDate(input: projects[indexPath.row].deadline!)
+                destination.indexProject = indexPath.row
+                destination.listOfProjects = projects
+            } else {
+                destination.selectedProject = completedProjects[indexPath.row]
+                destination.nameProject = completedProjects[indexPath.row].projectName
+                destination.nameClient = completedProjects[indexPath.row].clientName
+                destination.deadline = formatDate(input: completedProjects[indexPath.row].deadline!)
+                destination.indexProject = indexPath.row
+                destination.listOfProjects = completedProjects
+            }
         }
         
-
         // Push/mendorong view controller lain
         self.navigationController?.pushViewController(destination, animated: true)
     }
