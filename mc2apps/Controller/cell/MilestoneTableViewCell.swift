@@ -13,6 +13,9 @@ class MilestoneTableViewCell: UITableViewCell {
     @IBOutlet weak var milestoneName: UILabel!
     @IBOutlet weak var milestoneDeadline: UILabel!
     @IBOutlet weak var milestoneView: UIView!
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var numberView: UIView!
+    @IBOutlet weak var line: UIView!
     
     var swipedLeft = false
     
@@ -20,6 +23,7 @@ class MilestoneTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         gestureSwipe()
+        numberView.layer.cornerRadius = numberLabel.bounds.size.height/2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,7 +47,7 @@ class MilestoneTableViewCell: UITableViewCell {
         
         if (sender.direction == .left) {
             if swipedLeft == false{
-            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x - 140.0, y: self.milestoneView.frame.origin.y)
+            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x - 70.0, y: self.milestoneView.frame.origin.y)
             milestoneView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.milestoneView.frame.size.width, height: self.milestoneView.frame.size.height)
                 swipedLeft = true
             }
@@ -52,7 +56,7 @@ class MilestoneTableViewCell: UITableViewCell {
         
         if (sender.direction == .right) {
             if swipedLeft == true {
-            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x + 140.0, y: self.milestoneView.frame.origin.y)
+            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x + 70.0, y: self.milestoneView.frame.origin.y)
             milestoneView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.milestoneView.frame.size.width, height: self.milestoneView.frame.size.height)
                 swipedLeft = false
             }

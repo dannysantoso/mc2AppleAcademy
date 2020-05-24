@@ -29,6 +29,9 @@ class ViewController: UIViewController, BackHandler {
     override func viewDidLoad() {
         super.viewDidLoad()
             
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
         projects = Project.fetchAll(viewContext: getViewContext())
 
         projectTableView.dataSource = self
@@ -161,6 +164,7 @@ extension ViewController: UITableViewDelegate{
             destination.selectedProject = projects[indexPath.row]
             destination.nameProject = projects[indexPath.row].projectName
             destination.nameClient = projects[indexPath.row].clientName
+            destination.isCompleted = projects[indexPath.row].isCompleted
             let formater = DateFormatter()
             formater.dateFormat = "MMMM dd, yyyy"
             let deadline = formater.string(from: projects[indexPath.row].deadline!)

@@ -44,7 +44,7 @@ class ProjectTableViewCell: UITableViewCell {
         
         if (sender.direction == .left) {
             if swipedLeft == false{
-            let labelPosition = CGPoint(x: self.projectView.frame.origin.x - 140.0, y: self.projectView.frame.origin.y)
+            let labelPosition = CGPoint(x: self.projectView.frame.origin.x - 70.0, y: self.projectView.frame.origin.y)
             projectView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.projectView.frame.size.width, height: self.projectView.frame.size.height)
                 swipedLeft = true
             }
@@ -53,7 +53,7 @@ class ProjectTableViewCell: UITableViewCell {
         
         if (sender.direction == .right) {
             if swipedLeft == true {
-            let labelPosition = CGPoint(x: self.projectView.frame.origin.x + 140.0, y: self.projectView.frame.origin.y)
+            let labelPosition = CGPoint(x: self.projectView.frame.origin.x + 70.0, y: self.projectView.frame.origin.y)
             projectView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.projectView.frame.size.width, height: self.projectView.frame.size.height)
                 swipedLeft = false
             }

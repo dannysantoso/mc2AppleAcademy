@@ -14,7 +14,7 @@ class MilestoneViewController: UIViewController, BackHandler {
     @IBAction func toEditButton(_ sender: UIButton) {
         let destination = AddProjectViewController(nibName: "AddProjectViewController", bundle: nil)
         
-        // Mengirim data hero
+        
         destination.delegate = self
         destination.selectedProject = self.selectedProject
         destination.indexProject = self.indexProject
@@ -27,6 +27,7 @@ class MilestoneViewController: UIViewController, BackHandler {
     
     var milestone = [Milestone]()
     
+    @IBOutlet weak var endProject: UIButton!
     @IBOutlet weak var nameProjectLabel: UILabel!
     @IBOutlet weak var nameClientLabel: UILabel!
     @IBOutlet weak var deadlineLabel: UILabel!
@@ -36,6 +37,7 @@ class MilestoneViewController: UIViewController, BackHandler {
     var nameProject: String?
     var nameClient: String?
     var deadline: String?
+    var isCompleted = false
     
     var indexProject: Int?
     var selectedProject : Project?
@@ -43,6 +45,20 @@ class MilestoneViewController: UIViewController, BackHandler {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        endProject.layer.cornerRadius = 14
+        
+        if isCompleted == true {
+            endProject.isHidden = true
+        }
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
+        let editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editProject))
+        self.navigationItem.rightBarButtonItem  = editBarButtonItem
+        
         milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
         milestoneTableView.reloadData()
         
@@ -58,11 +74,14 @@ class MilestoneViewController: UIViewController, BackHandler {
         milestoneTableView.register(UINib(nibName: "MilestoneTableViewCell", bundle: nil), forCellReuseIdentifier: "MilestoneCell")
     }
     
+    @objc func editProject(){
+        
+    }
     
     @IBAction func addMilestone(_ sender: Any) {
         let destination = AddMilestoneViewController(nibName: "AddMilestoneViewController", bundle: nil)
         
-        // Mengirim data hero
+        
         destination.delegate = self
         destination.selectedProject = self.selectedProject
         
@@ -118,6 +137,10 @@ class MilestoneViewController: UIViewController, BackHandler {
 //            alpha: CGFloat(1.0)
 //        )
 //    }
+    @IBAction func endProject(_ sender: Any) {
+        Project.isCompleted(viewContext: self.getViewContext(), isCompleted: true, project:listOfProjects, indexProject: indexProject!)
+        endProject.isHidden = true
+    }
 }
 
 
@@ -141,13 +164,14 @@ extension MilestoneViewController: UITableViewDataSource{
             colorCell(color: milestone[indexPath.row].color ?? "purple", cell: cell)
             cell.selectionStyle = .none
             
+            cell.numberLabel.text = String(indexPath.row + 1)
             
-            let maskLayer = CAShapeLayer()
-            maskLayer.cornerRadius = 13
-            maskLayer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah kiri
-            maskLayer.backgroundColor = UIColor.black.cgColor
-            maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
-            cell.layer.mask = maskLayer
+//            let maskLayer = CAShapeLayer()
+            cell.milestoneView.layer.cornerRadius = 13
+            cell.milestoneView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah kiri
+//            maskLayer.backgroundColor = UIColor.black.cgColor
+//            maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
+//            cell.layer.mask = maskLayer
             
             
             
@@ -166,6 +190,13 @@ extension MilestoneViewController: UITableViewDelegate{
         if let indexPath = milestoneTableView.indexPathForSelectedRow {
             destination.selectedMilestone = milestone[indexPath.row]
             destination.selectedProject = selectedProject
+            destination.index = indexPath.row
+            destination.nameMilestone = milestone[indexPath.row].milestoneName
+            destination.deadlineMilestone = milestone[indexPath.row].deadline
+            destination.milestoneColor = milestone[indexPath.row].color
+            destination.milestone = milestone
+            destination.delegate = self
+        
         }
 
         self.navigationController?.pushViewController(destination, animated: true)
