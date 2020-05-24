@@ -73,6 +73,7 @@ class ViewController: UIViewController, BackHandler {
         projectTableView.reloadData()
     }
     
+    
     //function untuk mendapatkan color cell sesuai dengan data color yang disimpan
     func colorCell(color: String, cell: ProjectTableViewCell){
         switch color {

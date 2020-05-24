@@ -58,4 +58,22 @@ extension Milestone{
            return nil
         }
     }
+    
+    static func deleteAll(viewContext: NSManagedObjectContext){
+
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        try? viewContext.execute(deleteRequest)
+        
+    }
+    
+    static func deleteData(viewContext: NSManagedObjectContext, milestone: [Milestone], indexMilestone: Int){
+        viewContext.delete(milestone[indexMilestone])
+        
+        do {
+            try viewContext.save()
+        } catch {
+           
+        }
+    }
 }

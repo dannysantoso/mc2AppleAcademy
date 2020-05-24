@@ -159,12 +159,15 @@ extension MilestoneViewController: UITableViewDataSource{
             formater.dateFormat = "MMMM dd, yyyy"
             let deadline = formater.string(from: milestone[indexPath.row].deadline!)
             cell.milestoneDeadline?.text = deadline
+            
 
             //setting color
             colorCell(color: milestone[indexPath.row].color ?? "purple", cell: cell)
             cell.selectionStyle = .none
             
             cell.numberLabel.text = String(indexPath.row + 1)
+            
+            cell.delegate = self
             
 //            let maskLayer = CAShapeLayer()
             cell.milestoneView.layer.cornerRadius = 13
@@ -173,7 +176,8 @@ extension MilestoneViewController: UITableViewDataSource{
 //            maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
 //            cell.layer.mask = maskLayer
             
-            
+            cell.indexMilestone =  indexPath.row
+            cell.milestone = milestone
             
             
             return cell

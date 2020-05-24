@@ -18,6 +18,9 @@ class MilestoneTableViewCell: UITableViewCell {
     @IBOutlet weak var line: UIView!
     
     var swipedLeft = false
+    var indexMilestone: Int?
+    var milestone = [Milestone]()
+    var delegate:BackHandler?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +33,10 @@ class MilestoneTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         
+    }
+    @IBAction func deleteButton(_ sender: Any) {
+        Milestone.deleteData(viewContext: self.getViewContext(), milestone: milestone, indexMilestone: indexMilestone!)
+        self.delegate?.onBackHome()
     }
     
     func gestureSwipe(){

@@ -21,6 +21,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     @IBOutlet weak var randomButtonOutlet: UIButton!
     
     var delegate: BackHandler?
+    var delegateData: ReceiveData?
     var selectedProject: Project?
     let datePicker = UIDatePicker()
     var color = ""
@@ -42,6 +43,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
             item.layer.borderWidth = 4
             item.layer.borderColor = UIColor.clear.cgColor
         }
+        print(color)
         
         randomButtonOutlet.layer.cornerRadius = randomButtonOutlet.bounds.size.height/2
         
@@ -51,6 +53,19 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
             let formater = DateFormatter()
             formater.dateFormat = "MMMM d, yyyy"
             deadline.text = formater.string(from: dateDeadline!)
+            
+            switch color {
+            case "purple":
+                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            case "blue":
+                blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            case "green":
+                greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            case "orange":
+                orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            default:
+                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            }
         }
         
         configurePlaceHolder()
@@ -119,6 +134,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
         if isEdit == true{
             if Milestone.update(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", milestone: milestone, indexMilestone: indexMilestone, deadline: dateDeadline!, color: color) != nil{
                 dismiss(animated: true, completion: nil)
+                    self.delegateData?.onReceiveData(color: color)
                     
             }
         }else{
@@ -210,5 +226,12 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
             saveButtonOutlet.alpha = 0.5
             saveButtonOutlet.isEnabled = false
         }
+    }
+    @IBAction func tfMilestoneName(_ sender: Any) {
+        isSaveEnable()
+    }
+    
+    @IBAction func tfDeadline(_ sender: Any) {
+        isSaveEnable()
     }
 }
