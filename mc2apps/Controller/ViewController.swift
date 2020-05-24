@@ -49,7 +49,8 @@ class ViewController: UIViewController, BackHandler {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        projects = Project.fetchAll(viewContext: getViewContext())
+//        projects = Project.fetchAll(viewContext: getViewContext())
+        projects = Project.fetchOngoing(viewContext: getViewContext())
         completedProjects = Project.fetchCompleted(viewContext: getViewContext())
 
         projectTableView.dataSource = self

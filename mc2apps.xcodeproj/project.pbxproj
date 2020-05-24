@@ -34,6 +34,8 @@
 		E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098932473D09200E693A0 /* AddProjectViewController.xib */; };
 		E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989D2475103800E693A0 /* UITableViewController+Extension.swift */; };
 		E10098A02475DCC100E693A0 /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989F2475DCC100E693A0 /* protocol.swift */; };
+		EC00375D247AC50D00A3C73D /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */; };
+		EC00375E247AC50D00A3C73D /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */; };
 		EC67E1772479687E0092B8C5 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E173247963A00092B8C5 /* SF-Pro-Rounded-Bold.otf */; };
 		EC67E178247968950092B8C5 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E1752479656A0092B8C5 /* SF-Pro-Rounded-Semibold.otf */; };
 		EC67E179247968980092B8C5 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E1742479656A0092B8C5 /* SF-Pro-Rounded-Medium.otf */; };
@@ -71,6 +73,8 @@
 		E10098932473D09200E693A0 /* AddProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProjectViewController.xib; sourceTree = "<group>"; };
 		E100989D2475103800E693A0 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 		E100989F2475DCC100E693A0 /* protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
+		EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
+		EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
 		EC67E173247963A00092B8C5 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		EC67E1742479656A0092B8C5 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		EC67E1752479656A0092B8C5 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 				E100984024712A0100E693A0 /* ProjectTableViewCell.xib */,
 				E10098492471360000E693A0 /* MilestoneTableViewCell.xib */,
 				E100985E24729B4100E693A0 /* TaskTableViewCell.xib */,
+				EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				E100983F24712A0100E693A0 /* ProjectTableViewCell.swift */,
 				E10098482471360000E693A0 /* MilestoneTableViewCell.swift */,
 				E100985D24729B4100E693A0 /* TaskTableViewCell.swift */,
+				EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 				E100984B2471360000E693A0 /* MilestoneTableViewCell.xib in Resources */,
 				EC67E1772479687E0092B8C5 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				EC67E178247968950092B8C5 /* SF-Pro-Rounded-Semibold.otf in Resources */,
+				EC00375E247AC50D00A3C73D /* DashboardTableViewCell.xib in Resources */,
 				E10098912473CFB800E693A0 /* TaskViewController.xib in Resources */,
 				E10098892473CB6400E693A0 /* MilestoneViewController.xib in Resources */,
 				E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */,
@@ -284,6 +291,7 @@
 				E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */,
 				E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */,
 				E100982D247126D600E693A0 /* ViewController.swift in Sources */,
+				EC00375D247AC50D00A3C73D /* DashboardTableViewCell.swift in Sources */,
 				E10098A02475DCC100E693A0 /* protocol.swift in Sources */,
 				E100985A2472809F00E693A0 /* AddMilestoneViewController.swift in Sources */,
 				E1009829247126D600E693A0 /* AppDelegate.swift in Sources */,
