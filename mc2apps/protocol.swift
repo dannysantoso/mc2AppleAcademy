@@ -25,3 +25,7 @@ protocol datePickerTextfield {
 protocol BackHandler {
     func onBackHome()
 }
+
+protocol ReceiveData {
+    func onReceiveData(color: String)
+}

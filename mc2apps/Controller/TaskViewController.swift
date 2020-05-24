@@ -8,7 +8,9 @@
 
 import UIKit
 
-class TaskViewController: UIViewController {
+class TaskViewController: UIViewController, BackHandler, ReceiveData {
+    
+    
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var taskTableView: UITableView!
@@ -69,6 +71,7 @@ class TaskViewController: UIViewController {
         destination.indexMilestone = index!
         destination.isEdit = true
         destination.milestone = milestone
+        destination.delegateData = self
         
         
         self.present(destination, animated: true, completion: nil)
@@ -100,6 +103,15 @@ class TaskViewController: UIViewController {
             headerView.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
             self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1)
         }
+    }
+    
+    func onBackHome() {
+        
+    }
+    
+    func onReceiveData(color: String){
+        colorHeader(color: color)
+        milestoneColor = color
     }
 }
 

@@ -9,6 +9,8 @@
 import UIKit
 
 class TaskTableViewCell: UITableViewCell {
+    
+    
 
     var indexTask: Int?
     var task = [Task]()
@@ -33,4 +35,5 @@ class TaskTableViewCell: UITableViewCell {
         Task.update(viewContext: self.getViewContext(), taskName: taskName.text ?? "", task: task, indexTask: indexTask!, isChecklist: false)
 
     }
+
 }

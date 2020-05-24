@@ -28,6 +28,9 @@
                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                         <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <state key="normal" image="trash.fill" catalog="system"/>
+                        <connections>
+                            <action selector="deleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lPn-zP-CgH"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdc-X9-tS2">
                         <rect key="frame" x="61" y="0.0" width="44" height="44"/>
