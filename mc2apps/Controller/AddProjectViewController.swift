@@ -133,7 +133,7 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     
     func configurePlaceHolder(){
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         deadline.placeholder = formater.string(from: Date())
     }
     

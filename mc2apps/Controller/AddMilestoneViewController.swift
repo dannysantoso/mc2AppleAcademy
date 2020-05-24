@@ -13,58 +13,119 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
 
     @IBOutlet weak var milestoneName: UITextField!
     @IBOutlet weak var deadline: UITextField!
+    @IBOutlet weak var orangeButtonOutlet: UIButton!
+    @IBOutlet weak var greenButtonOutlet: UIButton!
+    @IBOutlet weak var blueButtonOutlet: UIButton!
+    @IBOutlet weak var purpleButtonOutlet: UIButton!
+    @IBOutlet weak var saveButtonOutlet: UIButton!
+    @IBOutlet weak var randomButtonOutlet: UIButton!
     
     var delegate: BackHandler?
     var selectedProject: Project?
     let datePicker = UIDatePicker()
-    var color = "purple"
+    var color = ""
+    var isEdit = false
+    
+    var milestone = [Milestone]()
+    var nameMilestone: String?
+    var dateDeadline: Date?
+    var indexMilestone = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let buttonColor:[UIButton] = [orangeButtonOutlet, greenButtonOutlet, blueButtonOutlet, purpleButtonOutlet]
+        
+        for item in buttonColor {
+            item.layer.cornerRadius = item.bounds.size.width/2
+            item.layer.borderWidth = 4
+            item.layer.borderColor = UIColor.clear.cgColor
+        }
+        
+        randomButtonOutlet.layer.cornerRadius = randomButtonOutlet.bounds.size.height/2
+        
+        if isEdit == true {
+            milestoneName.text = nameMilestone
+            
+            let formater = DateFormatter()
+            formater.dateFormat = "MMMM d, yyyy"
+            deadline.text = formater.string(from: dateDeadline!)
+        }
         
         configurePlaceHolder()
         showDatePicker()
         dismissKeyboard()
         returnKeyboard()
         onChangeValueDatePicker()
+        isSaveEnable()
         
     }
     
     @IBAction func randomButton(_ sender: Any) {
+        clearColorBorder()
         let randomInt = Int.random(in: 1...4)
         switch randomInt {
         case 1:
             color = "purple"
+            purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case 2:
             color = "blue"
+            blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case 3:
             color = "green"
+            greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case 4:
             color = "orange"
+            orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         default:
             color = "purple"
+            purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         }
+        isSaveEnable()
     }
     
     @IBAction func purpleButton(_ sender: Any) {
         color = "purple"
+        clearColorBorder()
+        purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+        isSaveEnable()
     }
     @IBAction func blueButton(_ sender: Any) {
         color = "blue"
+        clearColorBorder()
+        blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+        isSaveEnable()
     }
     @IBAction func greenButton(_ sender: Any) {
         color = "green"
+        clearColorBorder()
+        greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+        isSaveEnable()
     }
     @IBAction func orangeButton(_ sender: Any) {
         color = "orange"
+        clearColorBorder()
+        orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+        isSaveEnable()
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func save(_ sender: Any) {
-        if Milestone.save(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", selectedProject: selectedProject!, deadline: datePicker.date, color: color, isCompleted: false) != nil{
-            dismiss(animated: true, completion: nil)
-                self.delegate?.onBackHome()
+        print(indexMilestone)
+        if isEdit == true{
+            if Milestone.update(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", milestone: milestone, indexMilestone: indexMilestone, deadline: dateDeadline!, color: color) != nil{
+                dismiss(animated: true, completion: nil)
+                    
+            }
+        }else{
+            if Milestone.save(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", selectedProject: selectedProject!, deadline: datePicker.date, color: color, isCompleted: false) != nil{
+                dismiss(animated: true, completion: nil)
+                    self.delegate?.onBackHome()
+            }
         }
 
     }
@@ -134,4 +195,20 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
         self.view.endEditing(true)
     }
     
+    func clearColorBorder() {
+        purpleButtonOutlet.layer.borderColor = UIColor.clear.cgColor
+        blueButtonOutlet.layer.borderColor = UIColor.clear.cgColor
+        greenButtonOutlet.layer.borderColor = UIColor.clear.cgColor
+        orangeButtonOutlet.layer.borderColor = UIColor.clear.cgColor
+    }
+    
+    func isSaveEnable() {
+        if milestoneName.text != "" && deadline.text != "" && color != "" {
+            saveButtonOutlet.alpha = 1
+            saveButtonOutlet.isEnabled = true
+        } else {
+            saveButtonOutlet.alpha = 0.5
+            saveButtonOutlet.isEnabled = false
+        }
+    }
 }

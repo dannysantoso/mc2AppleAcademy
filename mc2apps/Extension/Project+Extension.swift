@@ -64,6 +64,16 @@ extension Project{
         }
     }
     
+    static func isCompleted(viewContext: NSManagedObjectContext, isCompleted: Bool, project:[Project], indexProject: Int){
+        project[indexProject].isCompleted = isCompleted
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
+    
     static func deleteAll(viewContext: NSManagedObjectContext){
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
