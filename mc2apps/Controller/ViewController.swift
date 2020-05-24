@@ -46,6 +46,9 @@ class ViewController: UIViewController, BackHandler {
     override func viewDidLoad() {
         super.viewDidLoad()
             
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
         projects = Project.fetchAll(viewContext: getViewContext())
         completedProjects = Project.fetchCompleted(viewContext: getViewContext())
 
@@ -84,6 +87,7 @@ class ViewController: UIViewController, BackHandler {
         projects = Project.fetchAll(viewContext: getViewContext())
         projectTableView.reloadData()
     }
+    
     
     //function untuk mendapatkan color cell sesuai dengan data color yang disimpan
     func colorCell(color: String, cell: ProjectTableViewCell){

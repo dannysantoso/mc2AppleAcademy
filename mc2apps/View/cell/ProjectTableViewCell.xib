@@ -16,14 +16,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="299" height="84"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="h5e-Fz-nrE">
-                        <rect key="frame" x="159" y="0.0" width="70" height="84"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                        <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <state key="normal" image="pencil" catalog="system"/>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Fyw-W9-q3C">
                         <rect key="frame" x="229" y="0.0" width="70" height="84"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -73,7 +65,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
     </resources>
 </document>

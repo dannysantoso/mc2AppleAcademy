@@ -30,6 +30,19 @@ extension Milestone{
         
     }
     
+    static func update(viewContext: NSManagedObjectContext, milestoneName: String, milestone: [Milestone], indexMilestone: Int, deadline: Date, color: String){
+        milestone[indexMilestone].milestoneName = milestoneName
+        milestone[indexMilestone].deadline = deadline
+        milestone[indexMilestone].color = color
+        
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
+    
     static func save(viewContext: NSManagedObjectContext, milestoneName: String, selectedProject: Project, deadline: Date, color: String, isCompleted: Bool) -> Milestone? {
         let newMilestone = Milestone(context: viewContext)
         newMilestone.milestoneName = milestoneName
@@ -43,6 +56,24 @@ extension Milestone{
             return newMilestone
         } catch {
            return nil
+        }
+    }
+    
+    static func deleteAll(viewContext: NSManagedObjectContext){
+
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        try? viewContext.execute(deleteRequest)
+        
+    }
+    
+    static func deleteData(viewContext: NSManagedObjectContext, milestone: [Milestone], indexMilestone: Int){
+        viewContext.delete(milestone[indexMilestone])
+        
+        do {
+            try viewContext.save()
+        } catch {
+           
         }
     }
 }
