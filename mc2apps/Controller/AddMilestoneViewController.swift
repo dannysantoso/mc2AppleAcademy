@@ -149,7 +149,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
         if isEdit == true{
             if Milestone.update(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", milestone: milestone, indexMilestone: indexMilestone, deadline: datePicker.date, color: color) != nil{
                 dismiss(animated: true, completion: nil)
-                self.delegateData?.onReceiveData(color: color, name: milestoneName.text ?? "", date: datePicker.date, client: "")
+                self.delegateData?.onReceiveData(color: color, name: milestoneName.text ?? "", date: datePicker.date, client: "", reward: "")
                     
             }
         }else{

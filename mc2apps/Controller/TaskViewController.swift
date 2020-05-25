@@ -168,10 +168,12 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         
     }
     
-    func onReceiveData(color: String, name: String, date: Date, client: String){
+    func onReceiveData(color: String, name: String, date: Date, client: String, reward: String){
         colorHeader(color: color)
         milestoneColor = color
+        nameMilestone = name
         milestoneNameLabel.text = name
+        deadlineMilestone = date
         deadlineLabel.text = formatDate(input: date)
     }
     

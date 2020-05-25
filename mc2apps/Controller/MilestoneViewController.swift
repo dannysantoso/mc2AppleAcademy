@@ -125,10 +125,14 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
         milestoneTableView.reloadData()
     }
     
-    func onReceiveData(color: String, name: String, date: Date, client: String){
+    func onReceiveData(color: String, name: String, date: Date, client: String, reward: String){
+        nameProject = name
         nameProjectLabel.text = name
+        deadline = date
         deadlineLabel.text = formatDate(input: date)
+        nameClient = client
         nameClientLabel.text = client
+        colorProject = color
     }
     
     //mendapatkan warna cell dari data yang disimpan
