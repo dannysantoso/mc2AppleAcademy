@@ -20,9 +20,33 @@ extension Project{
 //        
 //    }
     
-    static func fetchAll(viewContext: NSManagedObjectContext) -> [Project] {
+//    static func fetchAll(viewContext: NSManagedObjectContext) -> [Project] {
+//        
+//        let request: NSFetchRequest<Project> = Project.fetchRequest()
+//        
+//        guard let result = try? viewContext.fetch(request) else{
+//            return []
+//        }
+//        return result
+//    }
+    
+    static func fetchCompleted(viewContext: NSManagedObjectContext) -> [Project] {
         
         let request: NSFetchRequest<Project> = Project.fetchRequest()
+        let predicate = NSPredicate(format: "isCompleted = \(NSNumber(value: true))")
+        request.predicate = predicate
+        
+        guard let result = try? viewContext.fetch(request) else{
+            return []
+        }
+        return result
+    }
+    
+    static func fetchNotCompleted(viewContext: NSManagedObjectContext) -> [Project] {
+        
+        let request: NSFetchRequest<Project> = Project.fetchRequest()
+        let predicate = NSPredicate(format: "isCompleted = \(NSNumber(value: false))")
+        request.predicate = predicate
         
         guard let result = try? viewContext.fetch(request) else{
             return []

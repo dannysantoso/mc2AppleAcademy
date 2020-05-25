@@ -27,18 +27,18 @@ class ViewController: UIViewController, BackHandler {
     
     
     var projects: [Project] = []
-//    {
-//        didSet{
-//            projectTableView.reloadData()
-//        }
-//    }
+    {
+        didSet{
+            projectTableView.reloadData()
+        }
+    }
     
     var completedProjects: [Project] = []
-//    {
-//        didSet{
-//            projectTableView.reloadData()
-//        }
-//    }
+    {
+        didSet{
+            projectTableView.reloadData()
+        }
+    }
 
     var selectedSegmentIndex: Int = 1
     
@@ -50,7 +50,7 @@ class ViewController: UIViewController, BackHandler {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
 //        projects = Project.fetchAll(viewContext: getViewContext())
-        projects = Project.fetchOngoing(viewContext: getViewContext())
+        projects = Project.fetchNotCompleted(viewContext: getViewContext())
         completedProjects = Project.fetchCompleted(viewContext: getViewContext())
 
         projectTableView.dataSource = self
@@ -85,7 +85,9 @@ class ViewController: UIViewController, BackHandler {
 
     
     func onBackHome() {
-        projects = Project.fetchAll(viewContext: getViewContext())
+//        projects = Project.fetchAll(viewContext: getViewContext())
+        projects = Project.fetchNotCompleted(viewContext: getViewContext())
+        completedProjects = Project.fetchCompleted(viewContext: getViewContext())
         projectTableView.reloadData()
     }
     
@@ -197,6 +199,8 @@ extension ViewController: UITableViewDelegate {
                 destination.deadline = formatDate(input: projects[indexPath.row].deadline!)
                 destination.indexProject = indexPath.row
                 destination.listOfProjects = projects
+                destination.delegateViewController = self
+                destination.isCompleted = projects[indexPath.row].isCompleted
             } else {
                 destination.selectedProject = completedProjects[indexPath.row]
                 destination.nameProject = completedProjects[indexPath.row].projectName
@@ -204,6 +208,7 @@ extension ViewController: UITableViewDelegate {
                 destination.deadline = formatDate(input: completedProjects[indexPath.row].deadline!)
                 destination.indexProject = indexPath.row
                 destination.listOfProjects = completedProjects
+                destination.isCompleted = completedProjects[indexPath.row].isCompleted
             }
         }
         

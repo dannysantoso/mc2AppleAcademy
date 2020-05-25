@@ -75,6 +75,9 @@
 		E100989F2475DCC100E693A0 /* protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
 		EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
+		E1F9A9F4247AD40000C0308C /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		E1F9A9F5247AD57F00C0308C /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		E1F9A9F6247ADEE500C0308C /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
 		EC67E173247963A00092B8C5 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		EC67E1742479656A0092B8C5 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		EC67E1752479656A0092B8C5 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
@@ -191,6 +194,9 @@
 		EC67E1612479631E0092B8C5 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E1F9A9F6247ADEE500C0308C /* SFProText-Regular.ttf */,
+				E1F9A9F5247AD57F00C0308C /* SFProDisplay-Bold.ttf */,
+				E1F9A9F4247AD40000C0308C /* SFProDisplay-Regular.ttf */,
 				EC67E173247963A00092B8C5 /* SF-Pro-Rounded-Bold.otf */,
 				EC67E1752479656A0092B8C5 /* SF-Pro-Rounded-Semibold.otf */,
 				EC67E1742479656A0092B8C5 /* SF-Pro-Rounded-Medium.otf */,
