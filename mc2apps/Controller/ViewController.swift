@@ -12,11 +12,9 @@ import UIKit
 class ViewController: UIViewController, BackHandler {
 
     @IBOutlet weak var projectLabel: UILabel!
-    @IBOutlet weak var addButton: UIButton! {
-        didSet {
-            addButton.layer.cornerRadius = 13
-        }
-    }
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var addView: UIView!
+    
     @IBOutlet weak var segmentSwitch: UISegmentedControl! {
         didSet {
  //           segmentSwitch.layer.cornerRadius = 100
@@ -45,6 +43,9 @@ class ViewController: UIViewController, BackHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addView.layer.cornerRadius = 13
+        addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
             
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -63,10 +64,12 @@ class ViewController: UIViewController, BackHandler {
         if segmentSwitch.selectedSegmentIndex == 0 {
             projectLabel.text = "List of Projects"
             addButton.isHidden = false
+            addView.isHidden = false
             self.selectedSegmentIndex = 1
         } else {
             projectLabel.text = "Completed Projects"
             addButton.isHidden = true
+            addView.isHidden = true
             self.selectedSegmentIndex = 2
         }
         projectTableView.reloadData()
