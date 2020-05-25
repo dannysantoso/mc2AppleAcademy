@@ -25,7 +25,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     var delegate: BackHandler?
     var delegateData: ReceiveData?
     var selectedProject: Project?
-    let datePicker = UIDatePicker()
+    var datePicker = UIDatePicker()
     var color = ""
     var isEdit = false
     
@@ -65,7 +65,9 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
             
             let formater = DateFormatter()
             formater.dateFormat = "MMMM d, yyyy"
-            deadline.text = formater.string(from: dateDeadline!)
+            datePicker.date = dateDeadline!
+            deadline.text = formater.string(from: datePicker.date)
+            
             
             switch color {
             case "purple":
@@ -145,9 +147,9 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     @IBAction func save(_ sender: Any) {
         print(indexMilestone)
         if isEdit == true{
-            if Milestone.update(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", milestone: milestone, indexMilestone: indexMilestone, deadline: dateDeadline!, color: color) != nil{
+            if Milestone.update(viewContext: self.getViewContext(), milestoneName: milestoneName.text ?? "", milestone: milestone, indexMilestone: indexMilestone, deadline: datePicker.date, color: color) != nil{
                 dismiss(animated: true, completion: nil)
-                    self.delegateData?.onReceiveData(color: color)
+                self.delegateData?.onReceiveData(color: color, name: milestoneName.text ?? "", date: datePicker.date, client: "")
                     
             }
         }else{
