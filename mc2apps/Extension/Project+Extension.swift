@@ -53,30 +53,7 @@ extension Project{
         }
         return result
     }
-    
-    static func fetchOngoing(viewContext: NSManagedObjectContext) -> [Project] {
-        
-        let request: NSFetchRequest<Project> = Project.fetchRequest()
-        let predicate = NSPredicate(format: "isCompleted = \(NSNumber(value: false))")
-        request.predicate = predicate
-        
-        guard let result = try? viewContext.fetch(request) else{
-            return []
-        }
-        return result
-    }
-    
-    static func fetchCompleted(viewContext: NSManagedObjectContext) -> [Project] {
-        
-        let request: NSFetchRequest<Project> = Project.fetchRequest()
-        let predicate = NSPredicate(format: "isCompleted = \(NSNumber(value: true))")
-        request.predicate = predicate
-        
-        guard let result = try? viewContext.fetch(request) else{
-            return []
-        }
-        return result
-    }
+ 
     
     static func save(viewContext: NSManagedObjectContext, projectName: String, clientName: String, deadline: Date, color: String, isCompleted: Bool, projectCompletionReward: String) -> Project? {
         let project = Project(context: viewContext)

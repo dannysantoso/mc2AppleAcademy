@@ -30,6 +30,25 @@ extension Milestone{
         
     }
     
+    static func fetchClosestMilestone(viewContext: NSManagedObjectContext) -> [Milestone] {
+        
+        let request: NSFetchRequest<Milestone> = Milestone.fetchRequest()
+        
+        let sort = NSSortDescriptor(key: "deadline", ascending: true)
+        request.sortDescriptors = [sort]
+        let predicate = NSPredicate(format: "isCompleted = \(NSNumber(value: false))")
+        request.predicate = predicate
+        
+        request.fetchLimit = 2
+        
+        guard let result = try? viewContext.fetch(request) else{
+            return []
+        }
+        
+        return result
+    }
+        
+    
     static func update(viewContext: NSManagedObjectContext, milestoneName: String, milestone: [Milestone], indexMilestone: Int, deadline: Date, color: String){
         milestone[indexMilestone].milestoneName = milestoneName
         milestone[indexMilestone].deadline = deadline
