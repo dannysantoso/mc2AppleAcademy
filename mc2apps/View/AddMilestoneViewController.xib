@@ -67,11 +67,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSg-Id-qYY">
-                    <rect key="frame" x="41" y="663" width="111" height="30"/>
+                    <rect key="frame" x="41" y="661" width="111" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.98431372549999996" green="0.58431372550000005" blue="0.57647058819999997" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="18"/>
-                    <state key="normal" title="Randomize">
+                    <state key="normal" title="Random">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>

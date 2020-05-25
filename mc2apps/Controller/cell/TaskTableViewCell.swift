@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TaskTableViewCell: UITableViewCell {
+class TaskTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     
 
@@ -17,6 +17,7 @@ class TaskTableViewCell: UITableViewCell {
     var task = [Task]()
     var isChecklist: Bool?
     var isCompleted: Bool?
+    
     
     @IBOutlet weak var taskName: UITextField!
     
@@ -28,11 +29,14 @@ class TaskTableViewCell: UITableViewCell {
         checklist.layer.borderWidth = 1
         checklist.layer.borderColor = UIColor.black.cgColor
         
+        taskName.placeholder = "Write your task here..."
         
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
 
         
     }
@@ -56,3 +60,4 @@ class TaskTableViewCell: UITableViewCell {
         }
     }
 }
+
