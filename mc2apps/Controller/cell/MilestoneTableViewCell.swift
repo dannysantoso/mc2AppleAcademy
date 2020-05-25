@@ -16,11 +16,13 @@ class MilestoneTableViewCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var numberView: UIView!
     @IBOutlet weak var line: UIView!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var swipedLeft = false
     var indexMilestone: Int?
     var milestone = [Milestone]()
     var delegate:BackHandler?
+    var isCompleted: Bool?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,20 +54,22 @@ class MilestoneTableViewCell: UITableViewCell {
     
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
         
-        if (sender.direction == .left) {
-            if swipedLeft == false{
-            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x - 70.0, y: self.milestoneView.frame.origin.y)
-            milestoneView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.milestoneView.frame.size.width, height: self.milestoneView.frame.size.height)
-                swipedLeft = true
-            }
+        if isCompleted == false{
+            if (sender.direction == .left) {
+                if swipedLeft == false{
+                    let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x - 70.0, y: self.milestoneView.frame.origin.y)
+                    milestoneView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.milestoneView.frame.size.width, height: self.milestoneView.frame.size.height)
+                    swipedLeft = true
+                }
             
-        }
+            }
         
-        if (sender.direction == .right) {
-            if swipedLeft == true {
-            let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x + 70.0, y: self.milestoneView.frame.origin.y)
-            milestoneView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.milestoneView.frame.size.width, height: self.milestoneView.frame.size.height)
-                swipedLeft = false
+            if (sender.direction == .right) {
+                if swipedLeft == true {
+                let labelPosition = CGPoint(x: self.milestoneView.frame.origin.x + 70.0, y: self.milestoneView.frame.origin.y)
+                milestoneView.frame = CGRect(x: labelPosition.x, y: labelPosition.y, width: self.milestoneView.frame.size.width, height: self.milestoneView.frame.size.height)
+                    swipedLeft = false
+                }
             }
         }
     }

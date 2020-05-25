@@ -10,9 +10,9 @@ import UIKit
 
 class DashboardViewController: UIViewController {
 
-    @IBOutlet weak var dashboardLabel: UILabel!
-    @IBOutlet weak var approachingLabel: UILabel!
-    @IBOutlet weak var exclamationLabel: UILabel!
+//    @IBOutlet weak var dashboardLabel: UILabel!
+//    @IBOutlet weak var approachingLabel: UILabel!
+//    @IBOutlet weak var exclamationLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

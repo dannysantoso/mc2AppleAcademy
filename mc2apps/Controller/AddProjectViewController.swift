@@ -235,12 +235,12 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
 
     @IBAction func save(_ sender: Any) {
         if titlePage.text == "Edit Project" {
-            if (Project.update(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "", project: listOfProjects, indexProject: indexProject!) != nil){
+            if (Project.update(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: datePicker.date, color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "", project: listOfProjects, indexProject: indexProject!) != nil){
                     dismiss(animated: true, completion: nil)
                         self.delegate?.onBackHome()
             }
         } else {
-            if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: Date(), color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
+            if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: datePicker.date, color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
                     
                     dismiss(animated: true, completion: nil)
                         self.delegate?.onBackHome()

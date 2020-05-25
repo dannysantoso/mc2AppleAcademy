@@ -11,6 +11,8 @@ import UIKit
 
 class AddMilestoneViewController: UIViewController, textfieldSetting, datePickerTextfield {
 
+    
+    @IBOutlet weak var titleMilestone: UILabel!
     @IBOutlet weak var milestoneName: UITextField!
     @IBOutlet weak var deadline: UITextField!
     @IBOutlet weak var orangeButtonOutlet: UIButton!
@@ -36,6 +38,16 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        milestoneName.layer.cornerRadius = 13
+        milestoneName.layer.backgroundColor = UIColor.white.cgColor
+        milestoneName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.milestoneName.frame.height))
+        milestoneName.leftViewMode = UITextField.ViewMode.always
+        
+        deadline.layer.cornerRadius = 13
+        deadline.layer.backgroundColor = UIColor.white.cgColor
+        deadline.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.deadline.frame.height))
+        deadline.leftViewMode = UITextField.ViewMode.always
+        
         let buttonColor:[UIButton] = [orangeButtonOutlet, greenButtonOutlet, blueButtonOutlet, purpleButtonOutlet]
         
         for item in buttonColor {
@@ -48,6 +60,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
         randomButtonOutlet.layer.cornerRadius = randomButtonOutlet.bounds.size.height/2
         
         if isEdit == true {
+            titleMilestone.text = "Edit Milestone"
             milestoneName.text = nameMilestone
             
             let formater = DateFormatter()
