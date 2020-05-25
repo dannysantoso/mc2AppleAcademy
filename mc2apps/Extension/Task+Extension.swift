@@ -54,4 +54,15 @@ extension Task{
             print("Error saving context \(error)")
         }
     }
+    
+    static func isCompleted(viewContext: NSManagedObjectContext, isCompleted: Bool, task:[Task], indexTask: Int){
+        task[indexTask].isChecklist = isCompleted
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
+    
 }
