@@ -26,7 +26,20 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     var selectedProject: Project?
     var listOfProjects: [Project] = []
     let datePicker = UIDatePicker()
-    var color = ""
+    var color: String?
+    var isEdit: Bool?
+    var delegateData: ReceiveData?
+    
+    var nameMilestone: String?
+    var dateDeadline: Date?
+    var indexMilestone = 0
+    
+    var nameProject: String?
+    var nameClient: String?
+    var deadlineProject: Date?
+    var completionReward: String?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +50,36 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         returnKeyboard()
         onChangeValueDatePicker()
         customTextField()
-        // populate selected project for edit
-        if let projectToPopulate = selectedProject {
-            populateProject(project: projectToPopulate)
+//        // populate selected project for edit
+//        if let projectToPopulate = selectedProject {
+//            populateProject(project: projectToPopulate)
+//            titlePage.text = "Edit Project"
+//        }
+        
+        if isEdit == true{
             titlePage.text = "Edit Project"
+            projectName.text = nameProject
+            clientName.text = nameClient
+            
+            let formater = DateFormatter()
+            formater.dateFormat = "MMMM d, yyyy"
+            datePicker.date = deadlineProject!
+            deadline.text = formater.string(from: datePicker.date)
+            
+            projectCompletionReward.text = completionReward
+            
+            switch color {
+            case "purple":
+                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            case "blue":
+                blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            case "green":
+                greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            case "orange":
+                orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            default:
+                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            }
         }
         isSaveEnable()
     }
@@ -51,19 +90,19 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         switch randomInt {
         case 1:
             color = "purple"
-            purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
+            purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case 2:
             color = "blue"
-            blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
+            blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case 3:
             color = "green"
-            greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
+            greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case 4:
             color = "orange"
-            orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
+            orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         default:
             color = "orange"
-            orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
+            orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         }
         isSaveEnable()
     }
@@ -71,25 +110,25 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     @IBAction func purpleButton(_ sender: Any) {
         color = "purple"
         clearColorBorder()
-        purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         isSaveEnable()
     }
     @IBAction func blueButton(_ sender: Any) {
         color = "blue"
         clearColorBorder()
-        blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         isSaveEnable()
     }
     @IBAction func greenButton(_ sender: Any) {
         color = "green"
         clearColorBorder()
-        greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         isSaveEnable()
     }
     @IBAction func orangeButton(_ sender: Any) {
         color = "orange"
         clearColorBorder()
-        orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
+        orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         isSaveEnable()
     }
     
@@ -214,13 +253,13 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         color = project.color!
         switch color {
         case "purple":
-            purpleButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+            purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case "blue":
-            blueButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+            blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case "green":
-            greenButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+            greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         case "orange":
-            orangeButtonOutlet.layer.borderColor = UIColor.systemBlue.cgColor
+            orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
         default:
             clearColorBorder()
         }
@@ -234,13 +273,13 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     
 
     @IBAction func save(_ sender: Any) {
-        if titlePage.text == "Edit Project" {
-            if (Project.update(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: datePicker.date, color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "", project: listOfProjects, indexProject: indexProject!) != nil){
+        if isEdit == true {
+            if (Project.update(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: datePicker.date, color: color!, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "", project: listOfProjects, indexProject: indexProject!) != nil){
                     dismiss(animated: true, completion: nil)
-                        self.delegate?.onBackHome()
+                self.delegateData?.onReceiveData(color: color!, name: projectName.text ?? "", date: datePicker.date, client: clientName.text ?? "")
             }
         } else {
-            if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: datePicker.date, color: color, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
+            if (Project.save(viewContext: getViewContext(), projectName: projectName.text ?? "", clientName: clientName.text ?? "", deadline: datePicker.date, color: color!, isCompleted: false, projectCompletionReward: projectCompletionReward.text ?? "") != nil){
                     
                     dismiss(animated: true, completion: nil)
                         self.delegate?.onBackHome()
@@ -251,5 +290,21 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
     @IBAction func cancelButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
         self.delegate?.onBackHome()
+    }
+    
+    @IBAction func tfProjectName(_ sender: Any) {
+        isSaveEnable()
+    }
+    
+    @IBAction func tfClientName(_ sender: Any) {
+        isSaveEnable()
+    }
+    
+    @IBAction func tfDateDeadline(_ sender: Any) {
+        isSaveEnable()
+    }
+    
+    @IBAction func tfReward(_ sender: Any) {
+        isSaveEnable()
     }
 }

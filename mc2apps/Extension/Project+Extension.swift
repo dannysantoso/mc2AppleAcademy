@@ -105,4 +105,14 @@ extension Project{
         try? viewContext.execute(deleteRequest)
         
     }
+    
+    static func deleteData(viewContext: NSManagedObjectContext, project: [Project], indexProject: Int){
+        viewContext.delete(project[indexProject])
+        
+        do {
+            try viewContext.save()
+        } catch {
+           
+        }
+    }
 }
