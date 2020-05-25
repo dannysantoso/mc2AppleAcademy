@@ -15,6 +15,7 @@ class TaskTableViewCell: UITableViewCell {
     @IBOutlet weak var checklist: UIButton!
     var indexTask: Int?
     var task = [Task]()
+    var isChecklist: Bool?
     
     @IBOutlet weak var taskName: UITextField!
     
@@ -45,8 +46,10 @@ class TaskTableViewCell: UITableViewCell {
     @IBAction func isClicked(_ sender: Any) {
         if checklist.backgroundColor == UIColor.black {
             checklist.backgroundColor = .clear
+            Task.isCompleted(viewContext: self.getViewContext(), isCompleted: false, task:task, indexTask: indexTask!)
         }else{
             checklist.backgroundColor = UIColor.black
+            Task.isCompleted(viewContext: self.getViewContext(), isCompleted: true, task:task, indexTask: indexTask!)
         }
     }
 }

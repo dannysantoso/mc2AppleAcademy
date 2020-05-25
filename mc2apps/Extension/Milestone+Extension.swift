@@ -44,8 +44,8 @@ extension Milestone{
     }
     
     
-    static func isCompleted(viewContext: NSManagedObjectContext, isCompleted: Bool, milestone:[Milestone], indexProject: Int){
-        milestone[indexProject].isCompleted = isCompleted
+    static func isCompleted(viewContext: NSManagedObjectContext, isCompleted: Bool, milestone:[Milestone], indexMilestone: Int){
+        milestone[indexMilestone].isCompleted = isCompleted
         
         do {
             try viewContext.save()

@@ -143,7 +143,7 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     }
     
     @IBAction func endMilestone(_ sender: Any) {
-        Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:milestone, indexProject: index!)
+        Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:milestone, indexMilestone: index!)
         endView.isHidden = true
         editBarButtonItem.isEnabled = false
         editBarButtonItem.tintColor = .clear
@@ -172,6 +172,15 @@ extension TaskViewController: UITableViewDataSource{
         cell.taskName?.text = task[indexPath.row].taskName
         cell.indexTask =  indexPath.row
         cell.task = task
+        cell.isChecklist = task[indexPath.row].isChecklist
+        
+        if task[indexPath.row].isChecklist == true {
+            cell.checklist.backgroundColor = UIColor.black
+            print("true")
+        }else{
+            cell.checklist.backgroundColor = .clear
+            print("false")
+        }
         
         return cell
     }
