@@ -44,8 +44,9 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     var milestoneColor: String?
     @IBOutlet weak var addView: UIView!
     @IBOutlet weak var endView: UIButton!
+    var editBarButtonItem = UIBarButtonItem()
     
-    let editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMilestone))
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         self.delegate?.onBackHome()
@@ -53,6 +54,7 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMilestone))
         self.navigationItem.rightBarButtonItem  = editBarButtonItem
         
         projectNameLabel.text = nameProject
@@ -154,9 +156,11 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         
     }
     
-    func onReceiveData(color: String){
+    func onReceiveData(color: String, name: String, date: Date, client: String){
         colorHeader(color: color)
         milestoneColor = color
+        milestoneNameLabel.text = name
+        deadlineLabel.text = formatDate(input: date)
     }
 }
 
@@ -173,6 +177,7 @@ extension TaskViewController: UITableViewDataSource{
         cell.indexTask =  indexPath.row
         cell.task = task
         cell.isChecklist = task[indexPath.row].isChecklist
+        cell.isCompleted = isCompleted
         
         if task[indexPath.row].isChecklist == true {
             cell.checklist.backgroundColor = UIColor.black

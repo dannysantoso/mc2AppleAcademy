@@ -163,12 +163,18 @@ extension ViewController: UITableViewDataSource{
             cell.deadline?.text = formatDate(input: projects[indexPath.row].deadline!)
             colorCell(color: projects[indexPath.row].color ?? "purple", cell: cell)
             cell.selectionStyle = .none
+            cell.indexProject =  indexPath.row
+            cell.project = projects
+            cell.delegate = self
         } else {
             cell.projectName?.text = completedProjects[indexPath.row].projectName
             cell.clientName?.text = completedProjects[indexPath.row].clientName
             cell.deadline?.text = formatDate(input: completedProjects[indexPath.row].deadline!)
             colorCell(color: completedProjects[indexPath.row].color ?? "purple", cell: cell)
             cell.selectionStyle = .none
+            cell.indexProject =  indexPath.row
+            cell.project = completedProjects
+            cell.delegate = self
         }
 
         //mengatur spacing antar cell serta radius corner cell
@@ -194,19 +200,24 @@ extension ViewController: UITableViewDelegate {
                 destination.selectedProject = projects[indexPath.row]
                 destination.nameProject = projects[indexPath.row].projectName
                 destination.nameClient = projects[indexPath.row].clientName
-                destination.deadline = formatDate(input: projects[indexPath.row].deadline!)
+                destination.deadline = projects[indexPath.row].deadline
                 destination.indexProject = indexPath.row
                 destination.listOfProjects = projects
                 destination.delegateViewController = self
                 destination.isCompleted = projects[indexPath.row].isCompleted
+                destination.colorProject = projects[indexPath.row].color
+                destination.completionReward = projects[indexPath.row].projectCompletionReward
             } else {
                 destination.selectedProject = completedProjects[indexPath.row]
                 destination.nameProject = completedProjects[indexPath.row].projectName
                 destination.nameClient = completedProjects[indexPath.row].clientName
-                destination.deadline = formatDate(input: completedProjects[indexPath.row].deadline!)
+                destination.deadline = completedProjects[indexPath.row].deadline
+//                formatDate(input: completedProjects[indexPath.row].deadline!)
                 destination.indexProject = indexPath.row
                 destination.listOfProjects = completedProjects
                 destination.isCompleted = completedProjects[indexPath.row].isCompleted
+                destination.colorProject = completedProjects[indexPath.row].color
+                destination.completionReward = completedProjects[indexPath.row].projectCompletionReward
             }
         }
         

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MilestoneViewController: UIViewController, BackHandler {
+class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     
     @IBAction func toEditButton(_ sender: UIButton) {
         let destination = AddProjectViewController(nibName: "AddProjectViewController", bundle: nil)
@@ -36,31 +36,37 @@ class MilestoneViewController: UIViewController, BackHandler {
     
     var nameProject: String?
     var nameClient: String?
-    var deadline: String?
+    var deadline: Date?
     var isCompleted = false
     var delegateViewController: BackHandler?
+    var colorProject: String?
+    var completionReward: String?
     
     var indexProject: Int?
     var selectedProject : Project?
     var listOfProjects : [Project] = []
 //    var milestoneCompleted = false
     
-    let editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editProject))
+    var editBarButtonItem = UIBarButtonItem()
+    
 
     override func viewWillDisappear(_ animated: Bool) {
         self.delegateViewController?.onBackHome()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(nameClient)
         
         endProject.layer.cornerRadius = 14
+        
+        editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editProject))
+        self.navigationItem.rightBarButtonItem  = editBarButtonItem
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         
         
-        self.navigationItem.rightBarButtonItem  = editBarButtonItem
         
         if isCompleted == true {
             endProject.isHidden = true
@@ -75,7 +81,7 @@ class MilestoneViewController: UIViewController, BackHandler {
         
         nameProjectLabel.text = nameProject
         nameClientLabel.text = nameClient
-        deadlineLabel.text = deadline
+        deadlineLabel.text = formatDate(input: deadline!)
         addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
         addView.layer.cornerRadius = 13
         
@@ -86,7 +92,20 @@ class MilestoneViewController: UIViewController, BackHandler {
     }
     
     @objc func editProject(){
+        let destination = AddProjectViewController(nibName: "AddProjectViewController", bundle: nil)
         
+        destination.nameProject = nameProject
+        destination.nameClient = nameClient
+        destination.deadlineProject = deadline
+        destination.color = colorProject
+        destination.indexProject = indexProject
+        destination.isEdit = true
+        destination.listOfProjects = listOfProjects
+        destination.delegateData = self
+        destination.completionReward = completionReward
+        
+        
+        self.present(destination, animated: true, completion: nil)
     }
     
     @IBAction func addMilestone(_ sender: Any) {
@@ -104,6 +123,12 @@ class MilestoneViewController: UIViewController, BackHandler {
     func onBackHome() {
         milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
         milestoneTableView.reloadData()
+    }
+    
+    func onReceiveData(color: String, name: String, date: Date, client: String){
+        nameProjectLabel.text = name
+        deadlineLabel.text = formatDate(input: date)
+        nameClientLabel.text = client
     }
     
     //mendapatkan warna cell dari data yang disimpan
@@ -151,6 +176,12 @@ class MilestoneViewController: UIViewController, BackHandler {
     @IBAction func endProject(_ sender: Any) {
         Project.isCompleted(viewContext: self.getViewContext(), isCompleted: true, project:listOfProjects, indexProject: indexProject!)
         endProject.isHidden = true
+    }
+    
+    func formatDate(input: Date) -> String {
+        let formater = DateFormatter()
+        formater.dateFormat = "MMMM dd, yyyy"
+        return formater.string(from: input)
     }
 }
 
@@ -224,7 +255,8 @@ extension MilestoneViewController: UITableViewDelegate{
             destination.delegate = self
             destination.nameProject = nameProject
             destination.clientName = nameClient
-            destination.deadlineProject = deadline
+            destination.deadlineProject = formatDate(input: deadline!)
+            //                formatDate(input: deadline)
             destination.isCompleted = milestone[indexPath.row].isCompleted
         
         }
