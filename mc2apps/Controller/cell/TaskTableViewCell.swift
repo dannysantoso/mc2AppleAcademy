@@ -12,6 +12,7 @@ class TaskTableViewCell: UITableViewCell {
     
     
 
+    @IBOutlet weak var checklist: UIButton!
     var indexTask: Int?
     var task = [Task]()
     
@@ -19,6 +20,11 @@ class TaskTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        checklist.backgroundColor = .clear
+        checklist.layer.cornerRadius = 5
+        checklist.layer.borderWidth = 1
+        checklist.layer.borderColor = UIColor.black.cgColor
         
         
     }
@@ -36,4 +42,11 @@ class TaskTableViewCell: UITableViewCell {
 
     }
 
+    @IBAction func isClicked(_ sender: Any) {
+        if checklist.backgroundColor == UIColor.black {
+            checklist.backgroundColor = .clear
+        }else{
+            checklist.backgroundColor = UIColor.black
+        }
+    }
 }

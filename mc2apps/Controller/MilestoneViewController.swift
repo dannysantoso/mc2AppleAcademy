@@ -38,26 +38,37 @@ class MilestoneViewController: UIViewController, BackHandler {
     var nameClient: String?
     var deadline: String?
     var isCompleted = false
+    var delegateViewController: BackHandler?
     
     var indexProject: Int?
     var selectedProject : Project?
     var listOfProjects : [Project] = []
+//    var milestoneCompleted = false
+    
+    let editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editProject))
 
+    override func viewWillDisappear(_ animated: Bool) {
+        self.delegateViewController?.onBackHome()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         endProject.layer.cornerRadius = 14
         
-        if isCompleted == true {
-            endProject.isHidden = true
-        }
-        
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
         
-        let editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editProject))
+        
         self.navigationItem.rightBarButtonItem  = editBarButtonItem
+        
+        if isCompleted == true {
+            endProject.isHidden = true
+            editBarButtonItem.isEnabled = false
+            editBarButtonItem.tintColor = .clear
+            btnAdd.isEnabled = false
+            
+        }
         
         milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
         milestoneTableView.reloadData()
@@ -160,6 +171,11 @@ extension MilestoneViewController: UITableViewDataSource{
             let deadline = formater.string(from: milestone[indexPath.row].deadline!)
             cell.milestoneDeadline?.text = deadline
             
+            if milestone[indexPath.row].isCompleted == true{
+                cell.milestoneView.alpha = 0.5
+                cell.deleteButton.isHidden = true
+            }
+            
 
             //setting color
             colorCell(color: milestone[indexPath.row].color ?? "purple", cell: cell)
@@ -168,6 +184,12 @@ extension MilestoneViewController: UITableViewDataSource{
             cell.numberLabel.text = String(indexPath.row + 1)
             
             cell.delegate = self
+            
+            cell.isCompleted = milestone[indexPath.row].isCompleted
+            
+            
+            
+            
             
 //            let maskLayer = CAShapeLayer()
             cell.milestoneView.layer.cornerRadius = 13
@@ -200,6 +222,10 @@ extension MilestoneViewController: UITableViewDelegate{
             destination.milestoneColor = milestone[indexPath.row].color
             destination.milestone = milestone
             destination.delegate = self
+            destination.nameProject = nameProject
+            destination.clientName = nameClient
+            destination.deadlineProject = deadline
+            destination.isCompleted = milestone[indexPath.row].isCompleted
         
         }
 

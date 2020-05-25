@@ -10,7 +10,14 @@ import UIKit
 
 class TaskViewController: UIViewController, BackHandler, ReceiveData {
     
+
+    @IBOutlet weak var projectNameLabel: UILabel!
+    @IBOutlet weak var clientNameLabel: UILabel!
+    @IBOutlet weak var deadlineLabel: UILabel!
+    @IBOutlet weak var btnAddTask: UIButton!
     
+    @IBOutlet weak var milestoneNameLabel: UILabel!
+    @IBOutlet weak var deadlineMilestoneLabel: UILabel!
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var taskTableView: UITableView!
@@ -27,29 +34,53 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     var selectedMilestone: Milestone?
     var selectedProject: Project?
     var index: Int?
+    var isCompleted: Bool?
     
     var nameProject: String?
     var nameMilestone: String?
-    var deadlineProject: Date?
+    var deadlineProject: String?
     var deadlineMilestone: Date?
     var clientName: String?
     var milestoneColor: String?
+    @IBOutlet weak var addView: UIView!
+    @IBOutlet weak var endView: UIButton!
+    
+    let editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMilestone))
     
     override func viewWillDisappear(_ animated: Bool) {
         self.delegate?.onBackHome()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMilestone))
+        
         self.navigationItem.rightBarButtonItem  = editBarButtonItem
         
+        projectNameLabel.text = nameProject
+        clientNameLabel.text = clientName
+        deadlineLabel.text = deadlineProject
+        milestoneNameLabel.text = nameMilestone
+        deadlineMilestoneLabel.text = formatDate(input: deadlineMilestone!)
+        
+        
+        addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
+        addView.layer.cornerRadius = 13
+        endView.layer.cornerRadius = 14
     
 //        self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
+        
+        if isCompleted == true{
+            endView.isHidden = true
+            editBarButtonItem.isEnabled = false
+            editBarButtonItem.tintColor = .clear
+            btnAddTask.isEnabled = false
+        }
+        
         headerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         headerView.layer.cornerRadius = 24
+        
         
         colorHeader(color: milestoneColor ?? "purple")
         
@@ -60,6 +91,12 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         
         taskTableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "TaskCell")
 
+    }
+    
+    func formatDate(input: Date) -> String {
+        let formater = DateFormatter()
+        formater.dateFormat = "MMMM dd, yyyy"
+        return formater.string(from: input)
     }
     
     @objc func editMilestone(){
@@ -79,7 +116,7 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     }
     
     @IBAction func addTask(_ sender: Any) {
-        let newTask = Task.save(viewContext: self.getViewContext(), taskName: "hahaa", selectedMilestone: selectedMilestone!, isChecklist: false)
+        let newTask = Task.save(viewContext: self.getViewContext(), taskName: "Write your task here...", selectedMilestone: selectedMilestone!, isChecklist: false)
         
         task.append(newTask!)
         taskTableView.reloadData()
@@ -103,6 +140,14 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
             headerView.layer.backgroundColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1).cgColor
             self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.722, green: 0.69, blue: 0.996, alpha: 1)
         }
+    }
+    
+    @IBAction func endMilestone(_ sender: Any) {
+        Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:milestone, indexProject: index!)
+        endView.isHidden = true
+        editBarButtonItem.isEnabled = false
+        editBarButtonItem.tintColor = .clear
+        btnAddTask.isEnabled = false
     }
     
     func onBackHome() {
@@ -136,7 +181,7 @@ extension TaskViewController: UITableViewDataSource{
 extension TaskViewController: UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 60
     }
     
 }
