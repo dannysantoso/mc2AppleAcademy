@@ -53,6 +53,8 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        dismissKeyboard()
+        
         
         editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMilestone))
         self.navigationItem.rightBarButtonItem  = editBarButtonItem
@@ -95,6 +97,16 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
 
     }
     
+    func dismissKeyboard(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap(){
+        self.view.endEditing(true)
+    }
+    
+    
     func formatDate(input: Date) -> String {
         let formater = DateFormatter()
         formater.dateFormat = "MMMM dd, yyyy"
@@ -118,7 +130,7 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     }
     
     @IBAction func addTask(_ sender: Any) {
-        let newTask = Task.save(viewContext: self.getViewContext(), taskName: "Write your task here...", selectedMilestone: selectedMilestone!, isChecklist: false)
+        let newTask = Task.save(viewContext: self.getViewContext(), taskName: "", selectedMilestone: selectedMilestone!, isChecklist: false)
         
         task.append(newTask!)
         taskTableView.reloadData()
@@ -156,12 +168,15 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         
     }
     
-    func onReceiveData(color: String, name: String, date: Date, client: String){
+    func onReceiveData(color: String, name: String, date: Date, client: String, reward: String){
         colorHeader(color: color)
         milestoneColor = color
+        nameMilestone = name
         milestoneNameLabel.text = name
+        deadlineMilestone = date
         deadlineLabel.text = formatDate(input: date)
     }
+    
 }
 
 
@@ -178,6 +193,9 @@ extension TaskViewController: UITableViewDataSource{
         cell.task = task
         cell.isChecklist = task[indexPath.row].isChecklist
         cell.isCompleted = isCompleted
+        cell.taskName.delegate = self
+        
+        
         
         if task[indexPath.row].isChecklist == true {
             cell.checklist.backgroundColor = UIColor.black

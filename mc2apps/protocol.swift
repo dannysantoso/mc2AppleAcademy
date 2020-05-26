@@ -27,5 +27,5 @@ protocol BackHandler {
 }
 
 protocol ReceiveData {
-    func onReceiveData(color: String, name: String, date: Date, client: String)
+    func onReceiveData(color: String, name: String, date: Date, client: String, reward: String)
 }
