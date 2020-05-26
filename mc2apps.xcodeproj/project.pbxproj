@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7419AA8B247D26FE00E2C184 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7419AA89247D26FE00E2C184 /* CardViewController.swift */; };
+		7419AA8C247D26FE00E2C184 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7419AA8A247D26FE00E2C184 /* CardViewController.xib */; };
 		E1009829247126D600E693A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009828247126D600E693A0 /* AppDelegate.swift */; };
 		E100982B247126D600E693A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100982A247126D600E693A0 /* SceneDelegate.swift */; };
 		E100982D247126D600E693A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100982C247126D600E693A0 /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7419AA89247D26FE00E2C184 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		7419AA8A247D26FE00E2C184 /* CardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		E1009825247126D600E693A0 /* mc2apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2apps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1009828247126D600E693A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E100982A247126D600E693A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		E100984324712A1600E693A0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7419AA8A247D26FE00E2C184 /* CardViewController.xib */,
 				E1009836247126D700E693A0 /* LaunchScreen.storyboard */,
 				E100982E247126D600E693A0 /* Main.storyboard */,
 				E10098872473CB6400E693A0 /* MilestoneViewController.xib */,
@@ -158,6 +163,7 @@
 				ECFD50072477D9AA00407C0A /* DashboardViewController.swift */,
 				E10098592472809F00E693A0 /* AddMilestoneViewController.swift */,
 				E100985B24729B1400E693A0 /* TaskViewController.swift */,
+				7419AA89247D26FE00E2C184 /* CardViewController.swift */,
 				E10098962473D18E00E693A0 /* cell */,
 			);
 			path = Controller;
@@ -265,6 +271,7 @@
 				E1009830247126D600E693A0 /* Main.storyboard in Resources */,
 				E100984224712A0100E693A0 /* ProjectTableViewCell.xib in Resources */,
 				E100984B2471360000E693A0 /* MilestoneTableViewCell.xib in Resources */,
+				7419AA8C247D26FE00E2C184 /* CardViewController.xib in Resources */,
 				EC67E1772479687E0092B8C5 /* SF-Pro-Rounded-Bold.otf in Resources */,
 				EC67E178247968950092B8C5 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				E10098912473CFB800E693A0 /* TaskViewController.xib in Resources */,
@@ -284,6 +291,7 @@
 				E100985F24729B4100E693A0 /* TaskTableViewCell.swift in Sources */,
 				ECFD50092477D9AA00407C0A /* DashboardViewController.swift in Sources */,
 				E100984524712CFB00E693A0 /* UIViewController+Extension.swift in Sources */,
+				7419AA8B247D26FE00E2C184 /* CardViewController.swift in Sources */,
 				E100984124712A0100E693A0 /* ProjectTableViewCell.swift in Sources */,
 				E100984A2471360000E693A0 /* MilestoneTableViewCell.swift in Sources */,
 				E10098622472DA1F00E693A0 /* Task+Extension.swift in Sources */,
