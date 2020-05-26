@@ -98,19 +98,19 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
         switch randomInt {
         case 1:
             color = "purple"
-            purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
         case 2:
             color = "blue"
-            blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
         case 3:
             color = "green"
-            greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
         case 4:
             color = "orange"
-            orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
         default:
             color = "purple"
-            purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+            purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
         }
         isSaveEnable()
     }
@@ -118,25 +118,25 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     @IBAction func purpleButton(_ sender: Any) {
         color = "purple"
         clearColorBorder()
-        purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+        purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
         isSaveEnable()
     }
     @IBAction func blueButton(_ sender: Any) {
         color = "blue"
         clearColorBorder()
-        blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+        blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
         isSaveEnable()
     }
     @IBAction func greenButton(_ sender: Any) {
         color = "green"
         clearColorBorder()
-        greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+        greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
         isSaveEnable()
     }
     @IBAction func orangeButton(_ sender: Any) {
         color = "orange"
         clearColorBorder()
-        orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+        orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
         isSaveEnable()
     }
     
