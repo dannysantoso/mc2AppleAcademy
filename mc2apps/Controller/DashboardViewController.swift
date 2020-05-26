@@ -13,16 +13,15 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var dashboardTableView: UITableView!
     
     var milestone: [Milestone] = []
-    {
-        didSet{
-            dashboardTableView.reloadData()
-        }
-    }
-    
     var currentProject: [Project] = []
-//    var currentProject: [Project]?
     var currentTask: [Task] = []
     var index = 0
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        milestone = Milestone.fetchClosestMilestone(viewContext: getViewContext())
+            self.dashboardTableView.reloadData()
+    }
     
     
     override func viewDidLoad() {
@@ -31,14 +30,10 @@ class DashboardViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
-        milestone = Milestone.fetchClosestMilestone(viewContext: getViewContext())
-        
         dashboardTableView.dataSource = self
         dashboardTableView.delegate = self
         
         dashboardTableView.register(UINib(nibName: "DashboardTableViewCell", bundle: nil), forCellReuseIdentifier: "DashboardCell")
-
-
 
         // Do any additional setup after loading the view.
     }
@@ -70,7 +65,21 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        let messageLabel = UILabel(frame: CGRect(x: 70, y: 150, width: 150, height: 23))
+        
+        if milestone.count == 0 {
+            messageLabel.text = "No Milestone"
+            messageLabel.textColor = UIColor(red: 0.2, green: 0.376, blue: 0.6, alpha: 1)
+            messageLabel.font = UIFont(name: "SFProRounded-Medium", size: 20)
+            messageLabel.textAlignment = .center
+            
+            dashboardTableView.addSubview(messageLabel)
+            return 0
+            
+        } else {
+            messageLabel.removeFromSuperview()
+            return milestone.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,6 +90,8 @@ extension DashboardViewController: UITableViewDataSource{
         currentTask = Task.fetchTask(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
         let printedProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
         currentProject.append(contentsOf: printedProject)
+        
+        
         
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
         cell.deadlineLabel?.text = formatDate(input: milestone[indexPath.row].deadline!)
@@ -107,15 +118,14 @@ extension DashboardViewController: UITableViewDataSource{
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
         cell.layer.mask = maskLayer
         
-//        index += 1
-
+        
         return cell
-
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240
     }
+
 }
 
 extension DashboardViewController: UITableViewDelegate{
@@ -134,7 +144,7 @@ extension DashboardViewController: UITableViewDelegate{
 //            destination.delegate = self
             destination.nameProject = currentProject[indexPath.row].projectName
             destination.clientName = currentProject[indexPath.row].clientName
-            destination.deadlineProject = formatDate(input: currentProject[index].deadline!)
+            destination.deadlineProject = formatDate(input: currentProject[indexPath.row].deadline!)
             destination.isCompleted = milestone[indexPath.row].isCompleted
 
         }

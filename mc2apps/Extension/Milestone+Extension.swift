@@ -91,7 +91,7 @@ extension Milestone{
     
     static func deleteAll(viewContext: NSManagedObjectContext){
 
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Project")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Milestone")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
         try? viewContext.execute(deleteRequest)
         

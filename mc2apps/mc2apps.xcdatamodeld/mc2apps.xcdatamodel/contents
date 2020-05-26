@@ -6,7 +6,7 @@
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="milestoneName" optional="YES" attributeType="String"/>
         <relationship name="projectOf" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="milestone" inverseEntity="Project"/>
-        <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="milestoneOf" inverseEntity="Task"/>
+        <relationship name="task" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="milestoneOf" inverseEntity="Task"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES" codeGenerationType="class">
         <attribute name="clientName" optional="YES" attributeType="String"/>
@@ -15,7 +15,7 @@
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="projectCompletionReward" optional="YES" attributeType="String"/>
         <attribute name="projectName" optional="YES" attributeType="String"/>
-        <relationship name="milestone" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Milestone" inverseName="projectOf" inverseEntity="Milestone"/>
+        <relationship name="milestone" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Milestone" inverseName="projectOf" inverseEntity="Milestone"/>
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES" codeGenerationType="class">
         <attribute name="isChecklist" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
