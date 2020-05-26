@@ -30,6 +30,25 @@ extension Task{
         
     }
     
+    static func fetchTask(viewContext: NSManagedObjectContext, selectedMilestone: String, predicate: NSPredicate? = nil) -> [Task]{
+        let request: NSFetchRequest<Task> = Task.fetchRequest()
+        
+        let taskpredicate = NSPredicate(format: "milestoneOf.milestoneName MATCHES %@", selectedMilestone)
+        
+        
+        if let addtionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [taskpredicate, addtionalPredicate])
+        } else {
+            request.predicate = taskpredicate
+        }
+        
+        guard let result = try? viewContext.fetch(request) else{
+            return []
+        }
+        return result
+        
+    }
+    
     
     static func save(viewContext: NSManagedObjectContext, taskName: String, selectedMilestone: Milestone, isChecklist: Bool) -> Task? {
         let newTask = Task(context: viewContext)

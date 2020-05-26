@@ -15,14 +15,11 @@ class DashboardTableViewCell: UITableViewCell {
     @IBOutlet weak var projectNameLabel: UILabel!
     @IBOutlet weak var clientNameLabel: UILabel!
     @IBOutlet weak var deadlineLabel: UILabel!
-    @IBOutlet weak var taskOneLabel: UILabel!
-    @IBOutlet weak var taskTwoLabel: UILabel!
-    @IBOutlet weak var taskThreeLabel: UILabel!
     @IBOutlet weak var dashboardTaskView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
