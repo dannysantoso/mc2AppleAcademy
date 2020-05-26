@@ -19,8 +19,10 @@ class DashboardViewController: UIViewController {
         }
     }
     
-    var currentProject: [Project]?
+    var currentProject: [Project] = []
+//    var currentProject: [Project]?
     var currentTask: [Task] = []
+    var index = 0
     
     
     override func viewDidLoad() {
@@ -32,7 +34,7 @@ class DashboardViewController: UIViewController {
         milestone = Milestone.fetchClosestMilestone(viewContext: getViewContext())
         
         dashboardTableView.dataSource = self
-//        dashboardTableView.delegate = self
+        dashboardTableView.delegate = self
         
         dashboardTableView.register(UINib(nibName: "DashboardTableViewCell", bundle: nil), forCellReuseIdentifier: "DashboardCell")
 
@@ -77,12 +79,12 @@ extension DashboardViewController: UITableViewDataSource{
         var yPos:CGFloat = 132
         
         currentTask = Task.fetchTask(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
-//        currentProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
+        currentProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
         
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
         cell.deadlineLabel?.text = formatDate(input: milestone[indexPath.row].deadline!)
-//        cell.projectNameLabel?.text = currentProject![indexPath.row].projectName
-//        cell.clientNameLabel?.text = currentProject![indexPath.row].clientName
+        cell.projectNameLabel?.text = currentProject[index].projectName
+        cell.clientNameLabel?.text = currentProject[index].clientName
 
         for task in currentTask {
             let label = UILabel(frame: CGRect(x: 24, y: yPos, width: 117, height: 23))
@@ -91,11 +93,8 @@ extension DashboardViewController: UITableViewDataSource{
             label.textColor = .white
             label.text = task.taskName
             yPos += 30
-            
         }
-
-
-        
+          
         colorCell(color: milestone[indexPath.row].color ?? "purple", cell: cell)
         cell.selectionStyle = .none
 
@@ -107,6 +106,7 @@ extension DashboardViewController: UITableViewDataSource{
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
         cell.layer.mask = maskLayer
         
+//        index += 1
 
         return cell
 
@@ -117,35 +117,34 @@ extension DashboardViewController: UITableViewDataSource{
     }
 }
 
-//extension DashboardViewController: UITableViewDelegate{
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let destination = TaskViewController(nibName: "TaskViewController", bundle: nil)
-//
-//        if let indexPath = dashboardTableView.indexPathForSelectedRow {
-//            destination.selectedMilestone = milestone[indexPath.row]
-////            destination.selectedProject = selectedProject
-//            destination.index = indexPath.row
-//            destination.nameMilestone = milestone[indexPath.row].milestoneName
-//            destination.deadlineMilestone = milestone[indexPath.row].deadline
-//            destination.milestoneColor = milestone[indexPath.row].color
-//            destination.milestone = milestone
-// //           destination.delegate = self
-////            destination.nameProject = nameProject
-////            destination.clientName = nameClient
-////            destination.deadlineProject = formatDate(input: deadline!)
-//            //                formatDate(input: deadline)
-//            destination.isCompleted = milestone[indexPath.row].isCompleted
-//
-//        }
-//
-//        self.navigationController?.pushViewController(destination, animated: true)
-//
-////    }
-//
-//
-////    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        return 91
+extension DashboardViewController: UITableViewDelegate{
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destination = TaskViewController(nibName: "TaskViewController", bundle: nil)
+
+        if let indexPath = dashboardTableView.indexPathForSelectedRow {
+            destination.selectedMilestone = milestone[indexPath.row]
+            destination.selectedProject = currentProject[index]
+            destination.index = indexPath.row
+            destination.nameMilestone = milestone[indexPath.row].milestoneName
+            destination.deadlineMilestone = milestone[indexPath.row].deadline
+            destination.milestoneColor = milestone[indexPath.row].color
+            destination.milestone = milestone
+//            destination.delegate = self
+            destination.nameProject = currentProject[index].projectName
+            destination.clientName = currentProject[index].clientName
+            destination.deadlineProject = formatDate(input: currentProject[index].deadline!)
+            destination.isCompleted = milestone[indexPath.row].isCompleted
+
+        }
+
+        self.navigationController?.pushViewController(destination, animated: true)
+
 //    }
-//
-//}
+
+
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 91
+    }
+
+}

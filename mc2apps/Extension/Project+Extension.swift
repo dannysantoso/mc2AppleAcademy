@@ -57,7 +57,7 @@ extension Project{
     static func fetchProject(viewContext: NSManagedObjectContext, selectedMilestone: String, predicate: NSPredicate? = nil) -> [Project]{
         let request: NSFetchRequest<Project> = Project.fetchRequest()
         
-        let projectpredicate = NSPredicate(format: "milestone.milestoneName MATCHES %@", selectedMilestone)
+        let projectpredicate = NSPredicate(format: "ANY milestone.milestoneName = %@", selectedMilestone)
         
         
         if let addtionalPredicate = predicate {
