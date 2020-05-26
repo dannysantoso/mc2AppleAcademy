@@ -23,13 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        self.window.rootViewController = viewController;
         guard let window = window else { return }
         if Core.shared.isNewUser() {
-                let onboardingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "welcome")
-                window.rootViewController = onboardingViewController
-                self.window?.makeKeyAndVisible()
+            let onboardingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "welcome")
+            window.rootViewController = onboardingViewController
+            self.window?.makeKeyAndVisible()
         } else {
-                let onboardingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "navigation")
-                window.rootViewController = onboardingViewController
-                self.window?.makeKeyAndVisible()
+            let onboardingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "navigation")
+            window.rootViewController = onboardingViewController
+            self.window?.makeKeyAndVisible()
         }
 
     }
