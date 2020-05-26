@@ -43,32 +43,21 @@ class ViewController: UIViewController, BackHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        addView.layer.cornerRadius = 13
-        addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
-            
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-//        projects = Project.fetchAll(viewContext: getViewContext())
-        projects = Project.fetchNotCompleted(viewContext: getViewContext())
-        completedProjects = Project.fetchCompleted(viewContext: getViewContext())
+            addView.layer.cornerRadius = 13
+            addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
+                
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
 
-        projectTableView.dataSource = self
-        projectTableView.delegate = self
+                    
+    //        projects = Project.fetchAll(viewContext: getViewContext())
+            projects = Project.fetchNotCompleted(viewContext: getViewContext())
+            completedProjects = Project.fetchCompleted(viewContext: getViewContext())
 
-        projectTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print(Core.shared.isNewUser())
-        if Core.shared.isNewUser() {
-            // show onboarding
-            let vc = storyboard?.instantiateViewController(identifier: "welcome") as! WelcomeViewController
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
-        }
+            projectTableView.dataSource = self
+            projectTableView.delegate = self
+
+            projectTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
     }
     
     @IBAction func segmentChange(_ sender: UISegmentedControl) {

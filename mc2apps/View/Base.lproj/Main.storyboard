@@ -144,7 +144,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DdE-of-Jup">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KSd-aU-gIY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigation" automaticallyAdjustsScrollViewInsets="NO" id="KSd-aU-gIY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Jr9-qw-zwn">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

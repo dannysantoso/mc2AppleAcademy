@@ -63,14 +63,9 @@ class WelcomeViewController: UIViewController {
     
     @objc func didTapButton(_ button:UIButton) {
         guard button.tag < 3 else {
-//            Core.shared.isNotNewUser()
-            print("MASUK BUTTON GETSTARTED")
-            dismiss(animated: true, completion: nil)
-//            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-//            appDelegate?.goToMain()
-//            let destination = DashboardViewController(nibName: "DashboardViewController", bundle: nil)
-//            
-//            self.present(destination, animated: true, completion: nil)
+            Core.shared.isNotNewUser()
+            let destination = DashboardViewController(nibName: "DashboardViewController", bundle: nil)
+            self.present(destination, animated: true, completion: nil)
             return
         }
         scrollView.setContentOffset(CGPoint(x: holderView.frame.size.width * CGFloat(button.tag), y: 0), animated: true)
