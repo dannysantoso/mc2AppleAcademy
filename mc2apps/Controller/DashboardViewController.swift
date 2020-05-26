@@ -79,12 +79,13 @@ extension DashboardViewController: UITableViewDataSource{
         var yPos:CGFloat = 132
         
         currentTask = Task.fetchTask(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
-        currentProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
+        let printedProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
+        currentProject.append(contentsOf: printedProject)
         
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
         cell.deadlineLabel?.text = formatDate(input: milestone[indexPath.row].deadline!)
-        cell.projectNameLabel?.text = currentProject[index].projectName
-        cell.clientNameLabel?.text = currentProject[index].clientName
+        cell.projectNameLabel?.text = printedProject[0].projectName
+        cell.clientNameLabel?.text = printedProject[0].clientName
 
         for task in currentTask {
             let label = UILabel(frame: CGRect(x: 24, y: yPos, width: 117, height: 23))
@@ -124,15 +125,15 @@ extension DashboardViewController: UITableViewDelegate{
 
         if let indexPath = dashboardTableView.indexPathForSelectedRow {
             destination.selectedMilestone = milestone[indexPath.row]
-            destination.selectedProject = currentProject[index]
+            destination.selectedProject = currentProject[indexPath.row]
             destination.index = indexPath.row
             destination.nameMilestone = milestone[indexPath.row].milestoneName
             destination.deadlineMilestone = milestone[indexPath.row].deadline
             destination.milestoneColor = milestone[indexPath.row].color
             destination.milestone = milestone
 //            destination.delegate = self
-            destination.nameProject = currentProject[index].projectName
-            destination.clientName = currentProject[index].clientName
+            destination.nameProject = currentProject[indexPath.row].projectName
+            destination.clientName = currentProject[indexPath.row].clientName
             destination.deadlineProject = formatDate(input: currentProject[index].deadline!)
             destination.isCompleted = milestone[indexPath.row].isCompleted
 
