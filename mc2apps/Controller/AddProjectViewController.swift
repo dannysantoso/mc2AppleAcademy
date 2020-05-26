@@ -152,6 +152,20 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         projectCompletionReward.leftViewMode = UITextField.ViewMode.always
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // get the current text, or use an empty string if that failed
+        let currentText = textField.text ?? ""
+
+        // attempt to read the range they are trying to change, or exit if we can't
+        guard let stringRange = Range(range, in: currentText) else { return false }
+
+        // add their new text to the existing text
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+        // make sure the result is under 15 characters
+        return updatedText.count <= 15
+    }
+    
     // clear chosen color border
     func clearColorBorder() {
         purpleButtonOutlet.layer.borderColor = UIColor.clear.cgColor
