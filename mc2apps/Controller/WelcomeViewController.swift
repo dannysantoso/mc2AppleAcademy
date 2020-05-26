@@ -66,6 +66,8 @@ class WelcomeViewController: UIViewController {
 //            Core.shared.isNotNewUser()
             print("MASUK BUTTON GETSTARTED")
             dismiss(animated: true, completion: nil)
+//            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+//            appDelegate?.goToMain()
 //            let destination = DashboardViewController(nibName: "DashboardViewController", bundle: nil)
 //            
 //            self.present(destination, animated: true, completion: nil)

@@ -262,6 +262,7 @@ extension ViewController: UITableViewDelegate {
 class Core {
     static let shared = Core()
     func isNewUser() -> Bool {
+        print("Checking new user")
         return !UserDefaults.standard.bool(forKey: "isNewUser")
     }
     func isNotNewUser() {
