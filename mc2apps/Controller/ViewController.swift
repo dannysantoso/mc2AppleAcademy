@@ -24,15 +24,13 @@ class ViewController: UIViewController, BackHandler {
     @IBOutlet weak var projectTableView: UITableView!
     
     
-    var projects: [Project] = []
-    {
+    var projects: [Project] = [] {
         didSet{
             projectTableView.reloadData()
         }
     }
     
-    var completedProjects: [Project] = []
-    {
+    var completedProjects: [Project] = [] {
         didSet{
             projectTableView.reloadData()
         }
