@@ -60,6 +60,17 @@ class ViewController: UIViewController, BackHandler {
         projectTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        print(Core.shared.isNewUser())
+        if Core.shared.isNewUser() {
+            // show onboarding
+            let vc = storyboard?.instantiateViewController(identifier: "welcome") as! WelcomeViewController
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        }
+    }
+    
     @IBAction func segmentChange(_ sender: UISegmentedControl) {
         if segmentSwitch.selectedSegmentIndex == 0 {
             projectLabel.text = "List of Projects"
@@ -248,3 +259,12 @@ extension ViewController: UITableViewDelegate {
 }
 
 
+class Core {
+    static let shared = Core()
+    func isNewUser() -> Bool {
+        return !UserDefaults.standard.bool(forKey: "isNewUser")
+    }
+    func isNotNewUser() {
+        UserDefaults.standard.set(true, forKey: "isNewUser")
+    }
+}

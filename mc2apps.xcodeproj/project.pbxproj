@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7419AA87247CEFF600E2C184 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7419AA85247CEFF600E2C184 /* WelcomeViewController.swift */; };
+		7419AA88247CEFF600E2C184 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7419AA86247CEFF600E2C184 /* WelcomeViewController.xib */; };
 		E1009829247126D600E693A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009828247126D600E693A0 /* AppDelegate.swift */; };
 		E100982B247126D600E693A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100982A247126D600E693A0 /* SceneDelegate.swift */; };
 		E100982D247126D600E693A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100982C247126D600E693A0 /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7419AA85247CEFF600E2C184 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		7419AA86247CEFF600E2C184 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		E1009825247126D600E693A0 /* mc2apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2apps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1009828247126D600E693A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E100982A247126D600E693A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			children = (
 				E1009836247126D700E693A0 /* LaunchScreen.storyboard */,
 				E100982E247126D600E693A0 /* Main.storyboard */,
+				7419AA86247CEFF600E2C184 /* WelcomeViewController.xib */,
 				E10098872473CB6400E693A0 /* MilestoneViewController.xib */,
 				E100988B2473CF4000E693A0 /* AddMilestoneViewController.xib */,
 				E100988F2473CFB800E693A0 /* TaskViewController.xib */,
@@ -155,6 +160,7 @@
 				E10098552471B90100E693A0 /* AddProjectViewController.swift */,
 				E10098502471389700E693A0 /* MilestoneViewController.swift */,
 				E100982C247126D600E693A0 /* ViewController.swift */,
+				7419AA85247CEFF600E2C184 /* WelcomeViewController.swift */,
 				ECFD50072477D9AA00407C0A /* DashboardViewController.swift */,
 				E10098592472809F00E693A0 /* AddMilestoneViewController.swift */,
 				E100985B24729B1400E693A0 /* TaskViewController.swift */,
@@ -262,6 +268,7 @@
 				E1009838247126D700E693A0 /* LaunchScreen.storyboard in Resources */,
 				E1009835247126D700E693A0 /* Assets.xcassets in Resources */,
 				EC67E179247968980092B8C5 /* SF-Pro-Rounded-Medium.otf in Resources */,
+				7419AA88247CEFF600E2C184 /* WelcomeViewController.xib in Resources */,
 				E1009830247126D600E693A0 /* Main.storyboard in Resources */,
 				E100984224712A0100E693A0 /* ProjectTableViewCell.xib in Resources */,
 				E100984B2471360000E693A0 /* MilestoneTableViewCell.xib in Resources */,
@@ -299,6 +306,7 @@
 				E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */,
 				E100985C24729B1400E693A0 /* TaskViewController.swift in Sources */,
 				E100982B247126D600E693A0 /* SceneDelegate.swift in Sources */,
+				7419AA87247CEFF600E2C184 /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
