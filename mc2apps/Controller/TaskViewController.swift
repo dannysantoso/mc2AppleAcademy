@@ -158,22 +158,22 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     
     @IBAction func endMilestone(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: "Are you sure you want to end this milestone?", preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
-            let destination = CompleteMilestoneViewController(nibName: "CompleteMilestoneViewController", bundle: nil)
+            let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
+            destination.sourceIndex = 1
              self.navigationController?.pushViewController(destination, animated: true)
-           // self.present(destination, animated: true, completion: nil)
+            
             Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:self.milestone, indexMilestone: self.index!)
             self.endView.isHidden = true
             self.editBarButtonItem.isEnabled = false
             self.editBarButtonItem.tintColor = .clear
             self.btnAddTask.isEnabled = false
         })
+        
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
-        
-        
-        //{ (_) in self.dismiss(animated: true, completion: nil) }))
         
     }
     

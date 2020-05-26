@@ -37,6 +37,7 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     var nameProject: String?
     var nameClient: String?
     var deadline: Date?
+    var rewardProject: String?
     var isCompleted = false
     var delegateViewController: BackHandler?
     var colorProject: String?
@@ -178,8 +179,21 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
 //        )
 //    }
     @IBAction func endProject(_ sender: Any) {
-        Project.isCompleted(viewContext: self.getViewContext(), isCompleted: true, project:listOfProjects, indexProject: indexProject!)
-        endProject.isHidden = true
+        let alert = UIAlertController(title: nil, message: "Are you sure you want to end this project?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
+            let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
+            destination.sourceIndex = 2
+            destination.projectReward = self.rewardProject
+            self.navigationController?.pushViewController(destination, animated: true)
+            
+            Project.isCompleted(viewContext: self.getViewContext(), isCompleted: true, project:self.listOfProjects, indexProject: self.indexProject!)
+            self.endProject.isHidden = true
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func formatDate(input: Date) -> String {
