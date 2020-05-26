@@ -36,6 +36,8 @@
 		E10098A02475DCC100E693A0 /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989F2475DCC100E693A0 /* protocol.swift */; };
 		EC00375D247AC50D00A3C73D /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */; };
 		EC00375E247AC50D00A3C73D /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */; };
+		EC1B152C247D3BF60092A005 /* CompleteMilestoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B152A247D3BF60092A005 /* CompleteMilestoneViewController.swift */; };
+		EC1B152D247D3BF60092A005 /* CompleteMilestoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1B152B247D3BF60092A005 /* CompleteMilestoneViewController.xib */; };
 		EC67E1772479687E0092B8C5 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E173247963A00092B8C5 /* SF-Pro-Rounded-Bold.otf */; };
 		EC67E178247968950092B8C5 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E1752479656A0092B8C5 /* SF-Pro-Rounded-Semibold.otf */; };
 		EC67E179247968980092B8C5 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E1742479656A0092B8C5 /* SF-Pro-Rounded-Medium.otf */; };
@@ -78,6 +80,8 @@
 		E1F9A9F6247ADEE500C0308C /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
 		EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
+		EC1B152A247D3BF60092A005 /* CompleteMilestoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteMilestoneViewController.swift; sourceTree = "<group>"; };
+		EC1B152B247D3BF60092A005 /* CompleteMilestoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompleteMilestoneViewController.xib; sourceTree = "<group>"; };
 		EC67E173247963A00092B8C5 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		EC67E1742479656A0092B8C5 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		EC67E1752479656A0092B8C5 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				E100988B2473CF4000E693A0 /* AddMilestoneViewController.xib */,
 				E100988F2473CFB800E693A0 /* TaskViewController.xib */,
 				E10098932473D09200E693A0 /* AddProjectViewController.xib */,
+				EC1B152B247D3BF60092A005 /* CompleteMilestoneViewController.xib */,
 				E10098522471B2DA00E693A0 /* cell */,
 				EC67E1612479631E0092B8C5 /* fonts */,
 			);
@@ -163,6 +168,7 @@
 				ECFD50072477D9AA00407C0A /* DashboardViewController.swift */,
 				E10098592472809F00E693A0 /* AddMilestoneViewController.swift */,
 				E100985B24729B1400E693A0 /* TaskViewController.swift */,
+				EC1B152A247D3BF60092A005 /* CompleteMilestoneViewController.swift */,
 				E10098962473D18E00E693A0 /* cell */,
 			);
 			path = Controller;
@@ -275,6 +281,7 @@
 				EC67E178247968950092B8C5 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				EC00375E247AC50D00A3C73D /* DashboardTableViewCell.xib in Resources */,
 				E10098912473CFB800E693A0 /* TaskViewController.xib in Resources */,
+				EC1B152D247D3BF60092A005 /* CompleteMilestoneViewController.xib in Resources */,
 				E10098892473CB6400E693A0 /* MilestoneViewController.xib in Resources */,
 				E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */,
 				E100988D2473CF4000E693A0 /* AddMilestoneViewController.xib in Resources */,
@@ -296,6 +303,7 @@
 				E10098622472DA1F00E693A0 /* Task+Extension.swift in Sources */,
 				E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */,
 				E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */,
+				EC1B152C247D3BF60092A005 /* CompleteMilestoneViewController.swift in Sources */,
 				E100982D247126D600E693A0 /* ViewController.swift in Sources */,
 				EC00375D247AC50D00A3C73D /* DashboardTableViewCell.swift in Sources */,
 				E10098A02475DCC100E693A0 /* protocol.swift in Sources */,
