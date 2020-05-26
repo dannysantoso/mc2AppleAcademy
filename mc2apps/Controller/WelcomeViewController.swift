@@ -64,9 +64,17 @@ class WelcomeViewController: UIViewController {
     @objc func didTapButton(_ button:UIButton) {
         guard button.tag < 3 else {
 //            Core.shared.isNotNewUser()
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "navigation")
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+//            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "navigation")
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: true, completion: nil)
+            
+            let mainAppViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "dashboard")
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window {
+                window.rootViewController = mainAppViewController
+                
+                //ini kalo mau pake animasi
+                UIView.transition(with: window, duration: 0.25, options: .transitionCrossDissolve, animations: nil, completion: nil)
+            }
 
             return
         }
