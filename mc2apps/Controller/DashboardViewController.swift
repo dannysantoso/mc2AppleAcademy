@@ -77,12 +77,12 @@ extension DashboardViewController: UITableViewDataSource{
         var yPos:CGFloat = 132
         
         currentTask = Task.fetchTask(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
-        currentProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
+//        currentProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
         
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
         cell.deadlineLabel?.text = formatDate(input: milestone[indexPath.row].deadline!)
-        cell.projectNameLabel?.text = currentProject![indexPath.row].projectName
-        cell.clientNameLabel?.text = currentProject![indexPath.row].clientName
+//        cell.projectNameLabel?.text = currentProject![indexPath.row].projectName
+//        cell.clientNameLabel?.text = currentProject![indexPath.row].clientName
 
         for task in currentTask {
             let label = UILabel(frame: CGRect(x: 24, y: yPos, width: 117, height: 23))
