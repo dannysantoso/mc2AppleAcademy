@@ -33,6 +33,7 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     @IBOutlet weak var deadlineLabel: UILabel!
     @IBOutlet weak var addView: UIView!
     @IBOutlet weak var btnAdd: UIButton!
+    @IBOutlet var tapGestureMilestone: UITapGestureRecognizer!
     
     var nameProject: String?
     var nameClient: String?
@@ -65,16 +66,13 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        
-        
+        btnAdd.isEnabled = false
         
         if isCompleted == true {
             endProject.isHidden = true
             editBarButtonItem.isEnabled = false
             editBarButtonItem.tintColor = .clear
-            btnAdd.isEnabled = false
-            
+            tapGestureMilestone.isEnabled = false
         }
         
         milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
@@ -198,7 +196,7 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     
     func formatDate(input: Date) -> String {
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         return formater.string(from: input)
     }
 }
@@ -216,7 +214,7 @@ extension MilestoneViewController: UITableViewDataSource{
             
             //menampilkan date format
             let formater = DateFormatter()
-            formater.dateFormat = "MMMM dd, yyyy"
+            formater.dateFormat = "MMMM d, yyyy"
             let deadline = formater.string(from: milestone[indexPath.row].deadline!)
             cell.milestoneDeadline?.text = deadline
             

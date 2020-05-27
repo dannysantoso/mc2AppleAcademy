@@ -43,6 +43,10 @@ class ViewController: UIViewController, BackHandler {
         super.viewDidLoad()
             addView.layer.cornerRadius = 13
             addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
+        
+        //addGestureRecognizer programatically
+//        addView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addProjectObjc)))
+        addButton.isEnabled = false
                 
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -85,6 +89,14 @@ class ViewController: UIViewController, BackHandler {
         
     }
     
+//    @objc func addProjectObjc(_ sender: Any) {
+//        let destination = AddProjectViewController(nibName: "AddProjectViewController", bundle: nil)
+//        
+//        destination.delegate = self
+//        
+//        self.present(destination, animated: true, completion: nil)
+//    }
+    
 
     
     func onBackHome() {
@@ -118,7 +130,7 @@ class ViewController: UIViewController, BackHandler {
     
     func formatDate(input: Date) -> String {
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         return formater.string(from: input)
     }
     
