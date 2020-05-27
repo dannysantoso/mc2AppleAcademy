@@ -54,7 +54,7 @@ class Notifications:NSObject, UNUserNotificationCenterDelegate{
 
     static func formatDate(input: Date) -> String {
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy hh:mm"
+        formater.dateFormat = "MMMM d, yyyy"
         return formater.string(from: input)
     }
 

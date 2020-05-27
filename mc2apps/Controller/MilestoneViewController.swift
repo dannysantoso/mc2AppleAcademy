@@ -196,7 +196,7 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     
     func formatDate(input: Date) -> String {
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         return formater.string(from: input)
     }
 }
@@ -214,7 +214,7 @@ extension MilestoneViewController: UITableViewDataSource{
             
             //menampilkan date format
             let formater = DateFormatter()
-            formater.dateFormat = "MMMM dd, yyyy"
+            formater.dateFormat = "MMMM d, yyyy"
             let deadline = formater.string(from: milestone[indexPath.row].deadline!)
             cell.milestoneDeadline?.text = deadline
             

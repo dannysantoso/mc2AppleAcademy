@@ -128,7 +128,7 @@ class ViewController: UIViewController, BackHandler {
     
     func formatDate(input: Date) -> String {
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         return formater.string(from: input)
     }
     
