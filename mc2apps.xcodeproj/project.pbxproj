@@ -36,6 +36,7 @@
 		E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098932473D09200E693A0 /* AddProjectViewController.xib */; };
 		E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989D2475103800E693A0 /* UITableViewController+Extension.swift */; };
 		E10098A02475DCC100E693A0 /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989F2475DCC100E693A0 /* protocol.swift */; };
+		E1F9A9F8247DA5F300C0308C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9A9F7247DA5F300C0308C /* Notification.swift */; };
 		EC00375D247AC50D00A3C73D /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */; };
 		EC00375E247AC50D00A3C73D /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */; };
 		EC1B152C247D3BF60092A005 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B152A247D3BF60092A005 /* CompleteViewController.swift */; };
@@ -87,6 +88,7 @@
 		E1F9A9F4247AD40000C0308C /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		E1F9A9F5247AD57F00C0308C /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		E1F9A9F6247ADEE500C0308C /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
+		E1F9A9F7247DA5F300C0308C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
 		EC1B152A247D3BF60092A005 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				E1009839247126D700E693A0 /* Info.plist */,
 				E1009831247126D600E693A0 /* mc2apps.xcdatamodeld */,
 				E100989F2475DCC100E693A0 /* protocol.swift */,
+				E1F9A9F7247DA5F300C0308C /* Notification.swift */,
 				EC1B153C247E24CD0092A005 /* Rewards.swift */,
 			);
 			path = mc2apps;
@@ -339,6 +342,7 @@
 				E10098542471B31A00E693A0 /* Milestone+Extension.swift in Sources */,
 				E100984724712D4F00E693A0 /* Project+Extension.swift in Sources */,
 				E1009833247126D600E693A0 /* mc2apps.xcdatamodeld in Sources */,
+				E1F9A9F8247DA5F300C0308C /* Notification.swift in Sources */,
 				E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */,
 				E100985C24729B1400E693A0 /* TaskViewController.swift in Sources */,
 				E100982B247126D600E693A0 /* SceneDelegate.swift in Sources */,
