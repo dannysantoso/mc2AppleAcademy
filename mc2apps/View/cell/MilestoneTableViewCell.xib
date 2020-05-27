@@ -62,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzZ-vE-zZi">
-                                <rect key="frame" x="34" y="16" width="179" height="21"/>
+                                <rect key="frame" x="34" y="16" width="179" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="24"/>
                                 <color key="textColor" red="0.24313725489999999" green="0.36862745099999999" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

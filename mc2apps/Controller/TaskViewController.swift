@@ -22,6 +22,8 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var taskTableView: UITableView!
     
+    @IBOutlet var tapGestureTask: UITapGestureRecognizer!
+    
     var task = [Task](){
         didSet{
             taskTableView.reloadData()
@@ -58,6 +60,7 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         
         editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMilestone))
         self.navigationItem.rightBarButtonItem  = editBarButtonItem
+        btnAddTask.isEnabled = false
         
         projectNameLabel.text = nameProject
         clientNameLabel.text = clientName
@@ -79,7 +82,7 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
             endView.isHidden = true
             editBarButtonItem.isEnabled = false
             editBarButtonItem.tintColor = .clear
-            btnAddTask.isEnabled = false
+            tapGestureTask.isEnabled = false
         }
         
         headerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -157,11 +160,24 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     }
     
     @IBAction func endMilestone(_ sender: Any) {
-        Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:milestone, indexMilestone: index!)
-        endView.isHidden = true
-        editBarButtonItem.isEnabled = false
-        editBarButtonItem.tintColor = .clear
-        btnAddTask.isEnabled = false
+        let alert = UIAlertController(title: nil, message: "Are you sure you want to end this milestone?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
+            let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
+            destination.sourceIndex = 1
+             self.navigationController?.pushViewController(destination, animated: true)
+            
+            Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:self.milestone, indexMilestone: self.index!)
+            self.endView.isHidden = true
+            self.editBarButtonItem.isEnabled = false
+            self.editBarButtonItem.tintColor = .clear
+            self.btnAddTask.isEnabled = false
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     func onBackHome() {

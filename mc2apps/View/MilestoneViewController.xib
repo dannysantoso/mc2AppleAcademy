@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -30,6 +30,7 @@
                 <outlet property="milestoneTableView" destination="NkE-m9-7DB" id="Dz2-Mo-h6T"/>
                 <outlet property="nameClientLabel" destination="2jk-l1-Keg" id="GTR-PV-FeE"/>
                 <outlet property="nameProjectLabel" destination="boy-BS-pl9" id="mvA-Le-vo6"/>
+                <outlet property="tapGestureMilestone" destination="nfW-8V-bcF" id="Xux-d2-xbw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -54,13 +55,16 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="40"/>
                             <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <state key="normal" title="+"/>
-                            <connections>
-                                <action selector="addMilestone:" destination="-1" eventType="touchUpInside" id="Tr9-2L-Bxo"/>
-                            </connections>
+                            <state key="normal" title="+">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.98431372549019602" green="0.58431372549019611" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="nfW-8V-bcF" appends="YES" id="Y8l-Eq-yEo"/>
+                    </connections>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NkE-m9-7DB">
                     <rect key="frame" x="0.0" y="321" width="414" height="575"/>
@@ -104,5 +108,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
+        <tapGestureRecognizer id="nfW-8V-bcF">
+            <connections>
+                <action selector="addMilestone:" destination="-1" id="9EP-E6-yhu"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

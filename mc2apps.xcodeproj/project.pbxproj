@@ -39,6 +39,13 @@
 		E1F9A9F8247DA5F300C0308C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9A9F7247DA5F300C0308C /* Notification.swift */; };
 		EC00375D247AC50D00A3C73D /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */; };
 		EC00375E247AC50D00A3C73D /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */; };
+		EC1B152C247D3BF60092A005 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B152A247D3BF60092A005 /* CompleteViewController.swift */; };
+		EC1B152D247D3BF60092A005 /* CompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1B152B247D3BF60092A005 /* CompleteViewController.xib */; };
+		EC1B1534247D72480092A005 /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B1532247D72480092A005 /* RewardViewController.swift */; };
+		EC1B1535247D72480092A005 /* RewardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1B1533247D72480092A005 /* RewardViewController.xib */; };
+		EC1B153A247E223C0092A005 /* RewardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B1538247E223C0092A005 /* RewardCollectionViewCell.swift */; };
+		EC1B153B247E223C0092A005 /* RewardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC1B1539247E223C0092A005 /* RewardCollectionViewCell.xib */; };
+		EC1B153D247E24CD0092A005 /* Rewards.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1B153C247E24CD0092A005 /* Rewards.swift */; };
 		EC67E1772479687E0092B8C5 /* SF-Pro-Rounded-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E173247963A00092B8C5 /* SF-Pro-Rounded-Bold.otf */; };
 		EC67E178247968950092B8C5 /* SF-Pro-Rounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E1752479656A0092B8C5 /* SF-Pro-Rounded-Semibold.otf */; };
 		EC67E179247968980092B8C5 /* SF-Pro-Rounded-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EC67E1742479656A0092B8C5 /* SF-Pro-Rounded-Medium.otf */; };
@@ -84,6 +91,13 @@
 		E1F9A9F7247DA5F300C0308C /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardTableViewCell.swift; sourceTree = "<group>"; };
 		EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardTableViewCell.xib; sourceTree = "<group>"; };
+		EC1B152A247D3BF60092A005 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		EC1B152B247D3BF60092A005 /* CompleteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompleteViewController.xib; sourceTree = "<group>"; };
+		EC1B1532247D72480092A005 /* RewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
+		EC1B1533247D72480092A005 /* RewardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardViewController.xib; sourceTree = "<group>"; };
+		EC1B1538247E223C0092A005 /* RewardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCollectionViewCell.swift; sourceTree = "<group>"; };
+		EC1B1539247E223C0092A005 /* RewardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardCollectionViewCell.xib; sourceTree = "<group>"; };
+		EC1B153C247E24CD0092A005 /* Rewards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rewards.swift; sourceTree = "<group>"; };
 		EC67E173247963A00092B8C5 /* SF-Pro-Rounded-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Bold.otf"; sourceTree = "<group>"; };
 		EC67E1742479656A0092B8C5 /* SF-Pro-Rounded-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Medium.otf"; sourceTree = "<group>"; };
 		EC67E1752479656A0092B8C5 /* SF-Pro-Rounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Semibold.otf"; sourceTree = "<group>"; };
@@ -131,6 +145,7 @@
 				E1009831247126D600E693A0 /* mc2apps.xcdatamodeld */,
 				E100989F2475DCC100E693A0 /* protocol.swift */,
 				E1F9A9F7247DA5F300C0308C /* Notification.swift */,
+				EC1B153C247E24CD0092A005 /* Rewards.swift */,
 			);
 			path = mc2apps;
 			sourceTree = "<group>";
@@ -145,6 +160,8 @@
 				E100988B2473CF4000E693A0 /* AddMilestoneViewController.xib */,
 				E100988F2473CFB800E693A0 /* TaskViewController.xib */,
 				E10098932473D09200E693A0 /* AddProjectViewController.xib */,
+				EC1B152B247D3BF60092A005 /* CompleteViewController.xib */,
+				EC1B1533247D72480092A005 /* RewardViewController.xib */,
 				E10098522471B2DA00E693A0 /* cell */,
 				EC67E1612479631E0092B8C5 /* fonts */,
 			);
@@ -158,6 +175,7 @@
 				EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */,
 				E10098492471360000E693A0 /* MilestoneTableViewCell.xib */,
 				E100985E24729B4100E693A0 /* TaskTableViewCell.xib */,
+				EC1B1539247E223C0092A005 /* RewardCollectionViewCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -172,6 +190,8 @@
 				ECFD50072477D9AA00407C0A /* DashboardViewController.swift */,
 				E10098592472809F00E693A0 /* AddMilestoneViewController.swift */,
 				E100985B24729B1400E693A0 /* TaskViewController.swift */,
+				EC1B152A247D3BF60092A005 /* CompleteViewController.swift */,
+				EC1B1532247D72480092A005 /* RewardViewController.swift */,
 				E10098962473D18E00E693A0 /* cell */,
 			);
 			path = Controller;
@@ -196,6 +216,7 @@
 				E10098482471360000E693A0 /* MilestoneTableViewCell.swift */,
 				E100985D24729B4100E693A0 /* TaskTableViewCell.swift */,
 				EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */,
+				EC1B1538247E223C0092A005 /* RewardCollectionViewCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -275,6 +296,7 @@
 				E100986024729B4100E693A0 /* TaskTableViewCell.xib in Resources */,
 				EC67E17A2479689B0092B8C5 /* SF-Pro-Rounded-Regular.otf in Resources */,
 				E1009838247126D700E693A0 /* LaunchScreen.storyboard in Resources */,
+				EC1B153B247E223C0092A005 /* RewardCollectionViewCell.xib in Resources */,
 				E1009835247126D700E693A0 /* Assets.xcassets in Resources */,
 				EC67E179247968980092B8C5 /* SF-Pro-Rounded-Medium.otf in Resources */,
 				7419AA88247CEFF600E2C184 /* WelcomeViewController.xib in Resources */,
@@ -285,9 +307,11 @@
 				EC67E178247968950092B8C5 /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				EC00375E247AC50D00A3C73D /* DashboardTableViewCell.xib in Resources */,
 				E10098912473CFB800E693A0 /* TaskViewController.xib in Resources */,
+				EC1B152D247D3BF60092A005 /* CompleteViewController.xib in Resources */,
 				E10098892473CB6400E693A0 /* MilestoneViewController.xib in Resources */,
 				E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */,
 				E100988D2473CF4000E693A0 /* AddMilestoneViewController.xib in Resources */,
+				EC1B1535247D72480092A005 /* RewardViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,12 +326,16 @@
 				ECFD50092477D9AA00407C0A /* DashboardViewController.swift in Sources */,
 				E100984524712CFB00E693A0 /* UIViewController+Extension.swift in Sources */,
 				E100984124712A0100E693A0 /* ProjectTableViewCell.swift in Sources */,
+				EC1B153D247E24CD0092A005 /* Rewards.swift in Sources */,
 				E100984A2471360000E693A0 /* MilestoneTableViewCell.swift in Sources */,
+				EC1B153A247E223C0092A005 /* RewardCollectionViewCell.swift in Sources */,
 				E10098622472DA1F00E693A0 /* Task+Extension.swift in Sources */,
 				E10098562471B90100E693A0 /* AddProjectViewController.swift in Sources */,
 				E10098512471389700E693A0 /* MilestoneViewController.swift in Sources */,
+				EC1B152C247D3BF60092A005 /* CompleteViewController.swift in Sources */,
 				E100982D247126D600E693A0 /* ViewController.swift in Sources */,
 				EC00375D247AC50D00A3C73D /* DashboardTableViewCell.swift in Sources */,
+				EC1B1534247D72480092A005 /* RewardViewController.swift in Sources */,
 				E10098A02475DCC100E693A0 /* protocol.swift in Sources */,
 				E100985A2472809F00E693A0 /* AddMilestoneViewController.swift in Sources */,
 				E1009829247126D600E693A0 /* AppDelegate.swift in Sources */,

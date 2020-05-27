@@ -16,11 +16,19 @@ class DashboardViewController: UIViewController {
     var currentProject: [Project] = []
     var currentTask: [Task] = []
     var index = 0
+    let messageLabel = UILabel(frame: CGRect(x: 70, y: 150, width: 150, height: 23))
     
     
     override func viewWillAppear(_ animated: Bool) {
         milestone = Milestone.fetchClosestMilestone(viewContext: getViewContext())
-            self.dashboardTableView.reloadData()
+        self.dashboardTableView.reloadData()
+        
+        if milestone.count == 0 {
+            dashboardTableView.addSubview(messageLabel)
+        } else {
+            messageLabel.removeFromSuperview()
+        }
+        
     }
     
     
@@ -64,7 +72,6 @@ class DashboardViewController: UIViewController {
 extension DashboardViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let messageLabel = UILabel(frame: CGRect(x: 70, y: 150, width: 150, height: 23))
         
         if milestone.count == 0 {
             messageLabel.text = "No Milestone"
@@ -72,11 +79,11 @@ extension DashboardViewController: UITableViewDataSource{
             messageLabel.font = UIFont(name: "SFProRounded-Medium", size: 20)
             messageLabel.textAlignment = .center
             
-            dashboardTableView.addSubview(messageLabel)
+ //           dashboardTableView.addSubview(messageLabel)
             return 0
             
         } else {
-            messageLabel.removeFromSuperview()
+ //           messageLabel.removeFromSuperview()
             return milestone.count
         }
     }
@@ -90,7 +97,14 @@ extension DashboardViewController: UITableViewDataSource{
         let printedProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
         currentProject.append(contentsOf: printedProject)
         
-        
+        if currentTask.count == 0 {
+            cell.taskView.backgroundColor = .white
+            cell.taskView.layer.borderColor = UIColor.lightGray.cgColor
+            //           cell.taskView.layer.bounds.size.height = 0
+            cell.taskView.layer.borderWidth = 1.0
+        } else {
+            cell.taskView.backgroundColor = .clear
+        }
         
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
         cell.deadlineLabel?.text = formatDate(input: milestone[indexPath.row].deadline!)
@@ -116,7 +130,6 @@ extension DashboardViewController: UITableViewDataSource{
         maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
         cell.layer.mask = maskLayer
-        
         
         return cell
     }

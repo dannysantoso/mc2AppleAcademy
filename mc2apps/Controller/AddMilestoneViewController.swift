@@ -71,15 +71,15 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
             
             switch color {
             case "purple":
-                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "blue":
-                blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "green":
-                greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "orange":
-                orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
             default:
-                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
             }
         }
         

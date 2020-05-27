@@ -43,6 +43,10 @@ class ViewController: UIViewController, BackHandler {
         super.viewDidLoad()
             addView.layer.cornerRadius = 13
             addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
+        
+        //addGestureRecognizer programatically
+//        addView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addProjectObjc)))
+        addButton.isEnabled = false
                 
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -82,6 +86,14 @@ class ViewController: UIViewController, BackHandler {
         self.present(destination, animated: true, completion: nil)
         
     }
+    
+//    @objc func addProjectObjc(_ sender: Any) {
+//        let destination = AddProjectViewController(nibName: "AddProjectViewController", bundle: nil)
+//        
+//        destination.delegate = self
+//        
+//        self.present(destination, animated: true, completion: nil)
+//    }
     
 
     
@@ -204,6 +216,7 @@ extension ViewController: UITableViewDelegate {
                 destination.nameProject = projects[indexPath.row].projectName
                 destination.nameClient = projects[indexPath.row].clientName
                 destination.deadline = projects[indexPath.row].deadline
+                destination.rewardProject = projects[indexPath.row].projectCompletionReward
                 destination.indexProject = indexPath.row
                 destination.listOfProjects = projects
                 destination.delegateViewController = self
@@ -215,7 +228,7 @@ extension ViewController: UITableViewDelegate {
                 destination.nameProject = completedProjects[indexPath.row].projectName
                 destination.nameClient = completedProjects[indexPath.row].clientName
                 destination.deadline = completedProjects[indexPath.row].deadline
-//                formatDate(input: completedProjects[indexPath.row].deadline!)
+//                destination.rewardProject = [indexPath.row].projectCompletionReward
                 destination.indexProject = indexPath.row
                 destination.listOfProjects = completedProjects
                 destination.isCompleted = completedProjects[indexPath.row].isCompleted
