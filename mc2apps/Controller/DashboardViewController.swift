@@ -97,6 +97,15 @@ extension DashboardViewController: UITableViewDataSource{
         let printedProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
         currentProject.append(contentsOf: printedProject)
         
+        if currentTask.count == 0 {
+            cell.taskView.backgroundColor = .white
+            cell.taskView.layer.borderColor = UIColor.lightGray.cgColor
+            //           cell.taskView.layer.bounds.size.height = 0
+            cell.taskView.layer.borderWidth = 1.0
+        } else {
+            cell.taskView.backgroundColor = .clear
+        }
+        
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
         cell.deadlineLabel?.text = formatDate(input: milestone[indexPath.row].deadline!)
         cell.projectNameLabel?.text = printedProject[0].projectName
@@ -121,7 +130,6 @@ extension DashboardViewController: UITableViewDataSource{
         maskLayer.backgroundColor = UIColor.black.cgColor
         maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height-20)
         cell.layer.mask = maskLayer
-        
         
         return cell
     }
