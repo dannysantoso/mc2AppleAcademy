@@ -26,7 +26,7 @@ class CompleteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         setupUI()
     }
     
@@ -44,7 +44,16 @@ class CompleteViewController: UIViewController {
         
     }
 
-
+    @IBAction func yayButtonClicked(_ sender: UIButton) {
+        if sourceIndex == 1 {
+            let destination = RewardViewController(nibName: "RewardViewController", bundle: nil)
+            self.navigationController?.pushViewController(destination, animated: true)
+        } else if sourceIndex == 2 {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+    }
+    
     
 
 }

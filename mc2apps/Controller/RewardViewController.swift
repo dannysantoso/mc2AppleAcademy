@@ -8,30 +8,43 @@
 
 import UIKit
 
+
 class RewardViewController: UIViewController {
 
-    @IBOutlet weak var rewardImage: UIImageView!
+    @IBOutlet weak var rewardCollectionView: UICollectionView!
     @IBOutlet weak var wantButton: UIButton! {
         didSet {
             wantButton.layer.cornerRadius = 27.5
         }
     }
     
+    var rewards = Rewards.fetchReward()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        rewardCollectionView.dataSource = self
+        rewardCollectionView.register(UINib(nibName: "RewardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RewardCollectionViewCell")
     }
+}
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension RewardViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return rewards.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RewardCollectionViewCell", for: indexPath) as! RewardCollectionViewCell
+        
+        let reward = rewards[indexPath.item]
+        
+        cell.reward = reward
+        
+        return cell
+    }
 }
