@@ -204,6 +204,7 @@ extension ViewController: UITableViewDelegate {
                 destination.nameProject = projects[indexPath.row].projectName
                 destination.nameClient = projects[indexPath.row].clientName
                 destination.deadline = projects[indexPath.row].deadline
+                destination.rewardProject = projects[indexPath.row].projectCompletionReward
                 destination.indexProject = indexPath.row
                 destination.listOfProjects = projects
                 destination.delegateViewController = self
@@ -215,7 +216,7 @@ extension ViewController: UITableViewDelegate {
                 destination.nameProject = completedProjects[indexPath.row].projectName
                 destination.nameClient = completedProjects[indexPath.row].clientName
                 destination.deadline = completedProjects[indexPath.row].deadline
-//                formatDate(input: completedProjects[indexPath.row].deadline!)
+//                destination.rewardProject = [indexPath.row].projectCompletionReward
                 destination.indexProject = indexPath.row
                 destination.listOfProjects = completedProjects
                 destination.isCompleted = completedProjects[indexPath.row].isCompleted

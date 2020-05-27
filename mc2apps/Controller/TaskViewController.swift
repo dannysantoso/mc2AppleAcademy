@@ -157,11 +157,24 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     }
     
     @IBAction func endMilestone(_ sender: Any) {
-        Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:milestone, indexMilestone: index!)
-        endView.isHidden = true
-        editBarButtonItem.isEnabled = false
-        editBarButtonItem.tintColor = .clear
-        btnAddTask.isEnabled = false
+        let alert = UIAlertController(title: nil, message: "Are you sure you want to end this milestone?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
+            let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
+            destination.sourceIndex = 1
+             self.navigationController?.pushViewController(destination, animated: true)
+            
+            Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:self.milestone, indexMilestone: self.index!)
+            self.endView.isHidden = true
+            self.editBarButtonItem.isEnabled = false
+            self.editBarButtonItem.tintColor = .clear
+            self.btnAddTask.isEnabled = false
+        })
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     func onBackHome() {
