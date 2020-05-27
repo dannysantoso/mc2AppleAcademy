@@ -36,7 +36,7 @@ class Notifications:NSObject, UNUserNotificationCenterDelegate{
         if timeInterval >= 0 {
             print(timeInterval)
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
-            let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
+            let request = UNNotificationRequest(identifier: "\(project.objectID.uriRepresentation())", content: content, trigger: trigger)
             center.add(request) { (error) in
                 if error != nil {
                     print("Error = \(error?.localizedDescription ?? "error local notification")")
@@ -48,9 +48,8 @@ class Notifications:NSObject, UNUserNotificationCenterDelegate{
     }
 
     static func removeNotification(_ project: Project) {
-        print("remove notification \(project.projectName!)")
         print("\(project.objectID.uriRepresentation())")
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [project.projectName!])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["\(project.objectID.uriRepresentation())"])
     }
 
     static func formatDate(input: Date) -> String {

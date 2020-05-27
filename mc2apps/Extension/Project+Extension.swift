@@ -104,11 +104,10 @@ extension Project{
         project[indexProject].isCompleted = isCompleted
         project[indexProject].projectCompletionReward = projectCompletionReward
         
-        
+        Notifications.setNotification(project: project[indexProject])
         
         do {
             try viewContext.save()
-            Notifications.setNotification(project: project[indexProject])
         } catch {
             print("Error saving context \(error)")
         }
@@ -116,6 +115,8 @@ extension Project{
     
     static func isCompleted(viewContext: NSManagedObjectContext, isCompleted: Bool, project:[Project], indexProject: Int){
         project[indexProject].isCompleted = isCompleted
+        
+        Notifications.removeNotification(project[indexProject])
         
         do {
             try viewContext.save()
@@ -135,11 +136,10 @@ extension Project{
     static func deleteData(viewContext: NSManagedObjectContext, project: [Project], indexProject: Int){
         viewContext.delete(project[indexProject])
         
-        
+        Notifications.removeNotification(project[indexProject])
         
         do {
             try viewContext.save()
-            Notifications.removeNotification(project[indexProject])
         } catch {
            
         }
