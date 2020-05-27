@@ -23,6 +23,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         configure()
+//        setUpBottomControls()
     }
 
     private func configure() {
@@ -34,28 +35,31 @@ class WelcomeViewController: UIViewController {
             let pageView = UIView(frame: CGRect(x: CGFloat(i) * holderView.frame.size.width, y: 0, width: holderView.frame.size.width, height: holderView.frame.size.height))
             scrollView.addSubview(pageView)
             
-            let label = UILabel(frame: CGRect(x: 10, y: 10, width: pageView.frame.size.width - 20, height: 120))
-            let imageView = UIImageView(frame: CGRect(x: 10, y: 10+120+10, width: pageView.frame.size.width - 20, height: pageView.frame.size.height - 15))
-            let button = UIButton(frame: CGRect(x: 10, y: pageView.frame.size.height - 60, width: pageView.frame.size.width - 20, height: 50))
+//            let label = UILabel(frame: CGRect(x: 10, y: 10, width: pageView.frame.size.width - 20, height: 120))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: pageView.frame.size.width, height: pageView.frame.size.height))
+            let button = UIButton(frame: CGRect(x: 10, y: pageView.frame.size.height - 100, width: pageView.frame.size.width - 20, height: 50))
+//            let titleLabel = UILabel(frame: CGRect(x: 10, y: 10, width: pageView.frame.size.width - 20, height: 120))
+//            let subtitleLabel = UILabel(frame: CGRect(x: 10, y: 10, width: pageView.frame.size.width - 20, height: 120))
             
-            label.textAlignment = .center
-            label.font = UIFont(name: "Helvetica-Bold", size: 32)
-            pageView.addSubview(label)
-            label.text = titles[i]
+//            label.textAlignment = .center
+//            label.font = UIFont(name: "Helvetica-Bold", size: 32)
+//            pageView.addSubview(label)
+//            label.text = titles[i]
             
-            imageView.contentMode = .scaleAspectFit
-            imageView.image = UIImage(named: "welcome")
+            imageView.contentMode = .scaleAspectFill
+            imageView.image = UIImage(named: "OnBoarding_0\(i+1)")
             pageView.addSubview(imageView)
             
             button.setTitleColor(.white, for: .normal)
             button.backgroundColor = .black
             button.setTitle("Continue", for: .normal)
-            if i == 2 {
+            if i == titles.count - 1 {
                 button.setTitle("Get Started", for: .normal)
             }
             button.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
             button.tag = i+1
             pageView.addSubview(button)
+            pageView.addSubview(pageControl)
         }
         scrollView.contentSize = CGSize(width: holderView.frame.size.width * 3, height: 0)
         scrollView.isPagingEnabled = true
@@ -73,4 +77,18 @@ class WelcomeViewController: UIViewController {
         scrollView.setContentOffset(CGPoint(x: holderView.frame.size.width * CGFloat(button.tag), y: 0), animated: true)
     }
 
+    private let pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = 3
+        pc.currentPageIndicatorTintColor = UIColor.systemRed
+        pc.pageIndicatorTintColor = UIColor.systemBlue
+        return pc
+    }()
+    
+    fileprivate func setUpBottomControls() {
+        let stackView = UIStackView(arrangedSubviews: [pageControl])
+        holderView.addSubview(stackView)
+//        NSLayoutConstraint.activate([pageControl.bottomAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.bottomAnchor), pageControl.leadingAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.leadingAnchor), pageControl.trailingAnchor.constraint(equalTo: stackView.safeAreaLayoutGuide.trailingAnchor), pageControl.heightAnchor.constraint(equalToConstant: 50)])
+    }
 }
