@@ -79,7 +79,6 @@ class WelcomeViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        print(targetContentOffset[0].x)
         pageControl.currentPage = Int(targetContentOffset[0].x / holderView.frame.size.width)
     }
     

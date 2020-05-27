@@ -43,6 +43,7 @@ class ViewController: UIViewController, BackHandler {
         super.viewDidLoad()
             addView.layer.cornerRadius = 13
             addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
+        
         //addGestureRecognizer programatically
 //        addView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addProjectObjc)))
                 
