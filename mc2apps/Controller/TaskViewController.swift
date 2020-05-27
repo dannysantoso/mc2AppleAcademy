@@ -244,6 +244,10 @@ extension TaskViewController: UITableViewDataSource{
         cell.isCompleted = isCompleted
         cell.taskName.delegate = self
         
+        if isCompleted == true {
+            cell.tfTask.isEnabled = false
+        }
+        
         
         
         if task[indexPath.row].isChecklist == true {

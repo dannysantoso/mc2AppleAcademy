@@ -12,6 +12,7 @@ class TaskTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     
 
+    @IBOutlet weak var tfTask: UITextField!
     @IBOutlet weak var checklist: UIButton!
     var indexTask: Int?
     var task = [Task]()
@@ -23,6 +24,8 @@ class TaskTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
         
         checklist.backgroundColor = .clear
         checklist.layer.cornerRadius = 5
