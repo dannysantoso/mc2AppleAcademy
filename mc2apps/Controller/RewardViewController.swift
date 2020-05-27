@@ -23,12 +23,33 @@ class RewardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showFirstAlert()
+        
         rewardCollectionView.dataSource = self
         rewardCollectionView.register(UINib(nibName: "RewardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RewardCollectionViewCell")
     }
+    
+    func showFirstAlert() {
+        let alert = UIAlertController(title: "Recommendation" , message: "Here’s some recommendation from us for ‘Self Reward’", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func wantButtonClicked(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Reward Selected", message: "Please enjoy this reward", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Okay", style: .default) { _ in
+            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
+            self.navigationController?.pushViewController(destination, animated: true)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
-extension RewardViewController: UICollectionViewDataSource {
+extension RewardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -42,9 +63,15 @@ extension RewardViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RewardCollectionViewCell", for: indexPath) as! RewardCollectionViewCell
         
         let reward = rewards[indexPath.item]
-        
         cell.reward = reward
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.bounds.width * 0.75
+        let height = width * 1.5
+        return CGSize(width: width, height: height)
+    }
+    
 }
