@@ -83,6 +83,8 @@ extension Project{
         project.projectCompletionReward = projectCompletionReward
         project.isCompleted = isCompleted
         
+        Notifications.setNotification(project: project)
+        
         do {
             try viewContext.save()
             return project
@@ -100,6 +102,8 @@ extension Project{
         project[indexProject].color = color
         project[indexProject].isCompleted = isCompleted
         project[indexProject].projectCompletionReward = projectCompletionReward
+        
+        Notifications.setNotification(project: project[indexProject])
         
         do {
             try viewContext.save()
