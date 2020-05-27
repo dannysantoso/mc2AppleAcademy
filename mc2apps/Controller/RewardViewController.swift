@@ -56,16 +56,17 @@ class RewardViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Okay", style: .default) { _ in
  //           self.navigationController?.popToRootViewController(animated: true)
-            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
-            destination.selectedProject = self.selectedProject
-            destination.nameProject = self.selectedProject!.projectName
-            destination.nameClient = self.selectedProject!.clientName
-            destination.deadline = self.selectedProject!.deadline
-            destination.rewardProject = self.selectedProject!.projectCompletionReward
-            destination.isCompleted = self.selectedProject!.isCompleted
-            destination.colorProject = self.selectedProject!.color
-            destination.completionReward = self.selectedProject!.projectCompletionReward
-            self.navigationController?.pushViewController(destination, animated: true)
+//            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
+//            destination.selectedProject = self.selectedProject
+//            destination.nameProject = self.selectedProject!.projectName
+//            destination.nameClient = self.selectedProject!.clientName
+//            destination.deadline = self.selectedProject!.deadline
+//            destination.rewardProject = self.selectedProject!.projectCompletionReward
+//            destination.isCompleted = self.selectedProject!.isCompleted
+//            destination.colorProject = self.selectedProject!.color
+//            destination.completionReward = self.selectedProject!.projectCompletionReward
+//            self.navigationController?.popToViewController(destination, animated: true)
+            self.popBack(4)
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
