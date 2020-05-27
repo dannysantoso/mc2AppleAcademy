@@ -11,8 +11,11 @@ import UIKit
 class CompleteViewController: UIViewController {
 
     
-    @IBOutlet weak var completeLabel: UILabel!
-    @IBOutlet weak var enjoyLabel: UILabel!
+    @IBOutlet weak var congratsMilestoneLabel: UILabel!
+    @IBOutlet weak var completeMilestoneLabel: UILabel!
+    @IBOutlet weak var congratsProjectLabel: UILabel!
+    @IBOutlet weak var completeProjectLabel: UILabel!
+    @IBOutlet weak var enjoyProjectRewardLabel: UILabel!
     @IBOutlet weak var rewardLabel: UILabel!
     @IBOutlet weak var yayButton: UIButton! {
         didSet {
@@ -23,6 +26,7 @@ class CompleteViewController: UIViewController {
     
     var sourceIndex = 0
     var projectReward: String?
+    var selectedProject : Project?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +36,18 @@ class CompleteViewController: UIViewController {
     
     func setupUI() {
         if sourceIndex == 1 {
-            completeLabel.text = "1 milestone!"
-            enjoyLabel.isHidden = true
+            congratsMilestoneLabel.isHidden = false
+            completeMilestoneLabel.isHidden = false
+            congratsProjectLabel.isHidden = true
+            completeProjectLabel.isHidden = true
+            enjoyProjectRewardLabel.isHidden = true
             rewardLabel.isHidden = true
         } else if sourceIndex == 2 {
-            completeLabel.text = "your project!"
-            enjoyLabel.isHidden = false
-            rewardLabel.text = projectReward
+            congratsMilestoneLabel.isHidden = true
+            completeMilestoneLabel.isHidden = true
+            congratsProjectLabel.isHidden = false
+            completeProjectLabel.isHidden = false
+            enjoyProjectRewardLabel.isHidden = false
             rewardLabel.isHidden = false
         }
         
@@ -47,6 +56,7 @@ class CompleteViewController: UIViewController {
     @IBAction func yayButtonClicked(_ sender: UIButton) {
         if sourceIndex == 1 {
             let destination = RewardViewController(nibName: "RewardViewController", bundle: nil)
+            destination.selectedProject = selectedProject
             self.navigationController?.pushViewController(destination, animated: true)
         } else if sourceIndex == 2 {
             self.navigationController?.popToRootViewController(animated: true)

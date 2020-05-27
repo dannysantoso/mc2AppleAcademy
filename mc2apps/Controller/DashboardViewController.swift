@@ -17,6 +17,8 @@ class DashboardViewController: UIViewController {
     var currentTask: [Task] = []
     var index = 0
     let messageLabel = UILabel(frame: CGRect(x: 70, y: 150, width: 150, height: 23))
+//        view.bounds.minX + 70, y: view.bounds.minY + 150, width: view.bounds.width, height: 23))
+ 
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +30,6 @@ class DashboardViewController: UIViewController {
         } else {
             messageLabel.removeFromSuperview()
         }
-        
     }
     
     
@@ -78,12 +79,8 @@ extension DashboardViewController: UITableViewDataSource{
             messageLabel.textColor = UIColor(red: 0.2, green: 0.376, blue: 0.6, alpha: 1)
             messageLabel.font = UIFont(name: "SFProRounded-Medium", size: 20)
             messageLabel.textAlignment = .center
-            
- //           dashboardTableView.addSubview(messageLabel)
             return 0
-            
         } else {
- //           messageLabel.removeFromSuperview()
             return milestone.count
         }
     }
@@ -98,12 +95,14 @@ extension DashboardViewController: UITableViewDataSource{
         currentProject.append(contentsOf: printedProject)
         
         if currentTask.count == 0 {
-            cell.taskView.backgroundColor = .white
-            cell.taskView.layer.borderColor = UIColor.lightGray.cgColor
-            //           cell.taskView.layer.bounds.size.height = 0
-            cell.taskView.layer.borderWidth = 1.0
+            cell.noTaskView.isHidden = false
+            cell.noTaskView.backgroundColor = .white
+            cell.noTaskView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.noTaskView.layer.borderWidth = 1.0
+            cell.noTaskView.layer.cornerRadius = 13
+            cell.noTaskView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         } else {
-            cell.taskView.backgroundColor = .clear
+            cell.noTaskView.isHidden = true
         }
         
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
@@ -112,7 +111,7 @@ extension DashboardViewController: UITableViewDataSource{
         cell.clientNameLabel?.text = printedProject[0].clientName
 
         for task in currentTask {
-            let label = UILabel(frame: CGRect(x: 24, y: yPos, width: 117, height: 23))
+            let label = UILabel(frame: CGRect(x: cell.bounds.origin.x + 24, y: cell.bounds.origin.x + yPos, width: cell.bounds.width - 100, height: 23))
             cell.addSubview(label)
             label.font = UIFont(name: "SFProRounded-Regular", size: 20)
             label.textColor = .white
