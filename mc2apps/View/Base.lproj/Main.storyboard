@@ -124,12 +124,13 @@
                                                 <integer key="value" value="13"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="addProject:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fHk-hM-eky"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.58431372550000005" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Pek-9f-gX6" appends="YES" id="Rsf-jq-OnM"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -146,6 +147,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Pek-9f-gX6">
+                    <connections>
+                        <action selector="addProject:" destination="BYZ-38-t0r" id="NMx-eu-sL2"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-2104.3478260869565" y="612.72321428571422"/>
         </scene>
