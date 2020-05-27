@@ -33,6 +33,7 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     @IBOutlet weak var deadlineLabel: UILabel!
     @IBOutlet weak var addView: UIView!
     @IBOutlet weak var btnAdd: UIButton!
+    @IBOutlet var tapGestureMilestone: UITapGestureRecognizer!
     
     var nameProject: String?
     var nameClient: String?
@@ -65,16 +66,13 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        
-        
+        btnAdd.isEnabled = false
         
         if isCompleted == true {
             endProject.isHidden = true
             editBarButtonItem.isEnabled = false
             editBarButtonItem.tintColor = .clear
-            btnAdd.isEnabled = false
-            
+            tapGestureMilestone.isEnabled = false
         }
         
         milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)

@@ -22,6 +22,8 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var taskTableView: UITableView!
     
+    @IBOutlet var tapGestureTask: UITapGestureRecognizer!
+    
     var task = [Task](){
         didSet{
             taskTableView.reloadData()
@@ -58,6 +60,7 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         
         editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMilestone))
         self.navigationItem.rightBarButtonItem  = editBarButtonItem
+        btnAddTask.isEnabled = false
         
         projectNameLabel.text = nameProject
         clientNameLabel.text = clientName
@@ -79,7 +82,7 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
             endView.isHidden = true
             editBarButtonItem.isEnabled = false
             editBarButtonItem.tintColor = .clear
-            btnAddTask.isEnabled = false
+            tapGestureTask.isEnabled = false
         }
         
         headerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
