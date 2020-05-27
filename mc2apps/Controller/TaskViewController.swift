@@ -162,7 +162,8 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
             let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
             destination.sourceIndex = 1
-             self.navigationController?.pushViewController(destination, animated: true)
+            destination.selectedProject = self.selectedProject
+            self.navigationController?.pushViewController(destination, animated: true)
             
             Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:self.milestone, indexMilestone: self.index!)
             self.endView.isHidden = true

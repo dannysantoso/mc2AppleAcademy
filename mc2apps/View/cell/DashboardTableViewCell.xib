@@ -60,6 +60,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXc-5f-UkC">
+                        <rect key="frame" x="0.0" y="104" width="299" height="116"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             </tableViewCellContentView>
@@ -69,6 +74,7 @@
                 <outlet property="dashboardTaskView" destination="H2p-sc-9uM" id="VdF-s5-IKy"/>
                 <outlet property="deadlineLabel" destination="ccB-iZ-7xy" id="UCt-8K-2S1"/>
                 <outlet property="milestoneLabel" destination="ndA-UQ-H3B" id="j4q-6L-qXc"/>
+                <outlet property="noTaskView" destination="rXc-5f-UkC" id="0mS-Yi-1eD"/>
                 <outlet property="projectNameLabel" destination="GbZ-Zx-LjK" id="6Xd-0d-BtH"/>
             </connections>
             <point key="canvasLocation" x="128.2608695652174" y="103.79464285714285"/>

@@ -64,11 +64,13 @@ class ViewController: UIViewController, BackHandler {
             addButton.isHidden = false
             addView.isHidden = false
             self.selectedSegmentIndex = 1
+            projectTableView.frame.origin.y = 336
         } else {
             projectLabel.text = "Completed Projects"
             addButton.isHidden = true
             addView.isHidden = true
             self.selectedSegmentIndex = 2
+            projectTableView.frame.origin.y = 260
         }
         projectTableView.reloadData()
     }

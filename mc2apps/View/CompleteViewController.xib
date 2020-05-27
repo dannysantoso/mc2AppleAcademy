@@ -17,8 +17,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CompleteViewController" customModule="mc2apps" customModuleProvider="target">
             <connections>
-                <outlet property="completeLabel" destination="ia9-6z-6fw" id="LFw-IS-rkh"/>
-                <outlet property="enjoyLabel" destination="dgZ-sm-T56" id="Mba-Bn-YQI"/>
+                <outlet property="completeMilestoneLabel" destination="OD8-XG-yiW" id="hhQ-J1-9gb"/>
+                <outlet property="completeProjectLabel" destination="vNN-A2-DBK" id="Mrv-h4-Wqn"/>
+                <outlet property="congratsMilestoneLabel" destination="yC7-kH-5z0" id="fd4-2m-aVm"/>
+                <outlet property="congratsProjectLabel" destination="dIb-rB-4Qx" id="ltj-Uj-9n1"/>
+                <outlet property="enjoyProjectRewardLabel" destination="dgZ-sm-T56" id="Mba-Bn-YQI"/>
                 <outlet property="rewardLabel" destination="fdz-6h-qH9" id="H0O-Dg-kqI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yayButton" destination="7Sv-oB-W3K" id="P1p-Bw-p1A"/>
@@ -33,8 +36,15 @@
                     <rect key="frame" x="140" y="384" width="134" height="169"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You've completed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNN-A2-DBK">
-                    <rect key="frame" x="128" y="184" width="158" height="28"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You've completed your project!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNN-A2-DBK">
+                    <rect key="frame" x="107" y="177" width="202" height="57"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="20"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.37647058820000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You've completed 1 milestone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OD8-XG-yiW">
+                    <rect key="frame" x="115" y="257" width="184" height="57"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="20"/>
                     <color key="textColor" red="0.20000000000000001" green="0.37647058820000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,22 +64,15 @@
                     <color key="textColor" red="0.20000000000000001" green="0.37647058820000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 milestone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ia9-6z-6fw">
-                    <rect key="frame" x="128" y="188" width="158" height="63"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="20"/>
-                    <color key="textColor" red="0.20000000000000001" green="0.37647058820000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulation!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIb-rB-4Qx">
-                    <rect key="frame" x="93" y="119" width="229" height="39"/>
+                    <rect key="frame" x="93" y="124" width="229" height="39"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="32"/>
                     <color key="textColor" red="0.20000000000000001" green="0.37647058820000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sv-oB-W3K">
-                    <rect key="frame" x="101" y="603" width="212" height="55"/>
+                    <rect key="frame" x="101" y="592" width="212" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.98431372549019602" green="0.58431372549019611" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="24"/>
@@ -80,6 +83,13 @@
                         <action selector="yayButtonClicked:" destination="-1" eventType="touchUpInside" id="V9Z-Rs-IuW"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulation!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yC7-kH-5z0">
+                    <rect key="frame" x="93" y="186" width="229" height="39"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="32"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.37647058820000001" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

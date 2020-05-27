@@ -18,12 +18,15 @@ class RewardViewController: UIViewController {
         }
     }
     
+    var selectedProject : Project?
     var rewards = Rewards.fetchReward()
+    var cellScale: CGFloat = 0.6
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         showFirstAlert()
+        setLayout()
         
         rewardCollectionView.dataSource = self
         rewardCollectionView.register(UINib(nibName: "RewardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RewardCollectionViewCell")
@@ -35,12 +38,33 @@ class RewardViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func setLayout() {
+        let screenSize = UIScreen.main.bounds.size
+        let cellWidth = floor(screenSize.width * cellScale)
+        let cellHeight = floor(screenSize.height * cellScale)
+        let instX = (view.bounds.width - cellWidth) / 2.0
+        let instY = (view.bounds.height - cellHeight) / 2.0
+        let layout = rewardCollectionView!.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+        rewardCollectionView.contentInset = UIEdgeInsets(top: instY, left: instX, bottom: instY, right: instX)
+        
+    }
+    
     @IBAction func wantButtonClicked(_ sender: UIButton) {
         let alert = UIAlertController(title: "Reward Selected", message: "Please enjoy this reward", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Okay", style: .default) { _ in
             self.navigationController?.popToRootViewController(animated: true)
 //            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
+//            destination.selectedProject = self.selectedProject
+//            destination.nameProject = self.selectedProject!.projectName
+//            destination.nameClient = self.selectedProject!.clientName
+//            destination.deadline = self.selectedProject!.deadline
+//            destination.rewardProject = self.selectedProject!.projectCompletionReward
+//            destination.isCompleted = self.selectedProject!.isCompleted
+//            destination.colorProject = self.selectedProject!.color
+//            destination.completionReward = self.selectedProject!.projectCompletionReward
 //            self.navigationController?.pushViewController(destination, animated: true)
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -50,7 +74,7 @@ class RewardViewController: UIViewController {
     
 }
 
-extension RewardViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension RewardViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -67,12 +91,6 @@ extension RewardViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.reward = reward
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width * 0.75
-        let height = width * 1.5
-        return CGSize(width: width, height: height)
     }
     
 }

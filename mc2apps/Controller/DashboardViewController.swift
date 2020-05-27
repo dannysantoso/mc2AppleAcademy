@@ -17,6 +17,8 @@ class DashboardViewController: UIViewController {
     var currentTask: [Task] = []
     var index = 0
     let messageLabel = UILabel(frame: CGRect(x: 70, y: 150, width: 150, height: 23))
+//        view.bounds.minX + 70, y: view.bounds.minY + 150, width: view.bounds.width, height: 23))
+ 
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +30,6 @@ class DashboardViewController: UIViewController {
         } else {
             messageLabel.removeFromSuperview()
         }
-        
     }
     
     
@@ -87,7 +88,6 @@ extension DashboardViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardCell", for: indexPath) as! DashboardTableViewCell
-        let whiteView = UIView(frame: CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y + 104, width: cell.bounds.width, height: 116))
         var yPos:CGFloat = 132
         
         currentTask = Task.fetchTask(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
@@ -95,14 +95,14 @@ extension DashboardViewController: UITableViewDataSource{
         currentProject.append(contentsOf: printedProject)
         
         if currentTask.count == 0 {
-            whiteView.backgroundColor = .white
-            whiteView.layer.borderColor = UIColor.lightGray.cgColor
-            whiteView.layer.borderWidth = 1.0
-            whiteView.layer.cornerRadius = 13
-            whiteView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-            cell.addSubview(whiteView)
+            cell.noTaskView.isHidden = false
+            cell.noTaskView.backgroundColor = .white
+            cell.noTaskView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.noTaskView.layer.borderWidth = 1.0
+            cell.noTaskView.layer.cornerRadius = 13
+            cell.noTaskView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         } else {
-            whiteView.removeFromSuperview()
+            cell.noTaskView.isHidden = true
         }
         
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
