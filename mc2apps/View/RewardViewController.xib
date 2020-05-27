@@ -47,7 +47,7 @@
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9yg-hV-qFM">
-                    <rect key="frame" x="0.0" y="178" width="414" height="513"/>
+                    <rect key="frame" x="20" y="178" width="374" height="513"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>

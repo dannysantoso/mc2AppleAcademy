@@ -39,8 +39,9 @@ class RewardViewController: UIViewController {
         let alert = UIAlertController(title: "Reward Selected", message: "Please enjoy this reward", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Okay", style: .default) { _ in
-            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
-            self.navigationController?.pushViewController(destination, animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
+//            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
+//            self.navigationController?.pushViewController(destination, animated: true)
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
