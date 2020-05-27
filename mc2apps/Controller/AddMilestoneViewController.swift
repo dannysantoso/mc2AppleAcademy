@@ -71,15 +71,15 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
             
             switch color {
             case "purple":
-                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "blue":
-                blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "green":
-                greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "orange":
-                orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
             default:
-                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
             }
         }
         
@@ -178,7 +178,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     //mengatur textfield placeholder pada deadline textfield
     func configurePlaceHolder(){
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         deadline.placeholder = formater.string(from: Date())
     }
     
@@ -204,7 +204,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     
     @objc func datePickerChanged(datePicker: UIDatePicker) {
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         deadline.text = formater.string(from: datePicker.date)
     }
     
@@ -230,7 +230,7 @@ class AddMilestoneViewController: UIViewController, textfieldSetting, datePicker
     
     @objc func donePressed(){
         let formater = DateFormatter()
-        formater.dateFormat = "MMMM dd, yyyy"
+        formater.dateFormat = "MMMM d, yyyy"
         deadline.text = formater.string(from: datePicker.date)
         self.view.endEditing(true)
     }

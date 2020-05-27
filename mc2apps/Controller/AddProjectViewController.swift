@@ -70,15 +70,15 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
             
             switch color {
             case "purple":
-                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "blue":
-                blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                blueButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "green":
-                greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                greenButtonOutlet.layer.borderColor = UIColor.white.cgColor
             case "orange":
-                orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                orangeButtonOutlet.layer.borderColor = UIColor.white.cgColor
             default:
-                purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+                purpleButtonOutlet.layer.borderColor = UIColor.white.cgColor
             }
         }
         isSaveEnable()
@@ -255,33 +255,33 @@ class AddProjectViewController: UIViewController, textfieldSetting, datePickerTe
         isSaveEnable()
     }
     
-    
-    // populate the project data
-    func populateProject(project: Project) {
-        projectName.text = project.projectName
-        clientName.text = project.clientName
-        if let date = project.deadline {
-            deadline.text = dateFormat(date: date)
-        }
-        projectCompletionReward.text = project.projectCompletionReward
-        color = project.color!
-        switch color {
-        case "purple":
-            purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
-        case "blue":
-            blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
-        case "green":
-            greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
-        case "orange":
-            orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
-        default:
-            clearColorBorder()
-        }
-    }
+//    
+//    // populate the project data
+//    func populateProject(project: Project) {
+//        projectName.text = project.projectName
+//        clientName.text = project.clientName
+//        if let date = project.deadline {
+//            deadline.text = dateFormat(date: date)
+//        }
+//        projectCompletionReward.text = project.projectCompletionReward
+//        color = project.color!
+//        switch color {
+//        case "purple":
+//            purpleButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+//        case "blue":
+//            blueButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+//        case "green":
+//            greenButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+//        case "orange":
+//            orangeButtonOutlet.layer.borderColor = UIColor(red: 0.984, green: 0.584, blue: 0.576, alpha: 1).cgColor
+//        default:
+//            clearColorBorder()
+//        }
+//    }
     
     func dateFormat(date : Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy"
+        formatter.dateFormat = "MMMM d, yyyy"
         return formatter.string(from: date)
     }
     

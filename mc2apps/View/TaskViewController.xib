@@ -32,6 +32,7 @@
                 <outlet property="headerView" destination="iKE-xw-i49" id="yKd-XW-z5R"/>
                 <outlet property="milestoneNameLabel" destination="6Ud-YD-UIa" id="lOW-Cr-TPR"/>
                 <outlet property="projectNameLabel" destination="Ftj-iP-prS" id="hw4-CY-OqP"/>
+                <outlet property="tapGestureTask" destination="gNe-zx-Ofe" id="Foz-70-7ce"/>
                 <outlet property="taskTableView" destination="IRi-Ao-nA0" id="tde-ta-efZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -117,17 +118,23 @@
                             <state key="normal" title="+">
                                 <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </state>
-                            <connections>
-                                <action selector="addTask:" destination="-1" eventType="touchUpInside" id="fC8-1a-jxt"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.98431372549999996" green="0.58431372550000005" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="gNe-zx-Ofe" appends="YES" id="7Xs-bB-CM1"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="134.78260869565219" y="152.67857142857142"/>
         </view>
+        <tapGestureRecognizer id="gNe-zx-Ofe">
+            <connections>
+                <action selector="addTask:" destination="-1" id="KAo-Ab-hKJ"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>
