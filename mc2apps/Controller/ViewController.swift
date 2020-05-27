@@ -46,6 +46,7 @@ class ViewController: UIViewController, BackHandler {
         
         //addGestureRecognizer programatically
 //        addView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addProjectObjc)))
+        addButton.isEnabled = false
                 
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             self.navigationController?.navigationBar.shadowImage = UIImage()
