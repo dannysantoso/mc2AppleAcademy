@@ -55,17 +55,17 @@ class RewardViewController: UIViewController {
         let alert = UIAlertController(title: "Reward Selected", message: "Please enjoy this reward", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Okay", style: .default) { _ in
-            self.navigationController?.popToRootViewController(animated: true)
-//            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
-//            destination.selectedProject = self.selectedProject
-//            destination.nameProject = self.selectedProject!.projectName
-//            destination.nameClient = self.selectedProject!.clientName
-//            destination.deadline = self.selectedProject!.deadline
-//            destination.rewardProject = self.selectedProject!.projectCompletionReward
-//            destination.isCompleted = self.selectedProject!.isCompleted
-//            destination.colorProject = self.selectedProject!.color
-//            destination.completionReward = self.selectedProject!.projectCompletionReward
-//            self.navigationController?.pushViewController(destination, animated: true)
+ //           self.navigationController?.popToRootViewController(animated: true)
+            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
+            destination.selectedProject = self.selectedProject
+            destination.nameProject = self.selectedProject!.projectName
+            destination.nameClient = self.selectedProject!.clientName
+            destination.deadline = self.selectedProject!.deadline
+            destination.rewardProject = self.selectedProject!.projectCompletionReward
+            destination.isCompleted = self.selectedProject!.isCompleted
+            destination.colorProject = self.selectedProject!.color
+            destination.completionReward = self.selectedProject!.projectCompletionReward
+            self.navigationController?.pushViewController(destination, animated: true)
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
