@@ -48,6 +48,8 @@ class Notifications:NSObject, UNUserNotificationCenterDelegate{
     }
 
     static func removeNotification(_ project: Project) {
+        print("remove notification \(project.projectName!)")
+        print("\(project.objectID.uriRepresentation())")
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [project.projectName!])
     }
 
@@ -58,6 +60,7 @@ class Notifications:NSObject, UNUserNotificationCenterDelegate{
     }
 
     static func removeBadge() {
+        print("remove badge")
         let currentNotif =  UIApplication.shared.applicationIconBadgeNumber
         let badgeCounter = UserDefaults.standard.integer(forKey: "badge") - currentNotif
         UserDefaults.standard.set(
