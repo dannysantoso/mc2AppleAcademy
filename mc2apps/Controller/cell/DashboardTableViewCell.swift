@@ -16,7 +16,8 @@ class DashboardTableViewCell: UITableViewCell {
     @IBOutlet weak var clientNameLabel: UILabel!
     @IBOutlet weak var deadlineLabel: UILabel!
     @IBOutlet weak var dashboardTaskView: UIView!
-    @IBOutlet weak var noTaskView: UIView!
+//    @IBOutlet weak var noTaskView: UIView!
+    @IBOutlet weak var noTaskLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -91,21 +91,18 @@ extension DashboardViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardCell", for: indexPath) as! DashboardTableViewCell
-        var yPos:CGFloat = 132
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Your Text")
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        var yPos:CGFloat = 120
         
         currentTask = Task.fetchTask(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
         let printedProject = Project.fetchProject(viewContext: getViewContext(), selectedMilestone: milestone[indexPath.row].milestoneName!)
         currentProject.append(contentsOf: printedProject)
         
         if currentTask.count == 0 {
-            cell.noTaskView.isHidden = false
-            cell.noTaskView.backgroundColor = .white
-            cell.noTaskView.layer.borderColor = UIColor.lightGray.cgColor
-            cell.noTaskView.layer.borderWidth = 1.0
-            cell.noTaskView.layer.cornerRadius = 13
-            cell.noTaskView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            cell.noTaskLabel.isHidden = false
         } else {
-            cell.noTaskView.isHidden = true
+            cell.noTaskLabel.isHidden = true
         }
         
         cell.milestoneLabel?.text = milestone[indexPath.row].milestoneName
@@ -114,11 +111,17 @@ extension DashboardViewController: UITableViewDataSource{
         cell.clientNameLabel?.text = printedProject[0].clientName
 
         for task in currentTask {
-            let label = UILabel(frame: CGRect(x: cell.bounds.origin.x + 24, y: cell.bounds.origin.x + yPos, width: cell.bounds.width - 100, height: 23))
+            let label = UILabel(frame: CGRect(x: cell.bounds.origin.x + 20, y: cell.bounds.origin.x + yPos, width: cell.bounds.width - 100, height: 23))
             cell.addSubview(label)
-            label.font = UIFont(name: "SFProRounded-Regular", size: 20)
+            label.font = UIFont(name: "SFProRounded-Bold", size: 20)
             label.textColor = .white
-            label.text = task.taskName
+            let text = "-    " + task.taskName!
+            if task.isChecklist == true {
+                label.attributedText = text.strikeThrough()
+                label.textColor = UIColor(white: 1, alpha: 0.7)
+            } else {
+                label.text = text
+            }
             yPos += 30
         }
           
@@ -172,4 +175,15 @@ extension DashboardViewController: UITableViewDelegate{
 //        return 91
     }
 
+}
+
+extension String {
+    func strikeThrough() -> NSAttributedString {
+        let attributeString =  NSMutableAttributedString(string: self)
+        attributeString.addAttribute(
+            NSAttributedString.Key.strikethroughStyle,
+               value: NSUnderlineStyle.single.rawValue,
+                   range:NSMakeRange(0,attributeString.length))
+        return attributeString
+    }
 }
