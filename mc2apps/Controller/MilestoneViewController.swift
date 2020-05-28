@@ -27,6 +27,8 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     
     var milestone = [Milestone]()
     
+    var milestoneCheck = [Milestone]()
+    
     @IBOutlet weak var endProject: UIButton!
     @IBOutlet weak var nameProjectLabel: UILabel!
     @IBOutlet weak var nameClientLabel: UILabel!
@@ -178,27 +180,56 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
 //        )
 //    }
     @IBAction func endProject(_ sender: Any) {
-        let alert = UIAlertController(title: nil, message: "Are you sure you want to end this project?", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
-            let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
-            destination.sourceIndex = 2
-            destination.projectReward = self.rewardProject
-            self.navigationController?.pushViewController(destination, animated: true)
+        if checkMilestone() == true {
+            let alert = UIAlertController(title: nil, message: "Are you sure you want to end this project?", preferredStyle: .alert)
             
-            Project.isCompleted(viewContext: self.getViewContext(), isCompleted: true, project:self.listOfProjects, indexProject: self.indexProject!)
-            self.endProject.isHidden = true
-        })
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
+            alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
+                let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
+                destination.sourceIndex = 2
+                destination.projectReward = self.rewardProject
+                self.navigationController?.pushViewController(destination, animated: true)
+                
+                Project.isCompleted(viewContext: self.getViewContext(), isCompleted: true, project:self.listOfProjects, indexProject: self.indexProject!)
+                self.endProject.isHidden = true
+            })
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            print("there is a milestone that is not completed")
+        }
     }
     
     func formatDate(input: Date) -> String {
         let formater = DateFormatter()
         formater.dateFormat = "MMMM d, yyyy"
         return formater.string(from: input)
+    }
+    
+    func checkMilestone()-> Bool{
+        var value = false
+        
+        milestoneCheck = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
+        
+        var complete = 0
+        for item in milestoneCheck {
+            if item.isCompleted == true {
+                complete += 1
+            }
+        }
+        if complete != 0 {
+            if complete == milestoneCheck.count {
+                print(milestoneCheck.count)
+                print(complete)
+                value = true
+            }else{
+                value = false
+            }
+        }else{
+            value = false
+        }
+        return value
     }
 }
 

@@ -30,6 +30,8 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         }
     }
     
+    var taskCheck = [Task]()
+    
     var milestone = [Milestone]()
     
     var delegate: BackHandler?
@@ -159,26 +161,56 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         }
     }
     
+    
     @IBAction func endMilestone(_ sender: Any) {
-        let alert = UIAlertController(title: nil, message: "Are you sure you want to end this milestone?", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
-            let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
-            destination.sourceIndex = 1
-            destination.selectedProject = self.selectedProject
-            self.navigationController?.pushViewController(destination, animated: true)
+        if checkTask() == true {
+            let alert = UIAlertController(title: nil, message: "Are you sure you want to end this milestone?", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "End", style: .default) { _ in
+                let destination = CompleteViewController(nibName: "CompleteViewController", bundle: nil)
+                destination.sourceIndex = 1
+                 self.navigationController?.pushViewController(destination, animated: true)
+
+                Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:self.milestone, indexMilestone: self.index!)
+                self.endView.isHidden = true
+                self.editBarButtonItem.isEnabled = false
+                self.editBarButtonItem.tintColor = .clear
+                self.btnAddTask.isEnabled = false
+            })
+
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+            self.present(alert, animated: true, completion: nil)
             
-            Milestone.isCompleted(viewContext: self.getViewContext(), isCompleted: true, milestone:self.milestone, indexMilestone: self.index!)
-            self.endView.isHidden = true
-            self.editBarButtonItem.isEnabled = false
-            self.editBarButtonItem.tintColor = .clear
-            self.btnAddTask.isEnabled = false
-        })
+        }
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    }
+    
+    
+    func checkTask()-> Bool{
+        var value = false
         
-        self.present(alert, animated: true, completion: nil)
+        taskCheck = Task.fetchQuery(viewContext: getViewContext(), selectedMilestone: (selectedMilestone?.milestoneName)!, selectedProject: (selectedProject?.projectName)!)
         
+        var complete = 0
+        for item in taskCheck {
+            if item.isChecklist == true {
+                complete += 1
+            }
+        }
+        if complete != 0 {
+            if complete == taskCheck.count {
+                print(taskCheck.count)
+                print(complete)
+                value = true
+            }else{
+                value = false
+            }
+        }else{
+            value = false
+        }
+        return value
     }
     
     func onBackHome() {
@@ -211,6 +243,10 @@ extension TaskViewController: UITableViewDataSource{
         cell.isChecklist = task[indexPath.row].isChecklist
         cell.isCompleted = isCompleted
         cell.taskName.delegate = self
+        
+        if isCompleted == true {
+            cell.tfTask.isEnabled = false
+        }
         
         
         

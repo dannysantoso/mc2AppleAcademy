@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -38,6 +38,7 @@
             <connections>
                 <outlet property="checklist" destination="t9l-Xy-Bgr" id="jZ2-dj-kof"/>
                 <outlet property="taskName" destination="8I8-Aw-vQH" id="jDn-Jf-w9f"/>
+                <outlet property="tfTask" destination="8I8-Aw-vQH" id="7H5-Pi-a0a"/>
             </connections>
             <point key="canvasLocation" x="205.79710144927537" y="158.03571428571428"/>
         </tableViewCell>
