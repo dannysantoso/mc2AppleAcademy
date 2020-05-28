@@ -49,10 +49,25 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
     var editBarButtonItem = UIBarButtonItem()
     
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        headerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        headerView.layer.cornerRadius = 24
+        
+        
+        colorHeader(color: milestoneColor ?? "purple")
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         self.delegate?.onBackHome()
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.barTintColor = nil
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dismissKeyboard()
@@ -74,8 +89,8 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         endView.layer.cornerRadius = 14
     
 //        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         
         if isCompleted == true{
@@ -85,11 +100,11 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
             tapGestureTask.isEnabled = false
         }
         
-        headerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        headerView.layer.cornerRadius = 24
-        
-        
-        colorHeader(color: milestoneColor ?? "purple")
+//        headerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+//        headerView.layer.cornerRadius = 24
+//
+//
+//        colorHeader(color: milestoneColor ?? "purple")
         
         task = Task.fetchQuery(viewContext: getViewContext(), selectedMilestone: (selectedMilestone?.milestoneName)!, selectedProject: (selectedProject?.projectName)!)
         

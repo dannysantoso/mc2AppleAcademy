@@ -14,15 +14,10 @@ class ViewController: UIViewController, BackHandler {
     @IBOutlet weak var projectLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addView: UIView!
-    
-    @IBOutlet weak var segmentSwitch: UISegmentedControl! {
-        didSet {
- //           segmentSwitch.layer.cornerRadius = 100
-            segmentSwitch.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
-        }
-    }
     @IBOutlet weak var projectTableView: UITableView!
     
+    var selectedSegmentIndex: Int = 0
+    var segmentSwitch: UISegmentedControl!
     
     var projects: [Project] = [] {
         didSet{
@@ -36,45 +31,69 @@ class ViewController: UIViewController, BackHandler {
         }
     }
 
-    var selectedSegmentIndex: Int = 1
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.addSubview(segmentSwitch)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        segmentSwitch.removeFromSuperview()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            addView.layer.cornerRadius = 13
-            addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
+        addView.layer.cornerRadius = 13
+        addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
         
         //addGestureRecognizer programatically
-//        addView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addProjectObjc)))
+        //        addView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addProjectObjc)))
         addButton.isEnabled = false
-                
-            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-            self.navigationController?.navigationBar.shadowImage = UIImage()
-
-                    
-    //        projects = Project.fetchAll(viewContext: getViewContext())
-            projects = Project.fetchNotCompleted(viewContext: getViewContext())
-            completedProjects = Project.fetchCompleted(viewContext: getViewContext())
-
-            projectTableView.dataSource = self
-            projectTableView.delegate = self
-
-            projectTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
+        
+        setupSegmented()
+        
+        //            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        //            self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
+        //        projects = Project.fetchAll(viewContext: getViewContext())
+        projects = Project.fetchNotCompleted(viewContext: getViewContext())
+        completedProjects = Project.fetchCompleted(viewContext: getViewContext())
+        
+        projectTableView.dataSource = self
+        projectTableView.delegate = self
+        
+        projectTableView.register(UINib(nibName: "ProjectTableViewCell", bundle: nil), forCellReuseIdentifier: "ProjectCell")
     }
     
-    @IBAction func segmentChange(_ sender: UISegmentedControl) {
+    func setupSegmented() {
+        let segmentItems = ["Ongoing", "Completed"]
+        segmentSwitch = UISegmentedControl(items: segmentItems)
+        segmentSwitch.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "SFProRounded-Bold", size: 14.0) as Any] , for: .normal)
+        segmentSwitch.selectedSegmentIndex = 0
+        segmentSwitch.center = CGPoint(x: view.frame.size.width / 2, y: view.safeAreaInsets.top + 20)
+        segmentSwitch.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
+        segmentSwitch.layer.cornerRadius = 100
+        segmentSwitch.layer.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1).cgColor
+        segmentSwitch.selectedSegmentTintColor = UIColor(red: 0.2, green: 0.376, blue: 0.6, alpha: 1)
+        segmentSwitch.addTarget(self, action: #selector(segmentChange(_:)), for: .valueChanged)
+    }
+    
+    @objc func segmentChange(_ segmentedControl: UISegmentedControl ) {
         if segmentSwitch.selectedSegmentIndex == 0 {
             projectLabel.text = "List of Projects"
             addButton.isHidden = false
             addView.isHidden = false
-            self.selectedSegmentIndex = 1
-            projectTableView.frame.origin.y = 336
+            self.selectedSegmentIndex = 0
+            projectTableView.frame.origin.y = view.safeAreaInsets.top + 210
         } else {
             projectLabel.text = "Completed Projects"
             addButton.isHidden = true
             addView.isHidden = true
-            self.selectedSegmentIndex = 2
-            projectTableView.frame.origin.y = 260
+            self.selectedSegmentIndex = 1
+            projectTableView.frame.origin.y = view.safeAreaInsets.top + 140
         }
         projectTableView.reloadData()
     }
@@ -162,7 +181,7 @@ class ViewController: UIViewController, BackHandler {
 extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if selectedSegmentIndex == 1 {
+        if selectedSegmentIndex == 0 {
             return projects.count
         } else {
             return completedProjects.count
@@ -174,7 +193,7 @@ extension ViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProjectCell", for: indexPath) as! ProjectTableViewCell
 
         // if on ongoing, reload data ongoing, else reload completed projects
-        if selectedSegmentIndex == 1 {
+        if selectedSegmentIndex == 0 {
             cell.projectName?.text = projects[indexPath.row].projectName
             cell.clientName?.text = projects[indexPath.row].clientName
             cell.deadline?.text = formatDate(input: projects[indexPath.row].deadline!)
@@ -213,7 +232,7 @@ extension ViewController: UITableViewDelegate {
         let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
         
         if let indexPath = projectTableView.indexPathForSelectedRow {
-            if selectedSegmentIndex == 1 {
+            if selectedSegmentIndex == 0 {
                 destination.selectedProject = projects[indexPath.row]
                 destination.nameProject = projects[indexPath.row].projectName
                 destination.nameClient = projects[indexPath.row].clientName
