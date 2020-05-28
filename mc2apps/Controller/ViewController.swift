@@ -54,8 +54,8 @@ class ViewController: UIViewController, BackHandler {
         
         setupSegmented()
         
-        //            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        //            self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         
         //        projects = Project.fetchAll(viewContext: getViewContext())

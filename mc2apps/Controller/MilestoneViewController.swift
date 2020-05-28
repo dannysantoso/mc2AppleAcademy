@@ -51,17 +51,9 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     
     var editBarButtonItem = UIBarButtonItem()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-    }
 
     override func viewWillDisappear(_ animated: Bool) {
         self.delegateViewController?.onBackHome()
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = nil
     }
     
     override func viewDidLoad() {

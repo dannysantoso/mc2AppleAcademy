@@ -27,16 +27,7 @@ class CompleteViewController: UIViewController {
     var projectReward: String?
     var selectedProject : Project?
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = nil
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
