@@ -28,11 +28,11 @@ class Notifications:NSObject, UNUserNotificationCenterDelegate{
         content.userInfo["client"] = project.clientName
         UserDefaults.standard.set(badge, forKey: "badge")
 
-        let date = Calendar.current.date(bySettingHour: 15, minute: 0, second: 0, of: Date())!
+        let date = Calendar.current.date(bySettingHour: 15, minute: 0, second: 0, of: project.deadline!.yesterday!)!
         print(formatDate(input: date))
 
         
-        let timeInterval = project.deadline!.timeIntervalSince(date)
+        let timeInterval = date.timeIntervalSince(Date())
         if timeInterval >= 0 {
             print(timeInterval)
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
@@ -71,3 +71,9 @@ class Notifications:NSObject, UNUserNotificationCenterDelegate{
     }
 }
 
+extension Date {
+
+    var yesterday: Date? {
+        return Calendar.current.date(byAdding: .day, value: -1, to: self)
+    }
+}
