@@ -63,6 +63,9 @@ class TaskViewController: UIViewController, BackHandler, ReceiveData {
         editBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMilestone))
         self.navigationItem.rightBarButtonItem  = editBarButtonItem
         btnAddTask.isEnabled = false
+        if btnAddTask.isEnabled == false {
+            btnAddTask.tintColor = UIColor(red: 256, green: 256, blue: 256, alpha: 1)
+        }
         
         projectNameLabel.text = nameProject
         clientNameLabel.text = clientName

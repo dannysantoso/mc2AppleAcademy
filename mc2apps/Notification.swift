@@ -19,14 +19,17 @@ class Notifications:NSObject, UNUserNotificationCenterDelegate{
         let badge = UserDefaults.standard.integer(forKey: "badge") + 1
         
         let content = UNMutableNotificationContent()
-        content.title = "\(project.projectName!) Project has 1 day left"
+        content.title = "Tomorrow is the deadline for Project \(project.projectName!)"
         content.badge = NSNumber(value: badge)
-        content.body = "Your \(project.projectName!) Project will end on \(formatDate(input: project.deadline!))"
+        content.body = "Let's do your best to finish it on time!"
         content.sound = .default
         content.userInfo["projectName"] = project.projectName
         content.userInfo["deadline"] = formatDate(input: project.deadline!)
         content.userInfo["client"] = project.clientName
         UserDefaults.standard.set(badge, forKey: "badge")
+        
+        
+//        Let's do your best to finish it on time!
 
         let date = Calendar.current.date(bySettingHour: 15, minute: 0, second: 0, of: project.deadline!.yesterday!)!
         print(formatDate(input: date))

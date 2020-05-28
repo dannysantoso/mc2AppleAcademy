@@ -56,7 +56,7 @@
 /* Begin PBXFileReference section */
 		7419AA85247CEFF600E2C184 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		7419AA86247CEFF600E2C184 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
-		E1009825247126D600E693A0 /* mc2apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2apps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1009825247126D600E693A0 /* Taska.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taska.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1009828247126D600E693A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E100982A247126D600E693A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E100982C247126D600E693A0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		E1009826247126D600E693A0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1009825247126D600E693A0 /* mc2apps.app */,
+				E1009825247126D600E693A0 /* Taska.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,7 +252,7 @@
 			);
 			name = mc2apps;
 			productName = mc2apps;
-			productReference = E1009825247126D600E693A0 /* mc2apps.app */;
+			productReference = E1009825247126D600E693A0 /* Taska.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -498,7 +498,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dannysantoso.mc2apps;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Taska;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -516,7 +516,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dannysantoso.mc2apps;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Taska;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

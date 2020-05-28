@@ -65,6 +65,7 @@ class ProjectTableViewCell: UITableViewCell {
     @IBAction func deleteBtn(_ sender: Any) {
         Project.deleteData(viewContext: self.getViewContext(), project: project, indexProject: indexProject!)
         self.delegate?.onBackHome()
+        swipedLeft = false
         
     }
     

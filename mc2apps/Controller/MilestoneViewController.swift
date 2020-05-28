@@ -24,6 +24,7 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     }
     
     @IBOutlet weak var milestoneTableView: UITableView!
+    @IBOutlet weak var bgImage: UIImageView!
     
     var milestone = [Milestone]()
     
@@ -60,7 +61,14 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(nameClient)
+        
+        if milestone.count == 0 {
+            milestoneTableView.isHidden = true
+            bgImage.isHidden = false
+        }else{
+            milestoneTableView.isHidden = false
+            bgImage.isHidden = true
+        }
         
         endProject.layer.cornerRadius = 14
         
@@ -70,6 +78,10 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
         btnAdd.isEnabled = false
+        if btnAdd.isEnabled == false {
+            btnAdd.tintColor = UIColor(red: 256, green: 256, blue: 256, alpha: 1)
+        }
+        
         
         if isCompleted == true {
             endProject.isHidden = true
@@ -124,6 +136,15 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
     
     func onBackHome() {
         milestone = Milestone.fetchQuery(viewContext: getViewContext(), selectedProject: (selectedProject?.projectName)!)
+        
+        if milestone.count == 0 {
+            milestoneTableView.isHidden = true
+            bgImage.isHidden = false
+        }else{
+            milestoneTableView.isHidden = false
+            bgImage.isHidden = true
+        }
+        
         milestoneTableView.reloadData()
     }
     
@@ -236,7 +257,19 @@ class MilestoneViewController: UIViewController, BackHandler, ReceiveData {
 
 extension MilestoneViewController: UITableViewDataSource{
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return milestone.count
+            
+            if milestone.count == 0 {
+                milestoneTableView.isHidden = true
+                bgImage.isHidden = false
+                return 0
+            }else{
+                milestoneTableView.isHidden = false
+                bgImage.isHidden = true
+                return milestone.count
+            }
+            
+            
+            
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

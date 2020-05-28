@@ -16,23 +16,35 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8I8-Aw-vQH">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8I8-Aw-vQH">
                         <rect key="frame" x="122" y="13" width="222" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="OFQ-Ug-nFY"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
                             <action selector="editingChangedTextfield:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="hgj-9W-NWM"/>
                         </connections>
                     </textField>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9l-Xy-Bgr">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9l-Xy-Bgr">
                         <rect key="frame" x="70" y="19" width="22" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="C61-pp-WHZ"/>
+                            <constraint firstAttribute="height" constant="22" id="sks-fl-XWP"/>
+                        </constraints>
                         <connections>
                             <action selector="isClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="D6A-ZH-98m"/>
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="t9l-Xy-Bgr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="19g-c8-Ijj"/>
+                    <constraint firstItem="t9l-Xy-Bgr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="H54-9t-LpY"/>
+                    <constraint firstAttribute="trailing" secondItem="8I8-Aw-vQH" secondAttribute="trailing" constant="70" id="KrZ-pY-EPx"/>
+                    <constraint firstItem="8I8-Aw-vQH" firstAttribute="leading" secondItem="t9l-Xy-Bgr" secondAttribute="trailing" constant="30" id="cMT-3f-gDd"/>
+                    <constraint firstItem="8I8-Aw-vQH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rOK-ot-h5e"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

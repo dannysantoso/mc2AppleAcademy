@@ -49,6 +49,7 @@ class CompleteViewController: UIViewController {
             completeProjectLabel.isHidden = false
             enjoyProjectRewardLabel.isHidden = false
             rewardLabel.isHidden = false
+            enjoyProjectRewardLabel.text = projectReward
         }
         
     }

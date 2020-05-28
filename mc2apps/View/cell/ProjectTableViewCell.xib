@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -27,35 +27,47 @@
                             <action selector="deleteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zbh-ks-NZl"/>
                         </connections>
                     </button>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5pc-g0-twT">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pc-g0-twT">
                         <rect key="frame" x="0.0" y="0.0" width="299" height="84"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mem-Kc-FM0">
-                                <rect key="frame" x="19" y="8" width="260" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mem-Kc-FM0">
+                                <rect key="frame" x="19" y="10" width="37" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-1g-8A3">
-                                <rect key="frame" x="135" y="55" width="144" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-1g-8A3">
+                                <rect key="frame" x="248" y="58" width="31" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW5-NG-CdV">
-                                <rect key="frame" x="19" y="27" width="260" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jW5-NG-CdV">
+                                <rect key="frame" x="19" y="29" width="61.5" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mem-Kc-FM0" firstAttribute="top" secondItem="5pc-g0-twT" secondAttribute="top" constant="10" id="2Sd-cf-EGa"/>
+                            <constraint firstAttribute="trailing" secondItem="nAq-1g-8A3" secondAttribute="trailing" constant="20" id="DDY-YS-lMi"/>
+                            <constraint firstItem="nAq-1g-8A3" firstAttribute="top" secondItem="5pc-g0-twT" secondAttribute="top" constant="58" id="Emg-SF-zb5"/>
+                            <constraint firstItem="mem-Kc-FM0" firstAttribute="leading" secondItem="5pc-g0-twT" secondAttribute="leading" constant="19" id="Npf-Vm-Qiy"/>
+                            <constraint firstItem="jW5-NG-CdV" firstAttribute="top" secondItem="mem-Kc-FM0" secondAttribute="bottom" constant="2" id="svp-hT-gWP"/>
+                            <constraint firstItem="jW5-NG-CdV" firstAttribute="leading" secondItem="mem-Kc-FM0" secondAttribute="leading" id="vf0-w2-9qX"/>
+                        </constraints>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="5pc-g0-twT" secondAttribute="trailing" id="6Bb-0q-pf4"/>
+                    <constraint firstItem="Fyw-W9-q3C" firstAttribute="top" secondItem="5pc-g0-twT" secondAttribute="top" id="96M-9r-0os"/>
+                    <constraint firstItem="Fyw-W9-q3C" firstAttribute="trailing" secondItem="5pc-g0-twT" secondAttribute="trailing" id="FCz-J2-TOB"/>
+                    <constraint firstItem="5pc-g0-twT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Pzp-Yh-xsa"/>
+                    <constraint firstItem="5pc-g0-twT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eWh-xd-M2B"/>
+                    <constraint firstAttribute="bottom" secondItem="5pc-g0-twT" secondAttribute="bottom" id="hm7-M4-d2F"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

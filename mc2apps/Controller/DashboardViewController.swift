@@ -9,8 +9,10 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
+
     
     @IBOutlet weak var dashboardTableView: UITableView!
+    @IBOutlet weak var bgImage: UIImageView!
     
     var milestone: [Milestone] = []
     var currentProject: [Project] = []
@@ -26,12 +28,13 @@ class DashboardViewController: UIViewController {
         self.dashboardTableView.reloadData()
         
         if milestone.count == 0 {
-            dashboardTableView.addSubview(messageLabel)
+            bgImage.isHidden = false
+            dashboardTableView.isHidden = true
         } else {
-            messageLabel.removeFromSuperview()
+            bgImage.isHidden = true
+            dashboardTableView.isHidden = false
         }
-       
-
+     
     }
     
     
@@ -40,7 +43,14 @@ class DashboardViewController: UIViewController {
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-
+        
+        if milestone.count == 0 {
+            bgImage.isHidden = false
+            dashboardTableView.isHidden = true
+        } else {
+            bgImage.isHidden = true
+            dashboardTableView.isHidden = false
+        }
         
         dashboardTableView.dataSource = self
         dashboardTableView.delegate = self
@@ -56,6 +66,9 @@ class DashboardViewController: UIViewController {
         formater.dateFormat = "MMMM d, yyyy"
         return formater.string(from: input)
     }
+    
+//    Psst, Tomorrow's the deadline!
+//    Let's do your best to finish it on time!
     
     func colorCell(color: String, cell: DashboardTableViewCell){
             switch color {
@@ -79,10 +92,13 @@ extension DashboardViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if milestone.count == 0 {
-            messageLabel.text = "No Milestone"
-            messageLabel.textColor = UIColor(red: 0.2, green: 0.376, blue: 0.6, alpha: 1)
-            messageLabel.font = UIFont(name: "SFProRounded-Medium", size: 20)
-            messageLabel.textAlignment = .center
+//            messageLabel.text = "No Milestone"
+//            messageLabel.textColor = UIColor(red: 0.2, green: 0.376, blue: 0.6, alpha: 1)
+//            messageLabel.font = UIFont(name: "SFProRounded-Medium", size: 20)
+//            messageLabel.textAlignment = .center
+//            return 0
+            bgImage.isHidden = false
+            dashboardTableView.isHidden = true
             return 0
         } else {
             return milestone.count
@@ -111,19 +127,25 @@ extension DashboardViewController: UITableViewDataSource{
         cell.projectNameLabel?.text = printedProject[0].projectName
         cell.clientNameLabel?.text = printedProject[0].clientName
 
-        for task in currentTask {
-            let label = UILabel(frame: CGRect(x: cell.bounds.origin.x + 20, y: cell.bounds.origin.x + yPos, width: cell.bounds.width - 100, height: 23))
-            cell.addSubview(label)
-            label.font = UIFont(name: "SFProRounded-Bold", size: 20)
-            label.textColor = .white
-            let text = "-    " + task.taskName!
-            if task.isChecklist == true {
-                label.attributedText = text.strikeThrough()
-                label.textColor = UIColor(white: 1, alpha: 0.7)
-            } else {
-                label.text = text
+        var taskCount = currentTask.count
+        if currentTask.count > 3 {
+            taskCount = 3
+        }
+        if taskCount > 0 {
+            for index in 0..<taskCount {
+                let label = UILabel(frame: CGRect(x: cell.bounds.origin.x + 20, y: cell.bounds.origin.x + yPos, width: cell.bounds.width - 100, height: 23))
+                cell.addSubview(label)
+                label.font = UIFont(name: "SFProRounded-Bold", size: 20)
+                label.textColor = .white
+                let text = "-    " + currentTask[index].taskName!
+                if currentTask[index].isChecklist == true {
+                    label.attributedText = text.strikeThrough()
+                    label.textColor = UIColor(white: 1, alpha: 0.7)
+                } else {
+                    label.text = text
+                }
+                yPos += 30
             }
-            yPos += 30
         }
           
         colorCell(color: milestone[indexPath.row].color ?? "purple", cell: cell)

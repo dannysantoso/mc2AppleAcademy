@@ -15,6 +15,7 @@ class ViewController: UIViewController, BackHandler {
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addView: UIView!
     @IBOutlet weak var projectTableView: UITableView!
+    @IBOutlet weak var bgImage: UIImageView!
     
     var selectedSegmentIndex: Int = 0
     var segmentSwitch: UISegmentedControl!
@@ -45,12 +46,40 @@ class ViewController: UIViewController, BackHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if selectedSegmentIndex == 0 {
+            if projects.count == 0 {
+                bgImage.isHidden = false
+                projectTableView.isHidden = true
+                bgImage.image = UIImage(named:"ongoing")
+                
+            } else {
+                bgImage.isHidden = true
+                projectTableView.isHidden = false
+                
+            }
+        } else {
+            if completedProjects.count == 0 {
+                bgImage.isHidden = false
+                projectTableView.isHidden = true
+                bgImage.image = UIImage(named:"completed project")
+                
+            } else {
+                bgImage.isHidden = true
+                projectTableView.isHidden = false
+                
+            }
+        }
+        
         addView.layer.cornerRadius = 13
         addView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]  //ini mengatur radius corner hanya untuk atas kiri dan bawah
         
         //addGestureRecognizer programatically
         //        addView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addProjectObjc)))
         addButton.isEnabled = false
+        if addButton.isEnabled == false {
+            addButton.tintColor = UIColor(red: 256, green: 256, blue: 256, alpha: 1)
+        }
         
         setupSegmented()
         
@@ -88,12 +117,29 @@ class ViewController: UIViewController, BackHandler {
             addView.isHidden = false
             self.selectedSegmentIndex = 0
             projectTableView.frame.origin.y = view.safeAreaInsets.top + 210
+            
+            if projects.count == 0 {
+                bgImage.isHidden = false
+                projectTableView.isHidden = true
+            } else {
+                bgImage.isHidden = true
+                projectTableView.isHidden = false
+            }
+            
         } else {
             projectLabel.text = "Completed Projects"
             addButton.isHidden = true
             addView.isHidden = true
             self.selectedSegmentIndex = 1
             projectTableView.frame.origin.y = view.safeAreaInsets.top + 140
+            
+            if completedProjects.count == 0 {
+                bgImage.isHidden = false
+                projectTableView.isHidden = true
+            } else {
+                bgImage.isHidden = true
+                projectTableView.isHidden = false
+            }
         }
         projectTableView.reloadData()
     }
@@ -122,6 +168,30 @@ class ViewController: UIViewController, BackHandler {
 //        projects = Project.fetchAll(viewContext: getViewContext())
         projects = Project.fetchNotCompleted(viewContext: getViewContext())
         completedProjects = Project.fetchCompleted(viewContext: getViewContext())
+        
+        
+        if segmentSwitch.selectedSegmentIndex == 0 {
+            
+            if projects.count == 0 {
+                bgImage.isHidden = false
+                projectTableView.isHidden = true
+                bgImage.image = UIImage(named:"ongoing")
+            } else {
+                bgImage.isHidden = true
+                projectTableView.isHidden = false
+            }
+            
+        } else {
+            
+            if completedProjects.count == 0 {
+                bgImage.isHidden = false
+                projectTableView.isHidden = true
+                bgImage.image = UIImage(named:"completed project")
+            } else {
+                bgImage.isHidden = true
+                projectTableView.isHidden = false
+            }
+        }
         projectTableView.reloadData()
     }
     
@@ -182,9 +252,27 @@ extension ViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if selectedSegmentIndex == 0 {
-            return projects.count
+            if projects.count == 0 {
+                bgImage.isHidden = false
+                projectTableView.isHidden = true
+                bgImage.image = UIImage(named:"ongoing")
+                return 0
+            } else {
+                bgImage.isHidden = true
+                projectTableView.isHidden = false
+                return projects.count
+            }
         } else {
-            return completedProjects.count
+            if completedProjects.count == 0 {
+                bgImage.isHidden = false
+                projectTableView.isHidden = true
+                bgImage.image = UIImage(named:"completed project")
+                return 0
+            } else {
+                bgImage.isHidden = true
+                projectTableView.isHidden = false
+                return completedProjects.count
+            }
         }
     }
 

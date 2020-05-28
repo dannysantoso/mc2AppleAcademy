@@ -39,6 +39,7 @@ class MilestoneTableViewCell: UITableViewCell {
     @IBAction func deleteButton(_ sender: Any) {
         Milestone.deleteData(viewContext: self.getViewContext(), milestone: milestone, indexMilestone: indexMilestone!)
         self.delegate?.onBackHome()
+        swipedLeft = false
     }
     
     func gestureSwipe(){
