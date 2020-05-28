@@ -26,7 +26,6 @@ class CompleteViewController: UIViewController {
     
     var sourceIndex = 0
     var projectReward: String?
-    var selectedProject : Project?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +55,6 @@ class CompleteViewController: UIViewController {
     @IBAction func yayButtonClicked(_ sender: UIButton) {
         if sourceIndex == 1 {
             let destination = RewardViewController(nibName: "RewardViewController", bundle: nil)
-            destination.selectedProject = selectedProject
             self.navigationController?.pushViewController(destination, animated: true)
         } else if sourceIndex == 2 {
             self.navigationController?.popToRootViewController(animated: true)
