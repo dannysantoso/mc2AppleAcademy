@@ -17,13 +17,13 @@ class Rewards {
 
     static func fetchReward() -> [Reward] {
         return [
-            Reward(rewardName: "music", rewardImage: "reward 1"),
-            Reward(rewardName: "food", rewardImage: "reward 2"),
-            Reward(rewardName: "air", rewardImage: "reward 3"),
-            Reward(rewardName: "call", rewardImage: "reward 4"),
-            Reward(rewardName: "game", rewardImage: "reward 5"),
-            Reward(rewardName: "read", rewardImage: "reward 6"),
-            Reward(rewardName: "video", rewardImage: "reward 7")
+            Reward(rewardName: "Sing your heart out", rewardImage: "reward 1"),
+            Reward(rewardName: "Savor some guilty pleasure", rewardImage: "reward 2"),
+            Reward(rewardName: "Inhale..., Exhale....", rewardImage: "reward 3"),
+            Reward(rewardName: "I just call to say I love you", rewardImage: "reward 4"),
+            Reward(rewardName: "Slay your stress dragon", rewardImage: "reward 5"),
+            Reward(rewardName: "Travel to the world of imagination", rewardImage: "reward 6"),
+            Reward(rewardName: "Laugh your stress off", rewardImage: "reward 7")
         ]
     }
 

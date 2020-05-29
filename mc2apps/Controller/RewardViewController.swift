@@ -21,6 +21,7 @@ class RewardViewController: UIViewController {
     var selectedProject : Project?
     var rewards = Rewards.fetchReward()
     var cellScale: CGFloat = 0.6
+    var selectedIndex = 0
     
     
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class RewardViewController: UIViewController {
         setLayout()
         
         rewardCollectionView.dataSource = self
+        rewardCollectionView.delegate = self
         rewardCollectionView.register(UINib(nibName: "RewardCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "RewardCollectionViewCell")
     }
     
@@ -53,20 +55,10 @@ class RewardViewController: UIViewController {
     }
     
     @IBAction func wantButtonClicked(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Reward Selected", message: "Please enjoy this reward", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Enjoy your reward!", message: rewards[selectedIndex].rewardName , preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Okay", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: "Select", style: .default) { _ in
  //           self.navigationController?.popToRootViewController(animated: true)
-//            let destination = MilestoneViewController(nibName: "MilestoneViewController", bundle: nil)
-//            destination.selectedProject = self.selectedProject
-//            destination.nameProject = self.selectedProject!.projectName
-//            destination.nameClient = self.selectedProject!.clientName
-//            destination.deadline = self.selectedProject!.deadline
-//            destination.rewardProject = self.selectedProject!.projectCompletionReward
-//            destination.isCompleted = self.selectedProject!.isCompleted
-//            destination.colorProject = self.selectedProject!.color
-//            destination.completionReward = self.selectedProject!.projectCompletionReward
-//            self.navigationController?.popToViewController(destination, animated: true)
             self.popBack(4)
         })
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -95,4 +87,17 @@ extension RewardViewController: UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
     
+}
+
+extension RewardViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        var visibleRect = CGRect()
+        visibleRect.origin = rewardCollectionView.contentOffset
+        visibleRect.size = rewardCollectionView.bounds.size
+        let visiblePoint = CGPoint(x: CGFloat(visibleRect.midX), y: CGFloat(visibleRect.midY))
+        let visibleIndexPath: IndexPath? = rewardCollectionView.indexPathForItem(at: visiblePoint)
+        selectedIndex = visibleIndexPath?.row ?? 0
+//        print("Visible cell's index is : \(visibleIndexPath?.row)!")
+    }
 }

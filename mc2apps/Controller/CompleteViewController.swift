@@ -15,7 +15,6 @@ class CompleteViewController: UIViewController {
     @IBOutlet weak var completeMilestoneLabel: UILabel!
     @IBOutlet weak var congratsProjectLabel: UILabel!
     @IBOutlet weak var completeProjectLabel: UILabel!
-    @IBOutlet weak var enjoyProjectRewardLabel: UILabel!
     @IBOutlet weak var rewardLabel: UILabel!
     @IBOutlet weak var yayButton: UIButton! {
         didSet {
@@ -40,16 +39,14 @@ class CompleteViewController: UIViewController {
             completeMilestoneLabel.isHidden = false
             congratsProjectLabel.isHidden = true
             completeProjectLabel.isHidden = true
-            enjoyProjectRewardLabel.isHidden = true
             rewardLabel.isHidden = true
         } else if sourceIndex == 2 {
             congratsMilestoneLabel.isHidden = true
             completeMilestoneLabel.isHidden = true
             congratsProjectLabel.isHidden = false
             completeProjectLabel.isHidden = false
-            enjoyProjectRewardLabel.isHidden = false
             rewardLabel.isHidden = false
-            enjoyProjectRewardLabel.text = projectReward
+            rewardLabel.text = projectReward
         }
         
     }

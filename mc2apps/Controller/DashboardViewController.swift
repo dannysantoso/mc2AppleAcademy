@@ -17,10 +17,7 @@ class DashboardViewController: UIViewController {
     var milestone: [Milestone] = []
     var currentProject: [Project] = []
     var currentTask: [Task] = []
-    var index = 0
-    let messageLabel = UILabel(frame: CGRect(x: 70, y: 150, width: 150, height: 23))
-//        view.bounds.minX + 70, y: view.bounds.minY + 150, width: view.bounds.width, height: 23))
- 
+    var index = 0 
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,11 +89,6 @@ extension DashboardViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if milestone.count == 0 {
-//            messageLabel.text = "No Milestone"
-//            messageLabel.textColor = UIColor(red: 0.2, green: 0.376, blue: 0.6, alpha: 1)
-//            messageLabel.font = UIFont(name: "SFProRounded-Medium", size: 20)
-//            messageLabel.textAlignment = .center
-//            return 0
             bgImage.isHidden = false
             dashboardTableView.isHidden = true
             return 0
