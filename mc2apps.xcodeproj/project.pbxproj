@@ -36,6 +36,7 @@
 		E10098952473D09200E693A0 /* AddProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E10098932473D09200E693A0 /* AddProjectViewController.xib */; };
 		E100989E2475103800E693A0 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989D2475103800E693A0 /* UITableViewController+Extension.swift */; };
 		E10098A02475DCC100E693A0 /* protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E100989F2475DCC100E693A0 /* protocol.swift */; };
+		E161C15B24814BBD00CE9082 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E161C15A24814BBD00CE9082 /* CloudKit.framework */; };
 		E1F9A9F8247DA5F300C0308C /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F9A9F7247DA5F300C0308C /* Notification.swift */; };
 		EC00375D247AC50D00A3C73D /* DashboardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC00375B247AC50D00A3C73D /* DashboardTableViewCell.swift */; };
 		EC00375E247AC50D00A3C73D /* DashboardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC00375C247AC50D00A3C73D /* DashboardTableViewCell.xib */; };
@@ -85,6 +86,8 @@
 		E10098932473D09200E693A0 /* AddProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddProjectViewController.xib; sourceTree = "<group>"; };
 		E100989D2475103800E693A0 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 		E100989F2475DCC100E693A0 /* protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocol.swift; sourceTree = "<group>"; };
+		E161C15824814B9A00CE9082 /* Tasca.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tasca.entitlements; sourceTree = "<group>"; };
+		E161C15A24814BBD00CE9082 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E1F9A9F4247AD40000C0308C /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		E1F9A9F5247AD57F00C0308C /* SFProDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		E1F9A9F6247ADEE500C0308C /* SFProText-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProText-Regular.ttf"; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E161C15B24814BBD00CE9082 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +125,7 @@
 			children = (
 				E1009827247126D600E693A0 /* mc2apps */,
 				E1009826247126D600E693A0 /* Products */,
+				E161C15924814BBD00CE9082 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +140,7 @@
 		E1009827247126D600E693A0 /* mc2apps */ = {
 			isa = PBXGroup;
 			children = (
+				E161C15824814B9A00CE9082 /* Tasca.entitlements */,
 				E10098582472579A00E693A0 /* Extension */,
 				E10098572472575F00E693A0 /* Controller */,
 				E100984324712A1600E693A0 /* View */,
@@ -219,6 +225,14 @@
 				EC1B1538247E223C0092A005 /* RewardCollectionViewCell.swift */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		E161C15924814BBD00CE9082 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E161C15A24814BBD00CE9082 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EC67E1612479631E0092B8C5 /* fonts */ = {
@@ -490,8 +504,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = mc2apps/Tasca.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J747CHZ6CY;
+				DEVELOPMENT_TEAM = 9P78Q47KY2;
 				INFOPLIST_FILE = mc2apps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -508,8 +523,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = mc2apps/Tasca.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J747CHZ6CY;
+				DEVELOPMENT_TEAM = 9P78Q47KY2;
 				INFOPLIST_FILE = mc2apps/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
